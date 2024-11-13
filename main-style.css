@@ -1,0 +1,93 @@
+/* Reset styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic container styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* Grid layout for topic cards */
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Styling for individual topic cards */
+.topic-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.topic-card:hover {
+    transform: scale(1.05);
+}
+
+.topic-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #444;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Buttons for each topic card */
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.read-more, .visual-test, .download-presentation {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.read-more:hover, .visual-test:hover, .download-presentation:hover {
+    background-color: #45a049;
+}
+
+/* Footer text styling */
+.footer-text {
+    color: #666;
+    font-size: 0.9em;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
