@@ -29,6 +29,11 @@ h1 {
     margin-bottom: 20px;
 }
 
+.description p {
+    width: 90%;
+    text-align: justify;
+    margin: 0 auto;
+}
 /* Media Section - Image and Video */
 .media h2 {
     color: #444;
@@ -37,18 +42,21 @@ h1 {
 }
 
 .topic-image {
-    max-width: 100%;
+    width: 80%;
+    margin: 10px auto;
     height: auto;
     display: block;
-    margin: 0 auto;
     border: 2px solid #ddd;
-    padding: 5px;
+}
+
+.video-wrapper {
+    width: 100%;
+    margin: 10px auto;
 }
 
 .topic-video {
     width: 100%;
     max-height: 400px;
-    margin-top: 10px;
     border-radius: 5px;
 }
 
