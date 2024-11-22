@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topic N - Data Structures and Algorithms</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
 </head>
 <body>
 
@@ -14,7 +16,7 @@
 
         <!-- Description Section -->
         <section class="description">
-            <p><strong>Array</strong>, yoki <strong>massiv</strong>, bu — ma’lumotlarning bir xil turdagi elementlarini ketma-ket joylashtirishga imkon beruvchi ma’lumotlar tuzilmasidir. Massivni tasavvur qilish osonroq bo'lishi uchun uni bitta qator qilib joylashtirilgan qutilarga o'xshatish mumkin, bunda har bir quti bitta qiymatni saqlaydi. Massivni yaratish uchun avvalo massivning nomi va ichida qancha element (qiymat) bo'lishini belgilash kerak.</p>
+            <p><strong>Array</strong> — bu bir xil o'zgaruvchi turidagi elementlar to'plami bo'lib, ular ketma-ket xotira joylashuvlarida saqlanadi. Bu dasturlashda eng mashhur va oddiy ma'lumot tuzilmalaridan biridir.</p>
         </section>
 
         <!-- Image Section -->
@@ -23,6 +25,296 @@
             <img src="images/array_1_1.jpg" alt="Topic N Illustration" class="topic-image">
         </section>
         
+        <h2>
+            <span>Massivning asosiy tushunchalari</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Massiv indeksi:</strong></b><span> Massivda elementlar indekslar orqali aniqlanadi. Massiv indeksi 0 dan boshlanadi.</span></li>
+            <li value="2"><b><strong>Massiv elementi:</strong></b><span>Elementlar massivda saqlanadigan narsalar bo‘lib, ularni indeks orqali olish mumkin.</span></li>
+            <li value="3"><b><strong>Massiv uzunligi:</strong></b><span> Massivning uzunligi uning ichida nechta element saqlanishi mumkinligiga bog‘liq.&nbsp;</span></li>
+        </ul>        
+
+        <h2><span>Massivning xotirada tasviri</span></h2>
+        <section class="description">
+            <p><span>Massivda barcha elementlar ketma-ket xotira joylashuvlarida saqlanadi. Shuning uchun, agar biz massivni tashkillashtirsak, elementlar xotirada ketma-ket ajratiladi. Bu elementlarga samarali kirish va ularni boshqarishni ta'minlaydi.</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1).webp"
+         alt="Memory-Representation-of-Array-(1)" class="topic-image" 
+         srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1).webp 1042w,https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1)-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1)-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1)-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1)-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1)-768.webp 768w,https://media.geeksforgeeks.org/wp-content/uploads/20240405101013/Memory-Representation-of-Array-(1)-1024.webp 1024w">
+
+        <h2><span>Massivni e'lon qilish</span></h2>
+        <section class="description">
+            <p><span>Turli tillarda massivlar har xil usullar bilan e'lon qilinishi mumkin. Quyida turli dasturlash tillari uchun massivni e'lon qilish misollari keltirilgan:</span></p>
+        </section>
+        <pre><code>// JS kodi
+let arr = []</code></pre>
+
+        
+        <h2><span>Massivni boshlang'ich qiymat bilan to'ldirish</span></h2>
+        <section class="description">
+            <p><span>Turli tillarda massivlar turli usullar bilan boshlang'ich qiymat bilan to'ldirilishi mumkin. Quyida ayrim dasturlash tillari uchun massivni boshlang'ich qiymat bilan to'ldirish misollari keltirilgan:</span></p>
+        </section>
+        <pre><code>let arr = [ 1, 2, 3, 4, 5 ];
+let arr = [ 'a', 'b', 'c', 'd', 'e' ];
+let arr = [ 1.4, 2.0, 24, 5.0, 0.0 ];</code></pre>
+
+        <h2><span>Massivning ahamiyati</span></h2>
+        <section class="description">
+            <p><span>Faraz qiling, besh nafar talabadan iborat sinf bor va ularning imtihondagi baholarini yozib olishimiz kerak. Buni beshta alohida o‘zgaruvchini e’lon qilib va ma’lumotlarni kuzatib borsak bo‘ladi. Ammo agar talabalar soni juda ko‘payib ketsa, ma’lumotlarni boshqarish va saqlash qiyinlashadi.</span></p>
+            <p><span>Bu shuni anglatadiki, biz kichik obyektlar soni uchun oddiy o‘zgaruvchilar (v1, v2, v3, ...) dan foydalanishimiz mumkin. Ammo katta hajmdagi ma’lumotlarni saqlashimiz kerak bo‘lsa, ularni oddiy o‘zgaruvchilar bilan boshqarish qiyin bo‘ladi.</span> <b><strong>Massivning g‘oyasi shundan iboratki, ko‘p obyektlarni bitta o‘zgaruvchi orqali ifodalash mumkin</strong></b><span>.</span></p>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array.webp" alt="Importance-of-Array" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array.webp 1043w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array-768.webp 768w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123859/Importance-of-Array-1024.webp 1024w" loading="lazy">
+        </section>
+
+        <h2><span>Massiv ma'lumot tuzilmalari zarurati yoki qo'llanilishi</span></h2>
+        <ul>
+            <li value="1"><span> Massiv asosiy ma'lumot tuzilmasi hisoblanadi va ko'plab boshqa ma'lumot tuzilmalari, masalan, stack va queue, massiv yordamida amalga oshiriladi. </span></li>
+            <li value="2"><span> Ma'lumotlarni jadval va matritsa shaklida ifodalash </span></li>
+            <li value="3"><span> Hash jadvallari va graflar kabi dinamik ma'lumot tuzilmalarini yaratish.</span></li>
+            <li value="4"><span>Boshqa ma'lumot tuzilmalari bilan solishtirganda, massivlarning quyidagi afzalliklari bor: tasodifiy kirish (biz tezda i-chi elementga kira olamiz) va keshga do'stlik (barcha elementlar ketma-ket joylashgan).</span></li>
+        </ul>
+
+        <h2><span>Massiv turlari</span></h2>
+        <section class="description">
+            <p dir="ltr"><span>Massivlar ikki usulda tasniflanadi:</span></p>
+        </section>
+        <ul>
+            <li value="1"><span>Hajm asosida</span></li>
+            <li value="2"><span>O‘lchamlar asosida</span></li>
+        </ul>
+
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240731124259/Types-of-Arrays.webp" alt="Types-of-Arrays" class="topic-image" >
+
+        <h3><span>Hajmga ko'ra massiv turlari:</span></h3>
+        <section class="description">
+            <p><b><strong>1. O'zgarmas hajmli massivlar:</strong></b></p>
+            <p><span>Ushbu massivning hajmini o'zgartirish yoki yangilash mumkin emas. Bu yerda faqat belgilangan hajm (ya'ni, to'rtburchak qavslar ichida ko'rsatilgan hajm) uchun xotira ajratiladi. Agar massivning hajmini oldindan bilmasak, katta hajmni e'lon qilib, kam sonli elementlarni saqlasak, xotira sarflanishi bo'ladi yoki elementlar sonidan kamroq hajm belgilasak, barcha elementlarni saqlash uchun yetarli xotira olmaymiz. Bunday holatlarda statik xotira ajratish tavsiya etilmaydi.</span></p>
+        </section>
+        <pre><code>// O'zgarmas hajmli massiv misollari
+int[] arr1 = new int [5];
+
+// Boshqa usul (Massiv yaratish va 
+// boshlang'ich qiymat bilan to'ldirish)
+int[] arr2 = {1, 2, 3, 4, 5};</code></pre>
+
+        <section class="description">
+            <p><b><strong>2. Dinamik hajmli massivlar:</strong></b></p>
+            <p><span>Massivning hajmi kod bajarilishi davomida foydalanuvchi talablariga qarab o'zgaradi, shuning uchun dasturchilar hajm haqida tashvishlanishlari shart emas. Ular kerak bo'lganda elementlarni qo'shish va o'chirishlari mumkin. Bu massivlarda xotira asosan dinamik tarzda ajratilib va ozod qilinadi.</span></p>
+        </section>
+        <pre><code>// Dinamik hajmli massiv
+let arr = new Array();</code></pre>
+
+        <h3><span>O'lchamlar bo'yicha massiv turlari:</span></h3>
+        <section class="description">
+            <p><b><strong>1. Bir o'lchamli massiv (1-D massiv):</strong></b><span> 1D massivni satr sifatida tasavvur qilish mumkin, bu erda elementlar ketma-ket joylashgan.</span></p>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array).webp" alt="Bir o'lchamli massiv (1-D massiv)" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array).webp 1042w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array)-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array)-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array)-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array)-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array)-768.webp 768w,https://media.geeksforgeeks.org/wp-content/uploads/20240405123929/One-Dimensional-Array(1-D-Array)-1024.webp 1024w" loading="lazy">
+            <p><b><strong>2. Ko'p o'lchamli massiv:</strong></b><span> Ko'p o'lchamli massivlar - bu 1 dan ko'p o'lchamli massivlar. Biz ko'p o'lchamli massivlardan jadval shaklida murakkab ma'lumotlarni saqlash uchun foydalanishimiz mumkin. Biz 2D massivlar, 3D massivlar, 4D massivlar va shunga o'xshashlarni yarata olamiz.</span></p>
+        </section>
+        <ul>
+            <li value="1"><b><strong>Ikki o'lchamli massiv (2-D massiv yoki matritsa):</strong></b><span> 2D ko'p o'lchamli massivlarni massivlar qatorlari va ustunlaridan iborat matritsa sifatida tasavvur qilish mumkin.</span></li>
+        </ul>
+        <section class="description">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix).webp" alt="Ikki o'lchamli massiv (2-D massiv yoki matritsa)" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix).webp 1043w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix)-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix)-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix)-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix)-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix)-768.webp 768w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165401/Two-Dimensional-Array(2-D-Array-or-Matrix)-1024.webp 1024w" loading="lazy">
+        </section>
+
+        <ul>
+            <li value="1"><b><strong>Uch o'lchamli massiv (3-D massiv):</strong></b><span> 3-D ko'p o'lchamli massiv uchta o'lchamdan iborat bo'lib, uni ikki o'lchamli massivlar massivi sifatida tasavvur qilish mumkin.</span></li>
+        </ul>
+        <section class="description">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array).webp" alt="Uch o'lchamli massiv (3-D massiv)" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array).webp 1043w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array)-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array)-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array)-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array)-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array)-768.webp 768w,https://media.geeksforgeeks.org/wp-content/uploads/20240408165421/Three-Dimensional-Array(3-D-Array)-1024.webp 1024w" loading="lazy">
+        </section>        
+
+        <h2><span>Massivdagi operatsiyalar</span></h2>
+        <h3><span>1. Massivni o'rganish:</span></h3>
+        <section class="description">
+            <p><span>Massivni o'rganish - bu massivning barcha elementlarini bir marta tashrif buyurishni o'z ichiga oladi. Quyida turli tillarda massivni o'rganishning amalga oshirilishi keltirilgan:</span></p>
+        </section>
+        <pre><code>let arr = [1, 2, 3, 4, 5]
+// arr[] ustida o'rganish
+for (let x of arr)
+console.log(x)</code></pre>
+
+
+        <h3><span>2. Massivga qo'shish:</span></h3>
+        <section class="description">
+            <p><span>Biz massivda istalgan joyga bitta yoki bir nechta elementlarni qo'shishimiz mumkin. Quyida massivga qo'shishning turli tillardagi amalga oshirilishi keltirilgan:</span></p>
+        </section>
+        <pre><code>// javascript dasturi - Elementni
+// ma'lum bir pozitsiyada massivga qo'shish
+function insertElement(arr, n, x, pos)
+{
+    // o'ngdagi elementlarni o'ngga siljitish
+    // pozitsiyadan o'ngda joylashgan
+    var i = n - 1;
+    for (i; i >= pos; i--)
+    {
+        arr[i + 1] = arr[i];
+    }
+    arr[pos] = x;
+}</code></pre>
+
+
+        <h3><span>3. Massivdan o'chirish:</span></h3>
+        <section class="description">
+            <p><span>Biz massivda istalgan indeksdagi elementni o'chirishimiz mumkin. Quyida massivdagi elementni o'chirishning amalga oshirilishi keltirilgan:</span></p>
+        </section>
+        <pre><code>// o'chirilishi kerak bo'lgan elementni qidirish funksiyasi
+function findElement(arr,n,key)
+{
+    let i;
+    for (i = 0; i < n; i++)
+        if (arr[i] == key)
+            return i;
+    return -1;
+} 
+                     
+// Elementni o'chirish funksiyasi
+function deleteElement(arr,n,key)
+{
+    // O'chirilishi kerak bo'lgan elementning pozitsiyasini topish
+    let pos = findElement(arr, n, key);
+                      
+    if (pos == -1)
+    {
+        document.write("Element topilmadi");
+        return n;
+    }
+    // Elementni o'chirish
+    let i;
+    for (i = pos; i< n - 1; i++)
+        arr[i] = arr[i + 1];
+    return n - 1;
+}</code></pre>
+
+
+        <h3><span>4. Massivda qidirish:</span></h3>
+        <section class="description">
+            <p><span>Biz massivni o'rganib chiqib, elementni qidirishimiz mumkin. Quyida massivda elementni qidirishning amalga oshirilishi keltirilgan:</span></p>
+        </section>
+        <section class="code">
+            <pre><code>// Qidirish operatsiyasini amalga oshirish funksiyasi
+function findElement( arr, n, key)
+{
+    let i;
+    for (i = 0; i < n; i++)
+        if (arr[i] == key)
+            return i;
+                 
+    return -1;
+}</code></pre>
+        </section>
+
+
+        <h2><span>Massivda operatsiyalar uchun murakkablik tahlili</span></h2>
+        <h3><span>Vaqt murakkabligi:</span></h3>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><span>Operation</span></p></th>
+                        <th><p ><span>Best Case</span></p></th>
+                        <th><p ><span>Average Case</span></p></th>
+                        <th><p><span>Worst Case</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><b><strong>Traversal</strong></b></p></td>
+                        <td><p><span>Ω(N)</span></p></td>
+                        <td><p ><span>θ(N)</span></p></td>
+                        <td><p><span>O(N)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p ><b><strong>Insertion</strong></b></p></td>
+                        <td>><span>Ω(1)</span></p>
+                        </td><td><p><span>θ(N)</span></p></td>
+                        <td><p><span>O(N)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p ><b><strong>Deletion</strong></b></p></td>
+                        <td><p ><span>Ω(1)</span></p></td>
+                        <td><p ><span>θ(N)</span></p></td>
+                        <td><p ><span>O(N)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Searching</strong></b></p></td>
+                        <td><p><span>Ω(1)</span></p></td>
+                        <td><p ><span>θ(N)</span></p></td>
+                        <td><p ><span>O(N)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <h3><span>Xotira murakkabligi:</span></h3>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p dir="ltr"><span>Operation</span></p></th>
+                        <th><p dir="ltr"><span>Best Case</span></p></th>
+                        <th><p dir="ltr"><span>Average Case</span></p></th>
+                        <th><p dir="ltr"><span>Worst Case</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p dir="ltr"><b><strong>Traversal</strong></b></p></td>
+                        <td><p dir="ltr"><span>Ω(1)</span></p></td>
+                        <td><p dir="ltr"><span>θ(1)</span></p></td>
+                        <td><p dir="ltr"><span>O(1)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p dir="ltr"><b><strong>Insertion</strong></b></p></td>
+                        <td><p dir="ltr"><span>Ω(1)</span></p></td>
+                        <td><p dir="ltr"><span>θ(N)</span></p></td>
+                        <td><p dir="ltr"><span>O(N)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p dir="ltr"><b><strong>Deletion</strong></b></p></td>
+                        <td><p dir="ltr"><span>Ω(1)</span></p></td>
+                        <td><p dir="ltr"><span>θ(N)</span></p></td>
+                        <td><p dir="ltr"><span>O(N)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p dir="ltr"><b><strong>Searching</strong></b></p></td>
+                        <td><p dir="ltr"><span>Ω(1)</span></p></td>
+                        <td><p dir="ltr"><span>θ(1)</span></p></td>
+                        <td><p dir="ltr"><span>O(1)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <h2><b><strong>Massivning afzalliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Massivlar </span><b><strong>tasodifiy kirish</strong></b><span> orqali elementlarga murojaat qilish imkonini beradi. Bu elementlarga pozitsiya bo'yicha murojaat qilishni tezlashtiradi.</span></li>
+            <li value="2"><span>Massivlar </span><b><strong>yaxshi kesh lokalitetiga</strong></b><span> ega bo'lib, bu samaradorlikda katta farqni keltirib chiqaradi.</span></li>
+            <li value="3"><span>Massivlar </span><b><strong>bir xil turdagi ko'plab ma'lumotlarni</strong></b><span> bitta nom bilan ifodalaydi.</span></li>
+            <li value="4"><span>Massivlar boshqa ma'lumotlar tuzilmalarini amalga oshirishda ishlatiladi, masalan, bog'lanmagan ro'yxatlar, steklar, navbatlar, daraxtlar, grafalar va boshqalar.</span></li>
+        </ul>
+
+
+        <h2 ><b><strong>Massivning kamchiliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Massivlar o'zgaruvchan o'lchamga ega bo'lgani uchun, bir marta xotira ajratilgandan so'ng, uning o'lchamini oshirib yoki kamaytirib bo'lmaydi, bu esa zarur bo'lsa, qo'shimcha ma'lumotlarni saqlashni imkonsiz qiladi. O'lchami belgilangan massivlar statik massivlar deb ataladi. </span></li>
+            <li value="2"><span>Massivga kerakli miqdordan kam xotira ajratish ma'lumotlarning yo'qolishiga olib keladi.</span></li>
+            <li value="3"><span>Massivlar tabiatan gomonikdir, shuning uchun bitta massiv turli ma'lumot turlaridagi qiymatlarni saqlay olmaydi. </span></li>
+            <li value="4"><span>Massivlar ma'lumotlarni ketma-ket joylashgan xotira manzillarida saqlaydi, bu esa o'chirish va kiritishni amalga oshirishni juda qiyinlashtiradi. Ushbu muammo bog'lanmagan ro'yxatlar yordamida hal qilinadi, chunki ular elementlarga ketma-ket kirish imkonini beradi. </span></li>
+        </ul>
+
+
+        <h2><b><strong>Massivlarning qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Ular boshqa ma'lumot tuzilmalarini amalga oshirishda, masalan, massiv ro'yxatlari, yiriklar, xesh jadvallar, vektorlar va matritsalar kabi tuzilmalar bilan ishlatiladi.</span></li>
+            <li value="2"><span>Ma'lumotlar bazasining yozuvlari odatda massivlar shaklida amalga oshiriladi.</span></li>
+            <li value="3"><span>Kompyuter tomonidan qidiruv jadvallari uchun ishlatiladi.</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Mu discusseddan so'ng, biz massivlarning bir xil turdagi elementlarga kirishni oddiy usul ekanligini va biz indekslari orqali elementlarni samarali topa olishimizni va ulardan turli operatsiyalarni bajarishimiz mumkinligini xulosa qildik. Shunday qilib, ular xotira ajratish jihatidan samaraliroq bo'lib, barcha zamonaviy dasturlash tillarida ishlatilishi kerak. Shuning uchun bu mavzu intervyu nuqtai nazaridan juda muhimdir va ko'pgina kompaniyalar odatda massivlarga oid muammolarni so'raydi. Shu sababli, biz uni yaxshi bilishimiz kerak.</span></p>
+        </section>
+
 
         <!-- Video Section -->
         <section class="media">
@@ -42,14 +334,21 @@
         <section class="code">
             <h2>Code Example</h2>
             <pre>
-<code>
-// Sample code for Topic N
-function exampleFunction() {
-    console.log("This is a code example for Topic N.");
-}
-exampleFunction();
-</code>
-            </pre>
+<code>// Array yaratish
+let fruits = ["apple", "banana", "mango"];
+console.log()
+
+// Element qo'shish
+fruits.push("orange");  // ["apple", "banana", "mango", "orange"]
+
+// Element o'chirish
+fruits.pop();  // ["apple", "banana", "mango"]
+
+// Element qidirish
+let index = fruits.indexOf("banana");  // index = 1
+
+// Elementni o'zgartirish
+fruits[1] = "kiwi";  // ["apple", "kiwi", "mango"]</code></pre>
         </section>
 
         <!-- Additional Resources Section -->
