@@ -22,7 +22,7 @@
         <!-- Image Section -->
         <section class="media">
             <h2>Illustration</h2>
-            <img src="images/array_1_1.jpg" alt="Topic N Illustration" class="topic-image">
+            <img src="images/linked-list_1_1.webp" alt="Topic N Illustration" class="topic-image">
         </section>
 
         <selection class="description">
@@ -30,22 +30,26 @@
         </selection>        
 
         <div>
-            <p style="margin:4px; font-size:20px; font-weight:bold;">Mundarija</p>
-            <ul>
-                <li><a href="#understanding-node-structure">Tugun tuzilmasini tushunish</a></li>
-                <li><a href="#operations-on-singly-linked-list">Singly Linked List bo'yicha operatsiyalar</a></li>
-                <li><a href="#traversal-in-singly-linked-list">Singly Linked Listda traversal</a></li>
-                <li><a href="#searching-in-singly-linked-list">Singly Linked Listda qidirish</a></li>
-                <li><a href="#finding-length-in-singly-linked-list">Singly Linked Listda uzunlikni aniqlash</a></li>
-                <li><a href="#insertion-in-singly-linked-list">Singly Linked Listga qo'shish</a></li>
-                <li><a href="#deletion-in-singly-linked-list">Singly Linked Listdan o'chirish</a></li>
-            </ul>
+            <section class="description">
+                <p style="margin:4px; font-size:20px; font-weight:bold;">Mundarija</p>
+                <ul>
+                    <li><a href="#understanding-node-structure">Tugun tuzilmasini tushunish</a></li>
+                    <li><a href="#operations-on-singly-linked-list">Singly Linked List bo'yicha operatsiyalar</a></li>
+                    <li><a href="#traversal-in-singly-linked-list">Singly Linked Listda traversal</a></li>
+                    <li><a href="#searching-in-singly-linked-list">Singly Linked Listda qidirish</a></li>
+                    <li><a href="#finding-length-in-singly-linked-list">Singly Linked Listda uzunlikni aniqlash</a></li>
+                    <li><a href="#insertion-in-singly-linked-list">Singly Linked Listga qo'shish</a></li>
+                    <li><a href="#deletion-in-singly-linked-list">Singly Linked Listdan o'chirish</a></li>
+                </ul>
+            </section>
         </div>        
         
         <h2 id="understanding-node-structure"><span>Tugun tuzilmasini tushunish</span></h2>
-        <p style="text-align: justify;" dir="ltr">
-            <span>Singly Linked Listda har bir tugun ikkita qismdan iborat: ma'lumot va keyingi tugunga ishora qiluvchi ko'rsatkich. Ma'lumot qismi haqiqiy axborotni saqlaydi, ko'rsatkich qismi esa ketma-ketlikdagi keyingi tugunning manzilini saqlaydi. Ushbu tuzilma tugunlarni dinamik ravishda bir-biriga bog'lashga imkon beradi, zanjir shaklidagi ketma-ketlikni hosil qiladi.</span>
-        </p>
+        <section class="description">
+            <p style="text-align: justify;" dir="ltr">
+                <span>Singly Linked Listda har bir tugun ikkita qismdan iborat: ma'lumot va keyingi tugunga ishora qiluvchi ko'rsatkich. Ma'lumot qismi haqiqiy axborotni saqlaydi, ko'rsatkich qismi esa ketma-ketlikdagi keyingi tugunning manzilini saqlaydi. Ushbu tuzilma tugunlarni dinamik ravishda bir-biriga bog'lashga imkon beradi, zanjir shaklidagi ketma-ketlikni hosil qiladi.</span>
+            </p>
+        </section>
         <figure class="image">
             <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240917161540/Singly-Linked-List.webp" alt="Singly-Linked-List" class="topic-image" 
             srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240917161540/Singly-Linked-List.webp 801w,
@@ -56,12 +60,14 @@
             https://media.geeksforgeeks.org/wp-content/uploads/20240917161540/Singly-Linked-List-768.webp 768w">
             <figcaption>Singly Linked List</figcaption>
         </figure>
-        <p dir="ltr">
-            <span>Ushbu tasvirda har bir quti tugunni ifodalaydi, o'q esa keyingi tugunga bog'lanishni ko'rsatadi. Oxirgi tugun NULL ga ishora qiladi, bu ro'yxatning oxirini bildiradi.</span>
-        </p>
-        <p style="text-align: justify;" dir="ltr">
-            <span>Ko'pchilik dasturlash tillarida Singly Linked Listdagi tugun odatda class yoki struct yordamida aniqlanadi.</span>
-        </p>
+        <section class="description">
+            <p>
+                <span>Ushbu tasvirda har bir quti tugunni ifodalaydi, o'q esa keyingi tugunga bog'lanishni ko'rsatadi. Oxirgi tugun NULL ga ishora qiladi, bu ro'yxatning oxirini bildiradi.</span>
+            </p>
+            <p style="text-align: justify;">
+                <span>Ko'pchilik dasturlash tillarida Singly Linked Listdagi tugun odatda class yoki struct yordamida aniqlanadi.</span>
+            </p>
+        </section>
         <pre><code>// Singly Linked Listdagi tugunning ta'rifi
 class Node {
     constructor(data) {
@@ -71,42 +77,49 @@ class Node {
     }
 }</code>
 </pre>
-        <p style="text-align: justify;" dir="ltr">
-            <span>Ushbu misolda Node classi integer tipidagi ma'lumot maydonini (</span><b><strong>data</strong></b><span>) saqlash va ro'yxatdagi keyingi tugunga havolani o'rnatish uchun ishlatiladigan ko'rsatkichni (</span><b><strong>next</strong></b><span>) o'z ichiga oladi.</span>
-        </p>
+        <section class="description">
+            <p style="text-align: justify;" dir="ltr">
+                <span>Ushbu misolda Node classi integer tipidagi ma'lumot maydonini (</span><b><strong>data</strong></b><span>) saqlash va ro'yxatdagi keyingi tugunga havolani o'rnatish uchun ishlatiladigan ko'rsatkichni (</span><b><strong>next</strong></b><span>) o'z ichiga oladi.</span>
+            </p>
+        </section>
 
         <h2 id="operations-on-singly-linked-list"><span>Singly Linked Listdagi operatsiyalar</span></h2>
-        <ul>
-            <li value="1"><b><strong>Traversal</strong></b></li>
-            <li value="2"><b><strong>Qidirish</strong></b></li>
-            <li value="3"><b><strong>Uzunlik</strong></b></li>
-            <li value="4"><b><strong>Qo'shish:</strong></b>
-                <ul>
-                    <li value="1"><span>Boshida qo'shish</span></li>
-                    <li value="2"><span>Oxirida qo'shish</span></li>
-                    <li value="3"><span>Ma'lum bir pozitsiyada qo'shish</span></li>
-                </ul>
-            </li>
-            <li value="5"><b><strong>O'chirish:</strong></b>
-                <ul>
-                    <li value="1"><span>Boshidan o'chirish</span></li>
-                    <li value="2"><span>Oxiridan o'chirish</span></li>
-                    <li value="3"><span>Ma'lum bir tugunni o'chirish</span></li>
-                </ul>
-            </li>
-        </ul>
-        <p dir="ltr"><span>Yuqoridagi har bir operatsiyani bosqichma-bosqich ko'rib chiqamiz.</span></p>
-        
+        <section class="description">
+            <ul>
+                <li value="1"><b><strong>Traversal</strong></b></li>
+                <li value="2"><b><strong>Qidirish</strong></b></li>
+                <li value="3"><b><strong>Uzunlik</strong></b></li>
+                <li value="4"><b><strong>Qo'shish:</strong></b>
+                    <ul>
+                        <li value="1"><span>Boshida qo'shish</span></li>
+                        <li value="2"><span>Oxirida qo'shish</span></li>
+                        <li value="3"><span>Ma'lum bir pozitsiyada qo'shish</span></li>
+                    </ul>
+                </li>
+                <li value="5"><b><strong>O'chirish:</strong></b>
+                    <ul>
+                        <li value="1"><span>Boshidan o'chirish</span></li>
+                        <li value="2"><span>Oxiridan o'chirish</span></li>
+                        <li value="3"><span>Ma'lum bir tugunni o'chirish</span></li>
+                    </ul>
+                </li>
+            </ul>
+            <p dir="ltr"><span>Yuqoridagi har bir operatsiyani bosqichma-bosqich ko'rib chiqamiz.</span></p>
+        </section>
 
         <h2 id="traversal-in-singly-linked-list"><a href="https://www.geeksforgeeks.org/traversal-of-singly-linked-list/" target="_blank" rel="noopener"><b><strong>Singly Linked Listda Traversal</strong></b><span> (O'tish)</span></a></h2>
-        <p dir="ltr"><span>Traversal (o'tish) har bir tugunni ziyorat qilish va uning ma'lumotlari bilan ba'zi operatsiyalarni bajarishni o'z ichiga oladi. Oddiy traversal funktsiyasi har bir tugunning ma'lumotlarini chop etish yoki ishlov berish bo'lishi mumkin.</span></p>
-        <p dir="ltr"><span>Bosqichma-bosqich yondoshuv:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Traversal (o'tish) har bir tugunni ziyorat qilish va uning ma'lumotlari bilan ba'zi operatsiyalarni bajarishni o'z ichiga oladi. Oddiy traversal funktsiyasi har bir tugunning ma'lumotlarini chop etish yoki ishlov berish bo'lishi mumkin.</span></p>
+            <p dir="ltr"><span>Bosqichma-bosqich yondoshuv:</span></p>
+        </section>
         <ul>
             <li value="1"><span>Listning boshidan boshlash uchun current ko'rsatkichini ishga tushiring.</span></li>
             <li value="2"><span>While sikli yordamida listni current ko'rsatkich NULL ga yetguncha aylantiring.</span></li>
             <li value="3"><span>Sikl ichida, current tugunning ma'lumotlarini chop eting va current ko'rsatkichini keyingi tugunga o'tkazing.</span></li>
         </ul>
-        <p dir="ltr"><span>Quyida singly Linked Listda traversal qilish uchun funksiyaning misoli keltirilgan:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Quyida singly Linked Listda traversal qilish uchun funksiyaning misoli keltirilgan:</span></p>
+        </section>
         <pre><code>// Javascript funktsiyasi - linked listni o'tish va elementlarni chop etish
 function traverseLinkedList(head) {
     
@@ -130,8 +143,10 @@ function traverseLinkedList(head) {
         </div>
 
         <h2 id="searching-in-singly-linked-list"><a href="https://www.geeksforgeeks.org/search-an-element-in-a-linked-list-iterative-and-recursive/" target="_blank" rel="noopener"><span>Singly Linked Listda Qidiruv</span></a></h2>
-        <p dir="ltr"><span>Singly Linked Listda qidiruv, listdagi ma'lum bir element yoki qiymatni izlash jarayonini anglatadi.</span></p>
-        <p dir="ltr"><span>Bosqichma-bosqich yondoshuv:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Singly Linked Listda qidiruv, listdagi ma'lum bir element yoki qiymatni izlash jarayonini anglatadi.</span></p>
+            <p dir="ltr"><span>Bosqichma-bosqich yondoshuv:</span></p>
+        </section>
         <ol>
             <li value="1"><span>Linked Listni boshidan boshlang.</span></li>
             <li value="2"><span>Joriy tugunning ma'lumotlari maqsadli qiymatga mos kelishini tekshiring.</span>
@@ -142,7 +157,9 @@ function traverseLinkedList(head) {
             <li value="3"><span>Aks holda, keyingi tugunga o'ting va 2-bosqichni takrorlang.</span></li>
             <li value="4"><span>Agar list oxiriga yetib borib ham moslik topilmasa, </span><b><strong>false</strong></b><span> qaytaring.</span></li>
         </ol>
-        <p dir="ltr"><span>Quyida singly linked listda qidiruv uchun funktsiyaning misoli keltirilgan:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Quyida singly linked listda qidiruv uchun funktsiyaning misoli keltirilgan:</span></p>
+        </section>
         <pre><code>// Javascript funktsiyasi - Linked Listda qiymatni qidirish
 function searchLinkedList(head, target) {
                 
@@ -162,8 +179,10 @@ function searchLinkedList(head, target) {
 }</code></pre>
          
         <h2 id="finding-length-in-singly-linked-list"><a href="https://www.geeksforgeeks.org/find-length-of-a-linked-list-iterative-and-recursive" target="_blank" rel="noreferrer noopener"><span>Singly Linked Listda Uzunlikni Topish</span></a></h2>
-        <p dir="ltr"><span>Singly Linked Listda uzunlikni topish — bu bog'langan ro'yxatdagi tugunlar sonini aniqlash jarayonini anglatadi.</span></p>
-        <p dir="ltr"><span>Qadamlar bo'yicha yondashuv:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Singly Linked Listda uzunlikni topish — bu bog'langan ro'yxatdagi tugunlar sonini aniqlash jarayonini anglatadi.</span></p>
+            <p dir="ltr"><span>Qadamlar bo'yicha yondashuv:</span></p>
+        </section>
         <ul>
         <li value="1"><span>Hisoblagichni </span><b><strong>length</strong></b><span> ni 0 ga tenglang.</span></li>
         <li value="2"><span>Listning boshidan boshlang, uni current ga tayinlang.</span></li>
@@ -175,7 +194,9 @@ function searchLinkedList(head, target) {
         </li>
         <li value="4"><span>Oxirgi </span><b><strong>length</strong></b><span> qiymatini qaytaring.</span></li>
         </ul>
-        <p dir="ltr"><span>Quyida Singly Linked Listda uzunlikni topish uchun funktsiya keltirilgan:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Quyida Singly Linked Listda uzunlikni topish uchun funktsiya keltirilgan:</span></p>
+        </section>
         <pre><code>// Javascript funktsiyasi Linked Listning uzunligini topish uchun
 function findLength(head) {
                 
@@ -200,18 +221,23 @@ function findLength(head) {
 }</code></pre>
 
         <h2 id="insertion-in-singly-linked-list"><a href="https://www.geeksforgeeks.org/insertion-in-linked-list" rel="noreferrer noopener"><span>Singly Linked Listda Kiritish</span></a></h2>
-        <p dir="ltr"><span>Kiritish - bu linked listlarda asosiy operatsiya bo'lib, yangi tugun qo'shishni anglatadi. Kiritishning bir nechta holatlari mavjud:</span></p>
-                            
+        <section class="description">
+            <p dir="ltr"><span>Kiritish - bu linked listlarda asosiy operatsiya bo'lib, yangi tugun qo'shishni anglatadi. Kiritishning bir nechta holatlari mavjud:</span></p>
+        </section>                   
         <h3 id="a-insertion-at-the-beginning-of-singly-linked-list"><span>a. </span><a href="https://www.geeksforgeeks.org/insert-a-node-at-front-beginning-of-a-linked-list" target="_blank" rel="noreferrer noopener"><span>Singly Linked Listning Boshiiga Tugun Qo'shish</span></a><span>:</span></h3>
-        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List.webp" alt="Insertion-at-the-Beginning-of-Singly-Linked-List" width="801" height="290" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-768.webp 768w" loading="lazy"><figcaption>Singly Linked Listning Boshiiga Tugun Qo'shish</figcaption></figure>
+        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List.webp" alt="Insertion-at-the-Beginning-of-Singly-Linked-List" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163445386036/Insertion-at-the-Beginning-of-Singly-Linked-List-768.webp 768w" loading="lazy"><figcaption>Singly Linked Listning Boshiiga Tugun Qo'shish</figcaption></figure>
+        <section class="description">
         <p dir="ltr"><span>Bosqichma-bosqich yondoshuv:</span></p>
+        </section>
         <ul>
             <li value="1"><span>Berilgan qiymat bilan yangi tugun yarating.</span></li>
             <li value="2"><span>Yangi tugunning </span><b><strong>next</strong></b><span> ko'rsatkichini joriy headga o'rnating.</span></li>
             <li value="3"><span>Headni yangi tugunga yo'naltiring.</span></li>
             <li value="4"><span>Linked listning yangi headini qaytaring.</span></li>
         </ul>
-        <p dir="ltr"><span>Quyida singly linked listning boshiga tugun qo'shish uchun funktsiyaning misoli keltirilgan:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Quyida singly linked listning boshiga tugun qo'shish uchun funktsiyaning misoli keltirilgan:</span></p>
+        </section>
         <pre><code>// Javascript funktsiyasi - linked listning boshiga yangi tugun qo'shish
 function insertAtBeginning(head, value) {
                                     
@@ -230,9 +256,13 @@ function insertAtBeginning(head, value) {
                             
                     
         <h3 id="b-insertion-at-the-end-of-singly-linked-list"><span>b. </span><a href="https://www.geeksforgeeks.org/insert-node-at-the-end-of-a-linked-list" target="_blank" rel="noreferrer noopener"><span>Singly Linked Listning Oxiriga Tugun Qo'shish:</span></a></h3>
-        <p dir="ltr"><span>Listning oxiriga tugun qo'shish uchun, listni oxirgi tugunga yetguncha o'qing va yangi tugunni joriy oxirgi tugunga ulang.</span></p>
-        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List.webp" alt="Insertion-at-the-End-of-Singly-Linked-List" width="801" height="275" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-768.webp 768w" loading="lazy"><figcaption>Linked Listning Oxiriga Tugun Qo'shish</figcaption></figure>
-        <p dir="ltr"><span>Bosqichma-bosqich yondoshuv:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Listning oxiriga tugun qo'shish uchun, listni oxirgi tugunga yetguncha o'qing va yangi tugunni joriy oxirgi tugunga ulang.</span></p>
+        </section>
+        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List.webp" alt="Insertion-at-the-End-of-Singly-Linked-List" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163601409037/Insertion-at-the-End-of-Singly-Linked-List-768.webp 768w" loading="lazy"><figcaption>Linked Listning Oxiriga Tugun Qo'shish</figcaption></figure>
+        <section class="description">
+            <p dir="ltr"><span>Bosqichma-bosqich yondoshuv:</span></p>
+        </section>
         <ul>
             <li value="1"><span>Berilgan qiymat bilan yangi tugun yarating.</span></li>
             <li value="2"><span>List bo'sh ekanligini tekshiring:</span>
@@ -243,7 +273,9 @@ function insertAtBeginning(head, value) {
             <li value="3"><span>Listni oxirgi tugunga yetguncha o'qing.</span></li>
             <li value="4"><span>Yangi tugunni joriy oxirgi tugunga ulanadi, oxirgi tugunning next ko'rsatkichini yangi tugunga o'rnatib.</span></li>
         </ul>
-        <p style="text-align: left;" dir="ltr"><span>Quyida singly linked listning oxiriga tugun qo'shish uchun funktsiyaning misoli keltirilgan:</span></p>
+        <section class="description">
+            <p style="text-align: left;" dir="ltr"><span>Quyida singly linked listning oxiriga tugun qo'shish uchun funktsiyaning misoli keltirilgan:</span></p>
+        </section>
         <pre><code>// Javascript funktsiyasi - linked listning boshiga yangi tugun qo'shish
 function insertAtBeginning(head, value) {
                 
@@ -262,10 +294,12 @@ function insertAtBeginning(head, value) {
 
 
         <h3 id="c-insertion-at-a-specific-position-of-the-singly-linked-list"><span>c. </span><a href="https://www.geeksforgeeks.org/insert-a-node-at-a-specific-position-in-a-linked-list" target="_blank" rel="noreferrer noopener"><span>Singly Linked Listning Ma'lum Bir Pozitsiyasiga Tugun Qo'shish:</span></a></h3>
-        <p dir="ltr"><span>Ma'lum bir pozitsiyaga tugun qo'shish uchun, listni kerakli pozitsiyaga yetguncha o'qing, yangi tugunni keyingi tugunga ulang va bog'lanishlarni mos ravishda yangilang.</span></p>
-        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy.webp" alt="Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy" width="801" height="287" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-768.webp 768w" loading="lazy"><figcaption></figcaption></figure>
-        <p dir="ltr"><span>Asosan, yangi tugunni qo'shishimiz kerak bo'lgan tugunni topamiz. Agar shu tugunga yetmasdan NULLga duch kelsak, bu berilgan pozitsiyaning yaroqsizligini anglatadi.</span></p>
-        <p dir="ltr"><span>Quyida singly linked listning ma'lum bir pozitsiyasiga tugun qo'shish uchun funktsiyaning misoli keltirilgan:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Ma'lum bir pozitsiyaga tugun qo'shish uchun, listni kerakli pozitsiyaga yetguncha o'qing, yangi tugunni keyingi tugunga ulang va bog'lanishlarni mos ravishda yangilang.</span></p>
+            <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy.webp" alt="Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163649252002/Insertion-at-a-Specific-Position-of-the-Singly-Linked-List-copy-768.webp 768w" loading="lazy"><figcaption></figcaption></figure>
+            <p dir="ltr"><span>Asosan, yangi tugunni qo'shishimiz kerak bo'lgan tugunni topamiz. Agar shu tugunga yetmasdan NULLga duch kelsak, bu berilgan pozitsiyaning yaroqsizligini anglatadi.</span></p>
+            <p dir="ltr"><span>Quyida singly linked listning ma'lum bir pozitsiyasiga tugun qo'shish uchun funktsiyaning misoli keltirilgan:</span></p>
+        </section>
         <pre><code>// Ma'lum bir pozitsiyaga tugun qo'shish funktsiyasi
 function insertPos(head, pos, data) {
     if (pos < 1) {
@@ -303,14 +337,19 @@ function insertPos(head, pos, data) {
 }</code></pre>
                   
         <h2 id="deletion-in-singly-linked-list"><a href="https://www.geeksforgeeks.org/deletion-in-linked-list" rel="noreferrer noopener"><span>Singly Linked Listda Tugun O'chirish</span></a></h2>
-        <p style="text-align: start;" dir="ltr"><span>Tugunni linked listdan o'chirish operatsiyasini o'z ichiga oladi. Qo'shish kabi, o'chirishning turli holatlari mavjud:</span></p>
-
+        <section class="description">
+            <p style="text-align: start;" dir="ltr"><span>Tugunni linked listdan o'chirish operatsiyasini o'z ichiga oladi. Qo'shish kabi, o'chirishning turli holatlari mavjud:</span></p>
+        </section>
         <h3 id="a-deletion-at-the-beginning-of-singly-linked-list"><span>a. </span><a href="https://www.geeksforgeeks.org/remove-first-node-of-the-linked-list" rel="noreferrer noopener"><b><strong>Boshida Tugun O'chirish:</strong></b></a></h3>
-        <p style="text-align: start;" dir="ltr"><span>Birinchi tugunni o'chirish uchun, boshni listdagi ikkinchi tugunga bog'lang.</span></p>
-        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning-.webp" alt="Deletion-at-beginning-" width="801" height="401" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning-.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--768.webp 768w" loading="lazy"><figcaption>Linked Listda Boshida Tugun O'chirish</figcaption></figure>
-        <p dir="ltr"><span>Qadam-baqadam yondashuv:</span></p>
-        <ul><li value="1"><span>Boshning </span><b><strong>NULL</strong></b><span> ekanligini tekshiring.</span><ul><li value="1"><span>Agar NULL bo'lsa, </span><b><strong>NULL</strong></b><span>ni qaytaring (list bo'sh).</span></li></ul></li><li value="2"><span>Hozirgi bosh tugunni vaqtinchalik o'zgaruvchiga </span><b><strong>temp</strong></b><span> saqlang.</span></li><li value="3"><span>Bosh ko'rsatkichi keyingi tugunga o'ting.</span></li><li value="4"><span>Vaqtinchalik tugunni o'chiring.</span></li><li value="5"><span>Linked listning yangi boshini qaytaring.</span></li></ul>
-        <p dir="ltr"><span>Quyida singly linked listning boshida tugun o'chirish funktsiyasi keltirilgan:</span></p>
+        <section class="description">
+            <p style="text-align: start;" dir="ltr"><span>Birinchi tugunni o'chirish uchun, boshni listdagi ikkinchi tugunga bog'lang.</span></p>
+        </section>
+        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning-.webp" alt="Deletion-at-beginning-" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning-.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022163937663413/Deletion-at-beginning--768.webp 768w" loading="lazy"><figcaption>Linked Listda Boshida Tugun O'chirish</figcaption></figure>
+        <section class="description">
+            <p dir="ltr"><span>Qadam-baqadam yondashuv:</span></p>
+            <ul><li value="1"><span>Boshning </span><b><strong>NULL</strong></b><span> ekanligini tekshiring.</span><ul><li value="1"><span>Agar NULL bo'lsa, </span><b><strong>NULL</strong></b><span>ni qaytaring (list bo'sh).</span></li></ul></li><li value="2"><span>Hozirgi bosh tugunni vaqtinchalik o'zgaruvchiga </span><b><strong>temp</strong></b><span> saqlang.</span></li><li value="3"><span>Bosh ko'rsatkichi keyingi tugunga o'ting.</span></li><li value="4"><span>Vaqtinchalik tugunni o'chiring.</span></li><li value="5"><span>Linked listning yangi boshini qaytaring.</span></li></ul>
+            <p dir="ltr"><span>Quyida singly linked listning boshida tugun o'chirish funktsiyasi keltirilgan:</span></p>
+        </section>
         <pre><code>// Javascript Function to remove the first node
 // of the linked list /
 function removeFirstNode(head) {
@@ -324,11 +363,13 @@ function removeFirstNode(head) {
 }</code></pre>
     
         <h3 id="b-deletion-at-the-end-of-singly-linked-list"><span>b. </span><a href="https://www.geeksforgeeks.org/remove-last-node-of-the-linked-list" target="_blank" rel="noreferrer noopener"><span>Singly Linked Listning Oxiridagi Tugunni O'chirish:</span></a></h3>
-        <p dir="ltr"><span>Oxirgi tugunni o'chirish uchun, listni ikkinchi oxirgi tugunga qadar yurib, uning keyingi maydonini None ga yangilang.</span></p>
-        <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End.webp" alt="Deletion-At-End" width="801" height="401" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-768.webp 768w" loading="lazy"><figcaption>Linked Listning Oxiridagi Tugunni O'chirish</figcaption></figure>
-        <p dir="ltr"><span>Qadam-baqadam yondashuv:</span></p>
-        <ul><li value="1"><span>Boshning </span><b><strong>NULL</strong></b><span> ekanligini tekshiring.</span><ul><li value="1"><span>Agar NULL bo'lsa, </span><b><strong>NULL</strong></b><span>ni qaytaring (list bo'sh).</span></li></ul></li><li value="2"><span>Boshning </span><b><strong>keyingi</strong></b><span> </span><b><strong>NULL</strong></b><span> ekanligini tekshiring (listda faqat bitta tugun bor).</span><ul><li value="1"><span>Agar to'g'ri bo'lsa, boshni o'chirib, </span><b><strong>NULL</strong></b><span>ni qaytaring.</span></li></ul></li><li value="3"><span>Listni ikkinchi oxirgi tugunni (</span><b><strong>second_last</strong></b><span>) topish uchun yuring.</span></li><li value="4"><span>Oxirgi tugunni (</span><b><strong>second_last</strong></b><span>dan keyingi tugunni) o'chiring.</span></li><li value="5"><span>Ikkinchi oxirgi tugunning </span><b><strong>keyingi</strong></b><span> ko'rsatkichi </span><b><strong>NULL</strong></b><span>ga o'rnatilsin.</span></li><li value="6"><span>Linked listning boshini qaytaring.</span></li></ul>
-        <p dir="ltr"><span>Quyida singly linked listning oxirida tugun o'chirish funktsiyasi keltirilgan:</span></p>
+        <section class="description">
+            <p dir="ltr"><span>Oxirgi tugunni o'chirish uchun, listni ikkinchi oxirgi tugunga qadar yurib, uning keyingi maydonini None ga yangilang.</span></p>
+            <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End.webp" alt="Deletion-At-End" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164030481275/Deletion-At-End-768.webp 768w" loading="lazy"><figcaption>Linked Listning Oxiridagi Tugunni O'chirish</figcaption></figure>
+            <p dir="ltr"><span>Qadam-baqadam yondashuv:</span></p>
+            <ul><li value="1"><span>Boshning </span><b><strong>NULL</strong></b><span> ekanligini tekshiring.</span><ul><li value="1"><span>Agar NULL bo'lsa, </span><b><strong>NULL</strong></b><span>ni qaytaring (list bo'sh).</span></li></ul></li><li value="2"><span>Boshning </span><b><strong>keyingi</strong></b><span> </span><b><strong>NULL</strong></b><span> ekanligini tekshiring (listda faqat bitta tugun bor).</span><ul><li value="1"><span>Agar to'g'ri bo'lsa, boshni o'chirib, </span><b><strong>NULL</strong></b><span>ni qaytaring.</span></li></ul></li><li value="3"><span>Listni ikkinchi oxirgi tugunni (</span><b><strong>second_last</strong></b><span>) topish uchun yuring.</span></li><li value="4"><span>Oxirgi tugunni (</span><b><strong>second_last</strong></b><span>dan keyingi tugunni) o'chiring.</span></li><li value="5"><span>Ikkinchi oxirgi tugunning </span><b><strong>keyingi</strong></b><span> ko'rsatkichi </span><b><strong>NULL</strong></b><span>ga o'rnatilsin.</span></li><li value="6"><span>Linked listning boshini qaytaring.</span></li></ul>
+            <p dir="ltr"><span>Quyida singly linked listning oxirida tugun o'chirish funktsiyasi keltirilgan:</span></p>
+        </section>
         <pre><code>// Javascript Function to remove the last node of the linked list
 function removeLastNode(head) {
     // If the list is empty, return null
@@ -355,13 +396,15 @@ function removeLastNode(head) {
 }</code></pre>
 
         
-<h3 id="c-deletion-at-a-specific-position-of-singly-linked-list"><span>c. </span><a href="https://www.geeksforgeeks.org/delete-a-linked-list-node-at-a-given-position" target="_blank" rel="noreferrer noopener"><span>Singly Linked Listning Muayyan Pozitsiyasida Tugunni O'chirish:</span></a></h3>
-<p dir="ltr"><span>Muayyan pozitsiyadagi tugunni o'chirish uchun, listni kerakli pozitsiyaga qadar yurib, o'chiriladigan tugunni o'tkazib yuborish uchun bog'lanishlarni yangilang.</span></p>
-<figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End--.webp" alt="Deletion-specific-At-End--" width="801" height="401" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End--.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---768.webp 768w" loading="lazy"><figcaption>Muayyan Pozitsiyadagi Tugunni O'chirish</figcaption></figure>
-<p dir="ltr"><span>Qadam-baqadam yondashuv:</span></p>
-<ul><li value="1"><span>List bo'sh yoki pozitsiya noto'g'ri bo'lsa, qaytaring.</span></li><li value="2"><span>Agar bosh o'chirilishi kerak bo'lsa, boshni yangilang va tugunni o'chiring.</span></li><li value="3"><span>O'chirilishi kerak bo'lgan pozitsiyaning oldingi tuguniga o'ting.</span></li><li value="4"><span>Agar pozitsiya chegaradan tashqarida bo'lsa, qaytaring.</span></li><li value="5"><span>O'chirilishi kerak bo'lgan tugunni saqlang.</span></li><li value="6"><span>Bog'lanishlarni o'zgartirib, tugunni o'tkazib yuboring.</span></li><li value="7"><span>Saqlangan tugunni o'chiring.</span></li></ul>
-<p dir="ltr"><span>Quyida singly linked listning muayyan pozitsiyasidagi tugunni o'chirish funktsiyasi keltirilgan:</span></p>
-<pre><code>// Muayyan pozitsiyadagi tugunni o'chirish uchun Javascript funktsiyasi
+        <h3 id="c-deletion-at-a-specific-position-of-singly-linked-list"><span>c. </span><a href="https://www.geeksforgeeks.org/delete-a-linked-list-node-at-a-given-position" target="_blank" rel="noreferrer noopener"><span>Singly Linked Listning Muayyan Pozitsiyasida Tugunni O'chirish:</span></a></h3>
+        <section class="description">
+            <p dir="ltr"><span>Muayyan pozitsiyadagi tugunni o'chirish uchun, listni kerakli pozitsiyaga qadar yurib, o'chiriladigan tugunni o'tkazib yuborish uchun bog'lanishlarni yangilang.</span></p>
+            <figure class="image"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End--.webp" alt="Deletion-specific-At-End--" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End--.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20241022164248836160/Deletion-specific-At-End---768.webp 768w" loading="lazy"><figcaption>Muayyan Pozitsiyadagi Tugunni O'chirish</figcaption></figure>
+            <p dir="ltr"><span>Qadam-baqadam yondashuv:</span></p>
+            <ul><li value="1"><span>List bo'sh yoki pozitsiya noto'g'ri bo'lsa, qaytaring.</span></li><li value="2"><span>Agar bosh o'chirilishi kerak bo'lsa, boshni yangilang va tugunni o'chiring.</span></li><li value="3"><span>O'chirilishi kerak bo'lgan pozitsiyaning oldingi tuguniga o'ting.</span></li><li value="4"><span>Agar pozitsiya chegaradan tashqarida bo'lsa, qaytaring.</span></li><li value="5"><span>O'chirilishi kerak bo'lgan tugunni saqlang.</span></li><li value="6"><span>Bog'lanishlarni o'zgartirib, tugunni o'tkazib yuboring.</span></li><li value="7"><span>Saqlangan tugunni o'chiring.</span></li></ul>
+            <p dir="ltr"><span>Quyida singly linked listning muayyan pozitsiyasidagi tugunni o'chirish funktsiyasi keltirilgan:</span></p>
+        </section>
+        <pre><code>// Muayyan pozitsiyadagi tugunni o'chirish uchun Javascript funktsiyasi
 function deleteAtPosition(head, position) {
     // Agar list bo'sh bo'lsa yoki pozitsiya noto'g'ri bo'lsa
     if (head === null || position < 1) {
