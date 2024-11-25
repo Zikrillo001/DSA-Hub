@@ -452,7 +452,7 @@ function deleteAtPosition(head, position) {
             <div class="video-wrapper">
                 <iframe 
                     class="topic-video" 
-                    src="https://www.youtube.com/embed/rZd2geTWEQM" 
+                    src="https://www.youtube.com/embed/_xBG4UPuy0Y?list=PLViqJEFxopsmCzGy9js8BVyfxOF1OnhBD" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -464,21 +464,43 @@ function deleteAtPosition(head, position) {
         <section class="code">
             <h2>Code Example</h2>
             <pre>
-<code>// Array yaratish
-let fruits = ["apple", "banana", "mango"];
-console.log()
+<code>// Node tuzish
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
 
-// Element qo'shish
-fruits.push("orange");  // ["apple", "banana", "mango", "orange"]
+// Linked List tuzish
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
 
-// Element o'chirish
-fruits.pop();  // ["apple", "banana", "mango"]
+    // Element qo'shish
+    append(value) {
+        let newNode = new Node(value);
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
 
-// Element qidirish
-let index = fruits.indexOf("banana");  // index = 1
-
-// Elementni o'zgartirish
-fruits[1] = "kiwi";  // ["apple", "kiwi", "mango"]</code></pre>
+    // Linked Listdagi elementlarni chiqarish
+    printList() {
+        let current = this.head;
+        while (current) {
+            console.log(current.value);
+            current = current.next;
+        }
+    }
+}</code></pre>
         </section>
 
         <!-- Additional Resources Section -->
