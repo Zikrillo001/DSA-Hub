@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic N - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Binary Qidiruv</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Staklar va navbatlar</strong> — dasturchilarga ma'lumotlarni samarali boshqarish va qayta ishlashga yordam beradigan ma'lumotlar tuzilmalaridir. Ularning ikkalasi ham chiziqli ma'lumotlar tuzilmalaridir, lekin ular ma'lumotlar elementlarini qanday tartibga solishda farqlanadi</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="images/binnary_search_1.1.webp" alt="Topic N Illustration" class="topic-image">
+        </section>
+        
+        
+        <h3 style="text-align:center"><strong>Massiv:</strong></h3>
+        <section class="description">
+            <p>
+                <a href="../array/index.html" target="_blank">Massiv</a> - bu ketma-ket xotira joylarida saqlangan elementlar to'plamidir. G'oya shundan iboratki, bir xil turdagi bir nechta elementlarni birgalikda saqlash kerak. Bu har bir elementning joylashuvini hisoblashni osonlashtiradi, chunki asosiy qiymatga (odatda massivning birinchi elementining xotira joylashuvi bilan belgilanadi) faqat bitta ofset qo'shish kifoya.
+                Diagramma orqali massiv tasviri quyida keltirilgan:
+            </p>
+            <p>
+                <img class="topic-image" src="https://media.geeksforgeeks.org/wp-content/uploads/Arrays-1.png" width="592" height="173" class="aligncenter size-full no-zoom-in-cursor" alt="Massiv diagrammasi">
+            </p>
+        </section>
+
+        
+        <section class="description">
+            <p dir="ltr"><b><strong>Binary Search</strong></b><span> </span><b><strong>Algorithm </strong></b><span>is a </span><a href="https://www.geeksforgeeks.org/searching-algorithms/" rel="noopener"><span>searching algorithm</span></a><span> used in a sorted array by </span><b><strong>repeatedly dividing the search interval in half</strong></b><span>. The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(log N).&nbsp;</span></p>
+        </section>
+        <img class="topic-image" src="https://media.geeksforgeeks.org/wp-content/uploads/20240506155201/binnary-search-.webp" alt="binnary-search-" height="300" ><p class="wp-caption-text">Binary Search Algorithm</p>
+        <div id="table_of_content"><p style="margin:4px; font-size:20px; font-weight:bold;">Table of Content</p>
+            <div id="GFG_AD_gfg_mobile_336x280"></div>
+            <ul>
+                <li><a href="#what-is-binary-search">What is Binary Search Algorithm?</a></li>
+                <li><a href="#conditions-to-apply-binary-search-in-a-data-structure">Conditions to apply Binary Search Algorithm in a Data Structure</a></li>
+                <li><a href="#binary-search-algorithm">Binary Search Algorithm</a></li>
+                <li><a href="#how-does-binary-search-work">How does Binary Search Algorithm work?</a></li>
+                <li><a href="#how-to-implement-binary-search">How to Implement Binary Search Algorithm?</a></li>
+                <ul>
+                    <li><a href="#iterative-binary-search-algorithm">Iterative Binary Search Algorithm:</a></li>
+                    <li><a href="#recursive-binary-search-algorithm">Recursive Binary Search Algorithm:</a></li>
+                </ul>
+                <li><a href="#complexity-analysis-of-binary-search">Complexity Analysis of Binary Search Algorithm</a></li>
+                <li><a href="#applications-of-binary-search">Applications of Binary Search Algorithm</a></li>
+                <li><a href="#advantages-of-binary-search">Advantages of Binary Search</a></li>
+                <li><a href="#disadvantages-of-binary-search">Disadvantages of Binary Search</a></li>
+                <li><a href="#frequently-asked-questionsfaqs-on-binary-search">Frequently Asked Questions(FAQs) on Binary Search</a></li>
+            </ul>
+        </div>
+        
+        <h2 id="what-is-binary-search"><span>What is Binary Search Algorithm?</span></h2>
+        <p dir="ltr"><b><strong>Binary search</strong></b><span> is a search algorithm used to find the position of a target value within a </span><b><strong>sorted </strong></b><span>array. It works by repeatedly dividing the search interval in half until the target value is found or the interval is empty. The search interval is halved by comparing the target element with the middle value of the search space.</span></p>
+
+        <h2 id="conditions-to-apply-binary-search-in-a-data-structure"><span>Conditions to apply Binary Search Algorithm in a Data Structure</span></h2>
+        <p dir="ltr"><span>To apply Binary Search algorithm:</span></p>
+        <ul>
+            <li value="1"><span>The data structure must be sorted.</span></li>
+            <li value="2"><span>Access to any element of the data structure should take constant time.</span></li>
+        </ul>
+        
+        <h2 id="binary-search-algorithm"><span>Binary Search Algorithm</span></h2>
+        <p dir="ltr"><span>Below is the step-by-step algorithm for Binary Search:</span></p>
+        <ul>
+            <li value="1"><span>Divide the search space into two halves by </span><a href="https://www.geeksforgeeks.org/problem-binary-search-implementations/" rel="noopener"><b><strong>finding the middle index “mid”</strong></b></a><span>.&nbsp;</span></li>
+            <li value="2"><span>Compare the middle element of the search space with the </span><b><strong>key</strong></b><span>.&nbsp;</span></li>
+            <li value="3"><span>If the </span><b><strong>key </strong></b><span>is found at middle element, the process is terminated.</span></li>
+            <li value="4"><span>If the </span><b><strong>key </strong></b><span>is not found at middle element, choose which half will be used as the next search space.</span>
+                <ul>
+                    <li value="1"><span>If the </span><b><strong>key </strong></b><span>is smaller than the middle element, then the </span><b><strong>left </strong></b><span>side is used for next search.</span></li>
+                    <li value="2"><span>If the </span><b><strong>key </strong></b><span>is larger than the middle element, then the </span><b><strong>right </strong></b><span>side is used for next search.</span></li>
+                </ul>
+            </li>
+            <li value="5"><span>This process is continued until the </span><b><strong>key </strong></b><span>is found or the total search space is exhausted.</span></li>
+        </ul>
+        
+        <h2 id="binary-search-visualizer"><span>Binary Search Visualizer</span></h2>
+        <iframe src="https://media.geeksforgeeks.org/wp-content/uploads/20240904170711/binarysearchvisualizer.html" width="100%" height="300"></iframe>
+        
+        <h2 id="how-does-binary-search-work"><span>How does Binary Search Algorithm work?</span></h2>
+        <p dir="ltr"><span>To understand the working of binary search, consider the following illustration:</span></p>
+        <p dir="ltr"><span>Consider an array </span><b><strong>arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}</strong></b><span>, and the </span><b><strong>target = 23</strong></b><span>.</span></p>
+        
+        <h2 id="how-to-implement-binary-search"><span>How to Implement Binary Search Algorithm?</span></h2>
+        <p dir="ltr"><span>The </span><b><strong>Binary Search Algorithm</strong></b><span> can be implemented in the following two ways</span></p>
+        <ul>
+            <li value="1"><span>Iterative Binary Search Algorithm</span></li>
+            <li value="2"><span>Recursive Binary Search Algorithm</span></li>
+        </ul>
+        <p dir="ltr"><span>Given below are the pseudocodes for the approaches.</span></p>
+
+        <h3 id="iterative-binary-search-algorithm"><b><strong>Iterative Binary Search Algorithm:</strong></b></h3>
+        <blockquote>
+            <p dir="ltr"><span>Here we use a while loop to continue the process of comparing the key and splitting the search space in two halves.</span></p>
+        </blockquote>
+
+        <section class="code">
+            <h2>Program to implement iterative Binary Search</h2>
+            <pre>
+<code>
+// A iterative binary search function. It returns
+// location of x in given array arr[l..r] is present,
+// otherwise -1
+
+function binarySearch(arr, x)
+{
+    let low = 0;
+    let high = arr.length - 1;
+    let mid;
+    while (high >= low) {
+        mid = low + Math.floor((high - low) / 2);
+
+        // If the element is present at the middle
+        // itself
+        if (arr[mid] == x)
+            return mid;
+
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid] > x)
+            high = mid - 1;
+
+        // Else the element can only be present
+        // in right subarray
+        else
+            low = mid + 1;
+    }
+
+    // We reach here when element is not
+    // present in array
+    return -1;
+}
+
+arr = new Array(2, 3, 4, 10, 40);
+x = 10;
+n = arr.length;
+result = binarySearch(arr, x);
+if (result == -1)
+    console.log("Element is not present in array")
+    else
+    {
+        console.log("Element is present at index "
+                    + result);
+    }</code></pre>
+        </section>
+
+
+        <p dir="ltr"><b><strong>Time Complexity:</strong></b><span> O(log N)</span><br><b><strong>Auxiliary Space:</strong></b><span> O(1)</span></p>
+
+        <h3 id="recursive-binary-search-algorithm"><b><strong>Recursive Binary Search Algorithm:</strong></b></h3>
+        <blockquote>
+            <p dir="ltr"><span>Create a recursive function and compare the mid of the search space with the key. And based on the result either return the index where the key is found or call the recursive function for the next search space.</span></p>
+        </blockquote>
+
+        <section class="code">
+            <h2>JavaScript program to implement recursive Binary Search</h2>
+            <pre>
+<code>
+// A recursive binary search function. It returns
+// location of x in given array arr[low..high] is present,
+// otherwise -1
+function binarySearch(arr, low, high, x)
+{
+    if (high >= low) {
+        let mid = low + Math.floor((high - low) / 2);
+
+        // If the element is present at the middle
+        // itself
+        if (arr[mid] == x)
+            return mid;
+
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, low, mid - 1, x);
+
+        // Else the element can only be present
+        // in right subarray
+        return binarySearch(arr, mid + 1, high, x);
+    }
+
+    // We reach here when element is not
+    // present in array
+    return -1;
+}
+
+let arr = [ 2, 3, 4, 10, 40 ];
+let x = 10;
+let n = arr.length
+let result = binarySearch(arr, 0, n - 1, x);
+if (result == -1)
+    console.log("Element is not present in array");
+else
+    console.log("Element is present at index " + result);</code></pre>
+        </section>
+
+
+        <h2 id="complexity-analysis-of-binary-search"><a href="https://www.geeksforgeeks.org/complexity-analysis-of-binary-search/" rel="noopener"><span>Complexity Analysis of Binary Search Algorithm</span></a></h2>
+        <ul>
+            <li value="1"><b><strong>Time Complexity:</strong></b><span>&nbsp;</span>
+                <ul>
+                    <li value="1"><span>Best Case: O(1)</span></li>
+                    <li value="2"><span>Average Case: O(log N)</span></li>
+                    <li value="3"><span>Worst Case: O(log N)</span></li>
+                </ul>
+            </li>
+            <li value="2"><b><strong>Auxiliary Space:</strong></b><span> O(1), If the recursive call stack is considered then the auxiliary space will be O(logN).</span></li>
+        </ul>
+
+        <h2 id="applications-of-binary-search"><a href="https://www.geeksforgeeks.org/applications-advantages-and-disadvantages-of-binary-search/" target="_blank" rel="noopener"><b><strong>Applications of Binary Search Algorithm</strong></b></a></h2>
+        <ul>
+            <li value="1"><span>Binary search can be used as a building block for more complex algorithms used in machine learning, such as algorithms for training neural networks or finding the optimal hyperparameters for a model.</span></li>
+            <li value="2"><span>It can be used for searching in computer graphics such as algorithms for ray tracing or texture mapping.</span></li>
+            <li value="3"><span>It can be used for searching a database.</span></li>
+        </ul>
+
+        <h2 id="advantages-of-binary-search"><b><strong>Advantages of Binary Search</strong></b></h2>
+        <ul>
+            <li value="1"><span>Binary search is faster than linear search, especially for large arrays.</span></li>
+            <li value="2"><span>More efficient than other searching algorithms with a similar time complexity, such as interpolation search or exponential search.</span></li>
+            <li value="3"><span>Binary search is well-suited for searching large datasets that are stored in external memory, such as on a hard drive or in the cloud.</span></li>
+        </ul>
+
+        <h2 id="disadvantages-of-binary-search"><b><strong>Disadvantages of Binary Search</strong></b></h2>
+        <ul>
+            <li value="1"><span>The array should be sorted.</span></li>
+            <li value="2"><span>Binary search requires that the data structure being searched be stored in contiguous memory locations.&nbsp;</span></li>
+            <li value="3"><span>Binary search requires that the elements of the array be comparable, meaning that they must be able to be ordered.</span></li>
+        </ul>
+
+        <h2 id="frequently-asked-questionsfaqs-on-binary-search"><span>Frequently Asked Questions(FAQs) on Binary Search</span></h2>
+        <h3 id="1-what-is-binary-search"><span>1. What is Binary Search?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>Binary search is an efficient algorithm for finding a target value within a sorted array. It works by repeatedly dividing the search interval in half.</span></p>
+            <div id="GFG_AD_gfg_outstream_incontent"></div>
+        </blockquote>
+
+        <h3 id="2-how-does-binary-search-work"><span>2. How does Binary Search work?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>Binary Search compares the target value to the middle element of the array. If they are equal, the search is successful. If the target is less than the middle element, the search continues in the lower half of the array. If the target is greater, the search continues in the upper half. This process repeats until the target is found or the search interval is empty.</span></p>
+        </blockquote>
+
+        <h3 id="3-what-is-the-time-complexity-of-binary-search"><span>3. What is the time complexity of Binary Search?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>The time complexity of binary search is O(log</span><sub><span>2</span></sub><span>n), where n is the number of elements in the array. This is because the size of the search interval is halved in each step.</span></p>
+        </blockquote>
+
+        <h3 id="4-what-are-the-prerequisites-for-binary-search"><span>4. What are the prerequisites for Binary Search?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>Binary search requires that the array is sorted in ascending or descending order. If the array is not sorted, we cannot use Binary Search to search an element in the array.</span></p>
+        </blockquote>
+
+        <h3 id="5-what-happens-if-the-array-is-not-sorted-for-binary-search"><span>5. What happens if the array is not sorted for binary search?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>If the array is not sorted, binary search may return incorrect results. It relies on the sorted nature of the array to make decisions about which half of the array to search.</span></p>
+        </blockquote>
+
+        <h3 id="6-can-binary-search-be-applied-to-nonnumeric-data"><span>6. Can binary search be applied to non-numeric data?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>Yes, binary search can be applied to non-numeric data as long as there is a defined order for the elements. For example, it can be used to search for strings in alphabetical order.</span></p>
+        </blockquote>
+
+        <h3 id="7-what-are-some-common-disadvantages-of-binary-search"><span>7. What are some common disadvantages of Binary Search?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>The disadvantage of Binary Search is that the input array needs to be sorted to decide which in which half the target element can lie. Therefore for unsorted arrays, we need to sort the array before applying Binary Search.</span></p>
+        </blockquote>
+
+        <h3 id="8-when-should-binary-search-be-used"><span>8. When should Binary Search be used?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>Binary search should be used when searching for a target value in a sorted array, especially when the size of the array is large. It is particularly efficient for large datasets compared to linear search algorithms.</span></p>
+        </blockquote>
+
+        <h3 id="9-can-binary-search-be-implemented-recursively"><span>9. Can binary search be implemented recursively?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>Yes, binary search can be implemented both iteratively and recursively. The recursive implementation often leads to more concise code but may have slightly higher overhead due to recursive stack space or function calls.</span></p>
+        </blockquote>
+
+        <h3 id="10-is-binary-search-always-the-best-choice-for-searching-in-a-sorted-array"><span>10. Is Binary Search always the best choice for searching in a sorted array?</span></h3>
+        <blockquote>
+            <p dir="ltr"><span>While binary search is very efficient for searching in sorted arrays, there may be specific cases where other search algorithms are more appropriate, such as when dealing with small datasets or when the array is frequently modified.</span></p>
+        </blockquote>
+      
+
+
+
+        <section class="code">
+            <h2>Binary Search Example</h2>
+            <pre>
+<code>function binarySearch(arr, val) {
+    let start = 0;
+    let end = arr.length - 1;
+  
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2); // O‘rta elementni topamiz
+  
+        if (arr[mid] === val) {
+            return mid; // Qiymat topilsa, uning indeksini qaytarish
+        } else if (arr[mid] < val) {
+            start = mid + 1; // O'ng tomondan izlash
+        } else {
+            end = mid - 1; // Chap tomondan izlash
+        }
+    }
+  
+    return -1; // Agar qiymat topilmasa, -1 qaytariladi
+  }
+  
+  // Misol uchun, bizda tartiblangan massiv bor
+  let sortedArray = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+  
+  // Qidiriladigan element
+  const seekElement = 7;
+  
+  // binarySearch funksiyasini chaqiramiz
+  console.log(binarySearch(sortedArray, seekElement)); // Natija: 3</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/5-dars. Stack and Queue.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/5-topshiriq.docx" download>Download Task PDF</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
