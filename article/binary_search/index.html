@@ -123,8 +123,7 @@
 
         <section class="code">
             <h2>Iterativ Binary Searchni amalga oshirish dasturi</h2>
-            <pre>
-        <code>
+            <pre><code>
 // Iterativ binary search funksiyasi. Bu
 // x ning berilgan arr[l..r] massivida joylashganligini qaytaradi,
 // aks holda -1 qaytaradi
@@ -183,8 +182,7 @@ else
 
         <section class="code">
             <h2>Rekursiv Binary Searchni amalga oshirish uchun JavaScript dasturi</h2>
-            <pre>
-        <code>
+            <pre><code>
 // Rekursiv binary search funksiyasi. U quyidagi holatlarni qaytaradi:
 // arr[low..high] massivida x elementi borligini yoki bo'lmasligini
 // agar mavjud bo'lsa, uning joylashgan indeksini, aks holda -1ni qaytaradi.
@@ -338,34 +336,33 @@ else
 
         <section class="code">
             <h2>Binary Search Misoli</h2>
-            <pre>
-        <code>function binarySearch(arr, val) {
-    let start = 0;
-    let end = arr.length - 1;
-    
-    while (start <= end) {
-        let mid = Math.floor((start + end) / 2); // O‘rta elementni topamiz
-    
-        if (arr[mid] === val) {
-            return mid; // Qiymat topilsa, uning indeksini qaytarish
-        } else if (arr[mid] < val) {
-            start = mid + 1; // O'ng tomondan izlash
-        } else {
-            end = mid - 1; // Chap tomondan izlash
-        }
+            <pre><code>function binarySearch(arr, val) {
+let start = 0;
+let end = arr.length - 1;
+
+while (start <= end) {
+    let mid = Math.floor((start + end) / 2); // O‘rta elementni topamiz
+
+    if (arr[mid] === val) {
+        return mid; // Qiymat topilsa, uning indeksini qaytarish
+    } else if (arr[mid] < val) {
+        start = mid + 1; // O'ng tomondan izlash
+    } else {
+        end = mid - 1; // Chap tomondan izlash
     }
-    
-    return -1; // Agar qiymat topilmasa, -1 qaytariladi
-    }
-    
-    // Misol uchun, bizda tartiblangan massiv bor
-    let sortedArray = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
-    
-    // Qidiriladigan element
-    const seekElement = 7;
-    
-    // binarySearch funksiyasini chaqiramiz
-    console.log(binarySearch(sortedArray, seekElement)); // Natija: 3</code></pre>
+}
+
+return -1; // Agar qiymat topilmasa, -1 qaytariladi
+}
+
+// Misol uchun, bizda tartiblangan massiv bor
+let sortedArray = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+
+// Qidiriladigan element
+const seekElement = 7;
+
+// binarySearch funksiyasini chaqiramiz
+console.log(binarySearch(sortedArray, seekElement)); // Natija: 3</code></pre>
         </section>
         
 
