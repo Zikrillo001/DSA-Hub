@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic N - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Big O Notation</h1>
+        <h2><b><strong class="GFGEditorTheme__textUnderline">Big O notatsiyaning ta'rifi</strong></b></h2>
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Big O notatsiyaning ma'nosi:</strong> Big O notatsiya "Algoritmning samaradorligini, ya'ni uning bajarilish vaqtini yoki xotira talablarini, kiritiladigan ma'lumotlarning hajmiga bog'liq holda o'lchash uchun ishlatiladigan matematik ifoda" degan ma'noni anglatadi. U asosan eng yomon holatdagi yoki asimptotik bahoni aniqlash uchun qo'llaniladi.</p>
+        </section>        
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="images/big_o_2.1.png" alt="Topic N Illustration" class="topic-image">
+        </section>
+
+        <section class="description">
+            <p dir="ltr"><b><strong>Big O notation </strong></b><span>is a powerful tool used in computer science to describe the time complexity or space complexity of algorithms. It provides a standardized way to compare the efficiency of different algorithms in terms of their worst-case performance. Understanding </span><b><strong>Big O notation</strong></b><span> is essential for analyzing and designing efficient algorithms.</span></p>
+            <p dir="ltr"><span>In this tutorial, we will cover the basics of</span><b><strong> Big O notation</strong></b><span>, its significance, and how to analyze the complexity of algorithms using </span><b><strong>Big O</strong></b><span>.</span></p>
+        </section>
+
+        <div id="GFG_AD_gfg_mobile_336x280"></div>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240329121436/big-o-analysis-banner.webp" alt="big-o-analysis-banner" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240329121436/big-o-analysis-banner.webp 1000w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121436/big-o-analysis-banner-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121436/big-o-analysis-banner-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121436/big-o-analysis-banner-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121436/big-o-analysis-banner-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121436/big-o-analysis-banner-768.webp 768w">
+
+        <div id="table_of_content">
+            <p style="margin:4px; font-size:20px; font-weight:bold;">Mundarija</p>
+            <ul>
+                <li key="0"><a href="#what-is-bigo-notation">Big-O Notatsiya nima?</a></li>
+                <li key="1"><a href="#definition-of-bigo-notation">Big-O Notatsiyaning ta'rifi</a></li>
+                <li key="2"><a href="#why-is-big-o-notation-important">Nima uchun Big-O Notatsiya muhim?</a></li>
+                <li key="3"><a href="#properties-of-big-o-notation">Big-O Notatsiyaning xususiyatlari</a></li>
+                <li key="4"><a href="#common-bigo-notations">Eng keng tarqalgan Big-O Notatsiyalar</a></li>
+                <li key="5"><a href="#how-to-determine-big-o-notation">Big-O Notatsiyani qanday aniqlash kerak?</a></li>
+                <li key="6"><a href="#mathematical-examples-of-runtime-analysis">Ishlash vaqtini tahlil qilishning matematik misollari</a></li>
+                <li key="7"><a href="#algorithmic-examples-of-runtime-analysis">Ishlash vaqtini tahlil qilishning algoritmik misollari</a></li>
+                <li key="8"><a href="#algorithm-classes-with-number-of-operations-and-execution-time">Algoritm sinflari: Operatsiyalar soni va bajarilish vaqti</a></li>
+                <li key="9"><a href="#comparison-of-big-o-notation-big-omega-notation-and-big-theta-notation">Big-O, Big Ω (Omega), va Big θ (Theta) Notatsiyalarni solishtirish</a></li>
+                <li key="10"><a href="#frequently-asked-questions-about-big-o-notation">Big-O Notatsiya haqida tez-tez so'raladigan savollar</a></li>
+            </ul>
+        </div>
+        
+        <h2 id="what-is-bigo-notation"><u><span class="GFGEditorTheme__textUnderline">Big-O Notatsiya nima?</span></u></h2>
+        <section class="description">
+            <p dir="ltr"><b><strong>Big-O</strong></b><span>, odatda “</span><b><strong>Tartib</strong></b><span>” deb ataladi, algoritmning </span><b><strong>vaqt murakkabligi uchun yuqori chegarani</strong></b><span> ifodalash usuli hisoblanadi, chunki u algoritmning</span><b><strong> eng yomon holatini</strong></b><span> tahlil qiladi. Bu algoritmning kiritilgan ma'lumot hajmiga nisbatan qancha vaqt talab qilishini </span><b><strong>yuqori chegarasini</strong></b><span> taqdim etadi. U quyidagicha belgilanadi:</span><b><strong> O(f(n))</strong></b><span>, bu yerda </span><b><strong>f(n)</strong></b><span> algoritmning hajmi </span><b><strong>n</strong></b><span> bo'lgan muammoni hal qilish uchun bajaradigan operatsiyalari (qadamlar) sonini ifodalaydi.</span></p>
+
+            <blockquote>
+                <p dir="ltr"><b><strong>Big-O notatsiya</strong></b><span> algoritmning samaradorligi yoki murakkabligini ifodalash uchun ishlatiladi. Xususan, u </span><b><strong>eng yomon holatni</strong></b><span> </span><b><strong>vaqt </strong></b><span>yoki </span><b><strong>xotira murakkabligi</strong></b><span> jihatidan tasvirlaydi.</span></p>
+            </blockquote>
+            <p dir="ltr"><b><strong>Muqim nuqta:</strong></b></p>
+
+            <div id="GFG_AD_Desktop_InContent_ATF_336x280"></div>
+            <div id="GFG_AD_gfg_mobile_336x280_1"></div>
+            <ul>
+                <li value="1"><b><strong>Big O notatsiya</strong></b><span> funksiyaning aniq qiymatini emas, uning asimptotik xatti-harakatini tasvirlaydi.</span></li>
+                <li value="2"><span> </span><b><strong>Big O notatsiya</strong></b><span> turli algoritmlar yoki ma'lumot tuzilmalarining samaradorligini taqqoslash uchun ishlatilishi mumkin.</span></li>
+            </ul>
+        </section>
+        
+        <h2 id="definition-of-bigo-notation"><u><span class="GFGEditorTheme__textUnderline">Big-O Notatsiyaning Ta'rifi:</span></u></h2>
+        <section class="description">
+            <p dir="ltr"><span>Ikki funksiya berilgan bo'lsa,</span><b><strong>&nbsp;f(n)</strong></b><span>&nbsp;va&nbsp;</span><b><strong>g(n)</strong></b><span>, biz shunday deymizki,</span><b><strong>&nbsp;f(n)</strong></b><span>&nbsp;</span><b><strong>&nbsp;O(g(n))</strong></b><span>&nbsp;agar shunday&nbsp;</span><b><strong>&nbsp;c &gt; 0</strong></b><span>&nbsp;va&nbsp;</span><b><strong>n</strong></b><b><sub><strong>0</strong></sub></b><b><strong> &gt;= </strong></b><span>0&nbsp;bo'lsa, shundayki,</span><b><strong>&nbsp;f(n) &lt;= c*g(n)</strong></b><span>&nbsp;hamma uchun&nbsp;</span><b><strong>n &gt;= n</strong></b><b><sub><strong>0</strong></sub></b><span>.</span></p>
+            <div id="_GFG_ABP_Incontent_728x90" style="text-align:center;"></div>
+            <p dir="ltr"><span>Soddaroq qilib aytganda,</span><b><strong>&nbsp;f(n)</strong></b><span>&nbsp;</span><b><strong>O(g(n))</strong></b><span>&nbsp;bo'ladi, agar&nbsp;</span><b><strong>&nbsp;f(n)</strong></b><span>&nbsp;</span><b><strong>c*g(n)</strong></b><span>&nbsp;dan tez o'smasa, har bir&nbsp;n &gt;= n</span><sub><span>0</span></sub><span>&nbsp;uchun, bu yerda c va n</span><sub><span>0</span></sub><span>&nbsp;o'zgarmas qiymatlar.</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240329121512/big-o-image.webp" alt="big-o-image" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240329121512/big-o-image.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121512/big-o-image-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121512/big-o-image-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121512/big-o-image-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121512/big-o-image-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240329121512/big-o-image-768.webp 768w" loading="lazy">
+        
+        <h2 id="why-is-big-o-notation-important"><u><span class="GFGEditorTheme__textUnderline">Nega Big-O Notatsiyasi Muhim?</span></u></h2>
+        <section class="description">
+            <p dir="ltr"><span>Big-O notatsiyasi algoritmning eng yomon holatdagi vaqt murakkabligini yoki samaradorligini va ma'lumot tuzilmasining eng yomon holatdagi joy murakkabligini tasvirlash uchun ishlatiladigan matematik notatsiyadir. U turli algoritmlar va ma'lumot tuzilmalari ishlashini taqqoslash hamda ularning kiritilgan ma'lumot hajmi oshgani sari qanday o'zgarishini oldindan aytishga imkon beradi.</span></p>
+            <p dir="ltr"><span>Big-O notatsiyasi bir nechta sabablar tufayli muhimdir:</span></p>
+            <ul>
+                <li value="1"><span>Big-O notatsiyasi algoritmlarning samaradorligini tahlil qilishga yordam beradi.</span></li>
+                <li value="2"><span>U algoritmning </span><b><strong>ish vaqti</strong></b><span> yoki </span><b><strong>joy talablari</strong></b><span> ma'lumot hajmi oshgani sari qanday o'sishini tasvirlash imkonini beradi.</span></li>
+                <li value="3"><span>Dasturchilarga turli algoritmlarni taqqoslash va muayyan muammo uchun eng samarali algoritmni tanlashga yordam beradi.</span></li>
+                <li value="4"><span>Algoritmlarning kengayuvchanligini tushunishga va ma'lumot hajmi oshganida ularning ishlashini oldindan aytishga yordam beradi.</span></li>
+                <li value="5"><span>Kodning optimallashtirilishini ta'minlaydi va umumiy samaradorlikni oshiradi.</span></li>
+            </ul>
+        </section>
+        
+        <h2 id="properties-of-big-o-notation"><a href="https://www.geeksforgeeks.org/properties-of-asymptotic-notations/" rel="noopener"><u><span class="GFGEditorTheme__textUnderline">Big-O Notatsiyasining Xususiyatlari:</span></u></a></h2>
+        <section class="description">
+            <p dir="ltr"><span>Quyida Big-O notatsiyasining ba'zi muhim xususiyatlari keltirilgan:</span></p>
+        </section>
+        <div id="GFG_AD_gfg_outstream_incontent"></div>
+        
+        <h3><span>1. Refleksivlik:</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Har qanday f(n) funksiyasi uchun, f(n) = O(f(n)).</span></p>
+            <p dir="ltr"><b><strong>Misol:</strong></b></p>
+            <blockquote>
+                <p dir="ltr"><span>f(n) = n</span><sup><span>2</span></sup><span>, u holda f(n) = O(n</span><sup><span>2</span></sup><span>).</span></p>
+            </blockquote>
+        </section>
+
+        <h3><span>2. Tranzitivlik:</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Agar f(n) = O(g(n)) va g(n) = O(h(n)) bo'lsa, u holda f(n) = O(h(n)).</span></p>
+            <p dir="ltr"><b><strong>Misol:</strong></b></p>
+            <blockquote>
+                <p dir="ltr"><span>f(n) = n</span><sup><span>3</span></sup><span>, g(n) = n</span><sup><span>2</span></sup><span>, h(n) = n</span><sup><span>4</span></sup><span>. U holda f(n) = O(g(n)) va g(n) = O(h(n)). Shunday qilib, f(n) = O(h(n)).</span></p>
+            </blockquote>
+        </section>
+
+        <h3><span>3. Doimiy Ko'paytuvchi:</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Har qanday c &gt; 0 doimiy qiymat uchun va f(n) va g(n) funksiyalari uchun, agar f(n) = O(g(n)) bo'lsa, unda cf(n) = O(g(n)).</span></p>
+            <p dir="ltr"><b><strong>Misol:</strong></b></p>
+            <blockquote>
+                <p dir="ltr"><span>f(n) = n, g(n) = n</span><sup><span>2</span></sup><span>. Shunday qilib, f(n) = O(g(n)). Demak, 2f(n) = O(g(n)).</span></p>
+            </blockquote>
+        </section>
+ 
+        <h3><span>4. Qo'shish Qoidasi:</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Agar f(n) = O(g(n)) va h(n) = O(g(n)) bo'lsa, unda f(n) + h(n) = O(g(n)).</span></p>
+            <div id="GFG_AD_gfg_outstream_incontent-1"></div>
+            <p dir="ltr"><b><strong>Misol:</strong></b></p>
+            <blockquote>
+                <p dir="ltr"><span>f(n) = n</span><sup><span>2</span></sup><span>, g(n) = n</span><sup><span>3</span></sup><span>, h(n) = n</span><sup><span>4</span></sup><span>. Shunday qilib, f(n) = O(g(n)) va h(n) = O(g(n)). Demak, f(n) + h(n) = O(g(n)).</span></p>
+            </blockquote>
+        </section>
+
+        <h3><span>5. Ko'paytirish Qoidasi:</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Agar f(n) = O(g(n)) va h(n) = O(k(n)) bo'lsa, unda f(n) * h(n) = O(g(n) * k(n)).</span></p>
+            <p dir="ltr"><b><strong>Misol:</strong></b></p>
+            <blockquote>
+                <p dir="ltr"><span>f(n) = n, g(n) = n</span><sup><span>2</span></sup><span>, h(n) = n</span><sup><span>3</span></sup><span>, k(n) = n</span><sup><span>4</span></sup><span>. Shunday qilib, f(n) = O(g(n)) va h(n) = O(k(n)). Demak, f(n) * h(n) = O(g(n) * k(n)) = O(n</span><sup><span>6</span></sup><span>).</span></p>
+            </blockquote>
+        </section>
+        
+        <h3><span>6. Tarkib Qoidasi:</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Agar f(n) = O(g(n)) va g(n) = O(h(n)) bo'lsa, unda f(g(n)) = O(h(n)).</span></p>
+            <p dir="ltr"><b><strong>Misol:</strong></b></p>
+            <blockquote>
+                <p dir="ltr"><span>f(n) = n</span><sup><span>2</span></sup><span>, g(n) = n, h(n) = n</span><sup><span>3</span></sup><span>. Shunday qilib, f(n) = O(g(n)) va g(n) = O(h(n)). Demak, f(g(n)) = O(h(n)) = O(n</span><sup><span>3</span></sup><span>).</span></p>
+            </blockquote>
+        </section>
+
+        
+        <h2 id="common-bigo-notations"><u><span class="GFGEditorTheme__textUnderline">Keng Tarqalgan Big-O Notatsiyalari:</span></u></h2>
+        <section class="description">
+            <p dir="ltr"><span>Big-O notatsiyasi algoritmning vaqt va xotira murakkabligini o'lchash usulidir. U eng yomon holatdagi murakkablikning yuqori chegarasini tasvirlaydi. Keling, turli vaqt murakkabliklariga qaraylik:</span></p>
+        </section>
+
+
+        <h3><span>1. Lineer Vaqt Murakkabligi: Big O(n) Murakkabligi</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Lineer vaqt murakkabligi degani, algoritmning ishlash vaqti kirish hajmi bilan lineer ravishda o'sadi.</span></p>
+            <div id="GFG_AD_gfg_outstream_incontent-2"></div>
+            <p dir="ltr"><span>Misol uchun, bir algoritmni ko'rib chiqing, u </span><a href="https://www.geeksforgeeks.org/linear-search/" rel="noopener"><span>massiv bo'ylab o'ziga xos elementni topish uchun o'tadi</span></a><span>:</span></p>
+            <p dir="ltr"><span>Polinomial vaqt murakkabligiga ega algoritmlar odatda samarali deb hisoblanadi, chunki ishlash vaqti kirish hajmi o'sgan sari ma'qul tezlikda o'sadi. Polinomial vaqt murakkabligiga ega algoritmlar uchun keng tarqalgan misollar shulardir:</span><b><strong> lineer vaqt murakkabligi O(n)</strong></b><span>, </span><b><strong>kvadratik vaqt murakkabligi O(n</strong></b><b><sup><strong>2</strong></sup></b><b><strong>)</strong></b><span>, va </span><b><strong>kubik vaqt murakkabligi O(n</strong></b><b><sup><strong>3</strong></sup></b><b><strong>)</strong></b><span>.</span></p>
+        </section>
+        
+        <h3><span>6. Eksponential Vaqt Murakkabligi: Big O(2</span><sup><span>n</span></sup><span>) Murakkabligi</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Eksponential vaqt murakkabligi degani, algoritmning ishlash vaqti har bir qo'shilgan ma'lumot to'plami bilan ikki baravar oshadi.</span></p>
+            <div id="GFG_AD_gfg_outstream_incontent-3"></div>
+            <p dir="ltr"><span>Misol uchun, </span><a href="https://www.geeksforgeeks.org/backtracking-to-find-all-subsets/" rel="noopener"><span>to'plamning barcha qismlarini yaratish</span></a><span> masalasi eksponential vaqt murakkabligiga ega:</span></p>
+        </section>
+
+
+<!-- code -->
+
+
+
+        <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/mypic.png" alt="asymtotic-analysis" class="topic-image" loading="lazy">
+
+        <h2 id="how-to-determine-big-o-notation"><u><span class="GFGEditorTheme__textUnderline">Big O Notatsiyasini Qanday Aniqlash Kerak?</span></u></h2>
+        <section class="description">
+            <p dir="ltr"><b><strong>Big O notatsiyasi</strong></b><span> bu matematik notatsiya bo'lib, funksiyaning </span><b><strong>asintotik xatti-harakatlarini</strong></b><span> uning kiritilishi cheksiz katta bo'lganda tasvirlash uchun ishlatiladi. Bu algoritmlar va ma'lumotlar tuzilmalarining samaradorligini xarakterlash uchun bir yo'ldir.</span></p>
+        </section>
+
+        <h3><span>Big O Notatsiyasini Aniqlash Bosqichlari:</span></h3>
+        <section class="description">
+            <p dir="ltr"><b><strong>1. Hukmron Atamani Aniqlash:</strong></b></p>
+            <ul>
+                <li value="1"><span>Funksiyani ko'rib chiqing va kirish hajmi ortib borishi bilan eng yuqori o'sish tartibiga ega bo'lgan atamani aniqlang.</span></li>
+                <li value="2"><span>Hech qanday doimiy faktorlarni yoki pastroq tartibdagi atamalarni e'tiborga olmang.</span></li>
+            </ul>
+            <p dir="ltr"><b><strong>2. O'sish Tartibini Aniqlash:</strong></b></p>
+            <ul>
+                <li value="1"><span>Hukmron atamaning o'sish tartibi Big O notatsiyasini belgilaydi.</span></li>
+            </ul>
+            <p dir="ltr"><b><strong>3. Big O Notatsiyasini Yozish:</strong></b></p>
+            <ul>
+                <li value="1"><span>Big O notatsiyasi O(f(n)) tarzida yoziladi, bu yerda f(n) hukmron atamani bildiradi.</span></li>
+                <li value="2"><span>Masalan, agar hukmron atama n^2 bo'lsa, Big O notatsiyasi O(n^2) bo'ladi.</span></li>
+            </ul>
+            <p dir="ltr"><b><strong>4. Notatsiyani Soddalashtirish (Ixtiyoriy):</strong></b></p>
+            <div id="GFG_AD_gfg_outstream_incontent-4"></div>
+            <ul>
+                <li value="1"><span>Ba'zi holatlarda, Big O notatsiyasini doimiy faktorlardan xalos qilib yoki qisqaroq notatsiyadan foydalanib soddalashtirish mumkin.</span></li>
+                <li value="2"><span>Misol uchun, </span><b><strong>O(2n)</strong></b><span> ni </span><b><strong>O(n)</strong></b><span> ga soddalashtirish mumkin.</span></li>
+            </ul>
+            <p dir="ltr"><b><strong>Misol:</strong></b></p>
+            <blockquote>
+                <p dir="ltr"><span>Funksiya: f(n) = 3n</span><sup><span>3</span></sup><span> + 2n</span><sup><span>2</span></sup><span> + 5n + 1</span></p>
+                <ol>
+                    <li value="1"><span>Hukmron Atama: 3n</span><sup><span>3</span></sup></li>
+                    <li value="2"><span>O'sish Tartibi: Kubik (n</span><sup><span>3</span></sup><span>)</span></li>
+                    <li value="3"><span>Big O Notatsiyasi: O(n</span><sup><span>3</span></sup><span>)</span></li>
+                    <li value="4"><span>Soddalashtirilgan Notatsiya: O(n</span><sup><span>3</span></sup><span>)</span></li>
+                </ol>
+            </blockquote>
+        </section>
+        
+        <h2 id="mathematical-examples-of-runtime-analysis"><u><b><strong class="GFGEditorTheme__textUnderline">Ishlash vaqti tahlili bo'yicha matematik misollar:</strong></b></u></h2>
+        <section class="description">
+            <p dir="ltr"><span>Quyidagi jadvalda algoritmlarning turli tartiblari bo'yicha ish vaqtining tahlili, kirish hajmi (n) ortishi bilan ko'rsatilgan.</span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th><span>n</span></th>
+                        <th><span>log(n)</span></th>
+                        <th><span>n</span></th>
+                        <th><span>n * log(n)</span></th>
+                        <th><span>n^2</span></th>
+                        <th><span>2^n</span></th>
+                        <th><span>n!</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span>10</span></td>
+                        <td><span>1</span></td>
+                        <td><span>10</span></td>
+                        <td><span>10</span></td>
+                        <td><span>100</span></td>
+                        <td><span>1024</span></td>
+                        <td><span>3628800</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>20</span></td>
+                        <td><span>2.996</span></td>
+                        <td><span>20</span></td>
+                        <td><span>59.9</span></td>
+                        <td><span>400</span></td>
+                        <td><span>1048576</span></td>
+                        <td><span>2.432902e+1818</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        
+        <h2 id="algorithmic-examples-of-runtime-analysis"><u><b><strong class="GFGEditorTheme__textUnderline">Algoritmik misollar orqali ish vaqti tahlili:</strong></b></u></h2>
+        <section class="description">
+            <p dir="ltr"><span>Quyidagi jadvalda algoritmlar ularning ish vaqti murakkabligiga asoslanib tasniflanadi va har bir tur uchun misollar keltirilgan.</span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th><span>Tur</span></th>
+                        <th><span>Notatsiya</span></th>
+                        <th><span>Misol Algoritmlar</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span>Logarifmik</span></td>
+                        <td><span>O(log n)</span></td>
+                        <td><span>Ikki qidirish (Binary Search)</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>Chiziqli</span></td>
+                        <td><span>O(n)</span></td>
+                        <td><span>Chiziqli qidirish (Linear Search)</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>Superlineer</span></td>
+                        <td><span>O(n log n)</span></td>
+                        <td><span>Heap Sort, Merge Sort</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>Polinomial</span></td>
+                        <td><span>O(n^c)</span></td>
+                        <td><span>Strassenning Matritsalarni ko'paytirish, Bubble Sort, Selection Sort, Insertion Sort, Bucket Sort</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>Eksponensial</span></td>
+                        <td><span>O(c^n)</span></td>
+                        <td><span>Tower of Hanoi</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>Faktorial</span></td>
+                        <td><span>O(n!)</span></td>
+                        <td><span>Determinantni kichik minoralar orqali hisoblash, Brute Force qidirish algoritmi (Traveling Salesman Problem)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <h2 id="algorithm-classes-with-number-of-operations-and-execution-time"><u><span class="GFGEditorTheme__textUnderline">Algoritm klasslari, operatsiyalar soni va bajarilish vaqti:</span></u></h2>
+        <section class="description">
+            <p dir="ltr"><span>Quyida algoritm klasslari va ularning kompyuterdagi bajarilish vaqtlari, kompyuter 1 million operatsiya bajaradigan holatda (1 sek = 10<sup>6</sup> μsec = 10<sup>3</sup> msec) keltirilgan:</span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>Big O Notatsiya Klasslari</span></p></th>
+                        <th><p dir="ltr" style="text-align: center;"><span>f(n)</span></p></th>
+                        <th><p dir="ltr" style="text-align: center;"><span>Big O Tahlil (operatsiyalar soni) n = 10 uchun</span></p></th>
+                        <th><span>Bajarilish Vaqti (1 instruktsiya/μsec)</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>doimiy</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(1)</span></p></td>
+                        <td><p style="text-align: center;"><span>1</span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>1 μsec</span></p></td>
+                    </tr>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>logarifmik</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(logn)</span></p></td>
+                        <td><p style="text-align: center;"><span>3.32</span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>3 μsec</span></p></td>
+                    </tr>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>chiziqli</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(n)</span></p></td>
+                        <td><p style="text-align: center;"><span>10</span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>10 μsec</span></p></td>
+                    </tr>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>O(nlogn)</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(nlogn)</span></p></td>
+                        <td><p style="text-align: center;"><span>33.2</span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>33 μsec</span></p></td>
+                    </tr>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>kvadrat</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(n<sup>2</sup>)</span></p></td>
+                        <td><p style="text-align: center;"><span>10<sup>2</sup></span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>100 μsec</span></p></td>
+                    </tr>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>kubik</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(n<sup>3</sup>)</span></p></td>
+                        <td><p style="text-align: center;"><span>10<sup>3</sup></span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>1 msec</span></p></td>
+                    </tr>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>eksponensial</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(2<sup>n</sup>)</span></p></td>
+                        <td><p style="text-align: center;"><span>1024</span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>10 msec</span></p></td>
+                    </tr>
+                    <tr>
+                        <th><p dir="ltr" style="text-align: center;"><span>faktorial</span></p></th>
+                        <td><p dir="ltr" style="text-align: center;"><span>O(n!)</span></p></td>
+                        <td><p style="text-align: center;"><span>10!</span></p></td>
+                        <td><p dir="ltr" style="text-align: center;"><span>3.6288 sek</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+            
+        <h2 id="comparison-of-big-o-notation-big-omega-notation-and-big-theta-notation"><u><span class="GFGEditorTheme__textUnderline">Big O Notatsiyasi, Big Ω (Omega) Notatsiyasi va Big θ (Theta) Notatsiyasining Taqqoslanishi:</span></u></h2>
+        <section class="description">
+            <p dir="ltr"><span>Quyida Big O notatsiyasi, Ω (Omega) notatsiyasi va θ (Theta) notatsiyasining taqqoslanishi keltirilgan:</span></p>
+            <table><thead><tr><th><span>Notatsiya</span></th><th><span>Ta'rif</span></th><th><span>Izoh</span></th></tr></thead><tbody><tr><td><span>Big O (O)</span></td><td><span>f(n) ≤ C * g(n) barcha n ≥ n</span><sub><span>0</span></sub></td><td><span>Algoritmning ish vaqti yuqori chegarasini ta'riflaydi </span><b><strong>eng yomon holatda</strong></b><span>.</span></td></tr><tr><td><span>Ω (Omega)</span></td><td><span>f(n) ≥ C * g(n) barcha n ≥ n</span><sub><span>0</span></sub></td><td><span>Algoritmning ish vaqti pastki chegarasini ta'riflaydi </span><b><strong>eng yaxshi holatda</strong></b><span>.</span></td></tr><tr><td><span>θ (Theta)</span></td><td><span>C</span><sub><span>1</span></sub><span> * g(n) ≤ f(n) ≤ C</span><sub><span>2</span></sub><span> * g(n) barcha n ≥ n</span><sub><span>0</span></sub></td><td><span>Algoritmning ish vaqtining yuqori va pastki chegaralarini ta'riflaydi </span><b><strong>ish vaqti</strong></b><span>.</span></td></tr></tbody></table><p dir="ltr"><span>Har bir notatsiyada:</span></p>
+            <ul>
+                <li value="1"><b><strong>f(n)</strong></b><span> tahlil qilinayotgan funktsiyani, odatda algoritmning vaqt murakkabligini anglatadi.</span></li>
+                <li value="2"><b><strong>g(n)</strong></b><span> f(n) ni chegaralovchi maxsus funktsiyani anglatadi.</span></li>
+                <li value="3"><b><strong>C, C1​, </strong></b><span>va </span><b><strong>C2</strong></b><span>​ doimiylar.</span></li>
+                <li value="4"><b><strong>n</strong></b><b><sub><strong>0</strong></sub></b><span>​ tenglikning to'g'ri bo'lishi uchun minimum kirish hajmini anglatadi.</span></li>
+            </ul>
+            <p dir="ltr"><span>Ushbu notatsiyalar algoritmlarni tahlil qilishda ularning</span><b><strong> eng yomon holati (Big O)</strong></b><span>,</span><b><strong> eng yaxshi holati (Ω)</strong></b><span>, va </span><b><strong>o'rtacha holati (θ)</strong></b><span> ni ifodalaydi.</span></p>
+        </section>
+
+
+           
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    class="topic-video" 
+                    src="https://www.youtube.com/embed/rZd2geTWEQM?list=PLViqJEFxopsmCzGy9js8BVyfxOF1OnhBD" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/DSA Presentation - 3.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/3-topshiriq.docx" download>Download Task PDF</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
