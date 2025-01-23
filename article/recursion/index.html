@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic N - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Algoritm nima | Algoritmlarga kirish</h1>
+        <h2><b><strong class="GFGEditorTheme__textUnderline">Algoritmning ta'rifi</strong></b></h2>
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Algoritm so'zining ma'nosi:</strong> Algoritm so'zining ma'nosi: "Hisob-kitoblar yoki boshqa muammoni hal qilish operatsiyalarida amal qilinadigan cheklangan qoidalar yoki ko'rsatmalar to'plami" yoki "Matematik muammoni chekli qadamlar ichida hal qilish jarayoni bo'lib, ko'pincha rekursiv operatsiyalarni o'z ichiga oladi."</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20191016135223/What-is-Algorithm_-1024x631.jpg" alt="Topic N Illustration" class="topic-image">
+        </section>
+
+        
+        <p dir="ltr"><span>The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called a recursive function. </span></p>
+<ul><li value="1"><span>A recursive algorithm takes one step toward solution and then recursively call itself to further move. The algorithm stops once we reach the solution.  </span></li><li value="2"><span>Since called function may further call itself, this process might continue forever. So it is essential to provide a base case to terminate this recursion process.</span></li></ul><p dir="ltr"><b><strong>Need of Recursion</strong></b></p><div id="GFG_AD_gfg_mobile_336x280"></div>
+<ul><li value="1"><span>Recursion helps in logic building. Recursive thinking helps in solving complex problems by breaking them into smaller subproblems.</span></li><li value="2"><span>Recursive solutions work as a a basis for Dynamic Programming and Divide and Conquer algorithms.</span></li><li value="3"><span>Certain problems can be solved quite easily using recursion like </span><a href="https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/" rel="noopener"><span>Towers of Hanoi (TOH)</span></a><span>, </span><a href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/" rel="noopener"><span>Inorder/Preorder/Postorder Tree Traversals</span></a><span>, </span><a href="https://www.geeksforgeeks.org/depth-first-traversal-for-a-graph/" rel="noopener"><span>DFS of Graph</span></a><span>, etc.</span></li></ul><h4><span>Steps</span></h4><blockquote><p dir="ltr"><span>Step1 – Define a base case: Identify the simplest (or base) case for which the solution is known or trivial. This is the stopping condition for the recursion, as it prevents the function from infinitely calling itself.</span><br><br><span>Step2 – Define a recursive case: Define the problem in terms of smaller subproblems. Break the problem down into smaller versions of itself, and call the function recursively to solve each subproblem.</span><br><br><span>Step3 – Ensure the recursion terminates: Make sure that the recursive function eventually reaches the base case, and does not enter an infinite loop.</span><br><br><span>Step4 – Combine the solutions: Combine the solutions of the subproblems to solve the original problem.</span></p>
+</blockquote><p dir="ltr"><b><strong>Example 1 : Sum of Natural Numbers </strong></b></p>
+<p dir="ltr"><span>Let us consider a problem to find the sum of natural numbers, there are several ways of doing that but the simplest approach is simply to add the numbers starting from 0 to n. So the function simply looks like this,</span></p>
+<blockquote><p dir="ltr"><b><strong>approach(1) – Simply adding one by one</strong></b></p>
+<p dir="ltr"><b><strong>f(n) = 0 + 1 + 2 + 3 +……..+ n</strong></b></p><div id="GFG_AD_Desktop_InContent_ATF_336x280"></div><div id="GFG_AD_gfg_mobile_336x280_1"></div>
+</blockquote><p dir="ltr"><span>but there is another mathematical approach of representing this,</span></p><div id="_GFG_ABP_Incontent_728x90" style="text-align:center;"><iframe src="https://aa.geeksforgeeks.org/iframe.html?code=GFG_ABP_Incontent_728x90" style="width: 748px; height: 110px;"></iframe></div>
+<blockquote><p dir="ltr"><b><strong>approach(2) – Recursive adding&nbsp;</strong></b></p>
+<p dir="ltr"><b><strong>f(n) = 0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n=0</strong></b></p>
+<p dir="ltr"><b><strong>f(n) = n + f(n-1) &nbsp; &nbsp;n&gt;=1</strong></b></p>
+</blockquote><gfg-tabs data-run-ide="true" data-mode="light" role="tablist">
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-0" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-0">C++</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="cpp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-0" aria-labelledby="gfg-tab-generated-0" hidden="">
+<code class="language-cpp"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="c1">// Recursive function to find the sum of </span>
+<span class="c1">// numbers from 0 to n</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">findSum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Base case </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span>
+<span class="w">    </span><span class="c1">// Recursive case </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-1" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-1">C</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="c" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-1" aria-labelledby="gfg-tab-generated-1" hidden="">
+<code class="language-c"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="c1">// Recursive function to find the sum of </span>
+<span class="c1">// numbers from 0 to n</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">findSum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Base case </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span>
+<span class="w">    </span><span class="c1">// Recursive case </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-2" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-2">Java</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="java" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-2" aria-labelledby="gfg-tab-generated-2" hidden="">
+<code class="language-java"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// Recursive function to find the sum of </span>
+<span class="c1">// numbers from 0 to n</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GfG</span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">findSum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span>
+<span class="w">        </span><span class="c1">// Base case </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Recursive case </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-3" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-3">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-3" aria-labelledby="gfg-tab-generated-3" hidden="">
+<code class="language-python3"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1"># Recursive function to find the sum of </span>
+<span class="c1"># numbers from 0 to n</span>
+<span class="k">def</span> <span class="nf">findSum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+<span class="c1"># Base case </span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1"># Recursive case </span>
+<span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">findSum</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-4" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-4">C#</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="csharp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-4" aria-labelledby="gfg-tab-generated-4" hidden="">
+<code class="language-csharp"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// Recursive function to find the sum of </span>
+<span class="c1">// numbers from 0 to n</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">findSum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span>
+<span class="w">        </span><span class="c1">// Base case </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Recursive case </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">findSum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-5" aria-selected="true" tabindex="0" aria-controls="gfg-panel-generated-5" selected="">JavaScript</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="javascript" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-5" aria-labelledby="gfg-tab-generated-5">
+<code class="language-javascript"><div class="highlight"><pre hidden="" style="position: relative;"><span></span><span class="c1">// Recursive function to find the sum of </span>
+<span class="c1">// numbers from 0 to n</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">findSum</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Base case </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Recursive case </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">findSum</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">findSum</span><span class="p">(</span><span class="nx">n</span><span class="p">));</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+<div class="CodeMirror cm-s-default"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 56px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="right: 0px; left: 41px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 41px; margin-bottom: -16px; border-right-width: 14px; min-height: 333px; min-width: 385.323px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>14</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 15px; top: 0px; height: 23.2292px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -41px; width: 41px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Recursive function to find the sum of </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// numbers from 0 to n</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">findSum</span>(<span class="cm-def">n</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-comment">// Base case </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">if</span> (<span class="cm-variable-2">n</span> <span class="cm-operator">===</span> <span class="cm-number">0</span>) </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">return</span> <span class="cm-number">0</span>; </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-comment">// Recursive case </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">return</span> <span class="cm-variable-2">n</span> <span class="cm-operator">+</span> <span class="cm-variable">findSum</span>(<span class="cm-variable-2">n</span> <span class="cm-operator">-</span> <span class="cm-number">1</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">let</span> <span class="cm-def">n</span> <span class="cm-operator">=</span> <span class="cm-number">5</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">findSum</span>(<span class="cm-variable">n</span>));</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 14px; width: 1px; border-bottom: 0px solid transparent; top: 333px;"></div><div class="CodeMirror-gutters" style="height: 347px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter breakpoints"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div></gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-6" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-6">PHP</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="php" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-6" aria-labelledby="gfg-tab-generated-6" hidden="">
+<code class="language-php"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// Recursive function to find the sum of </span>
+<span class="c1">// numbers from 0 to n</span>
+<span class="k">function</span> <span class="nf">findSum</span><span class="p">(</span><span class="nv">$n</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// Base case </span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span> 
+
+<span class="c1">// Recursive case </span>
+<span class="k">return</span> <span class="nv">$n</span> <span class="o">+</span> <span class="nx">findSum</span><span class="p">(</span><span class="nv">$n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">findSum</span><span class="p">(</span><span class="nv">$n</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel></gfg-tabs><div class="code-output"><br><strong>Output</strong><pre style="position: relative;">15<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div><p dir="ltr"><b><strong>What is the base condition in recursion?</strong></b><span>&nbsp;</span><br><span>A recursive program stops at a base condition.  There can be more than one base conditions in a recursion. In the above program, the base condition is when n = 1.\</span></p>
+<p dir="ltr"><b><strong>How a particular problem is solved using recursion?</strong></b><span>&nbsp;</span><br><span>The idea is to represent a problem in terms of one or more smaller problems, and add one or more base conditions that stop the recursion. &nbsp;</span></p><div id="GFG_AD_gfg_outstream_incontent"></div>
+<p dir="ltr"><b><strong>Example 2 : Factorial of a Number</strong></b><br><a href="https://www.geeksforgeeks.org/program-for-factorial-of-a-number/" target="_blank" rel="noopener"><span>Factorial </span></a><span>of a number n (where n &gt;= 0) is defined as multiplication of numbers from 1 to n.  To recursive compute, we compute factorial n if we know the factorial of (n-1). The base case for factorial would be n = 0. We return 1 when n = 0.&nbsp;</span></p>
+<gfg-tabs data-run-ide="true" data-mode="light" role="tablist">
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-7" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-7">C++</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="cpp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-7" aria-labelledby="gfg-tab-generated-7" hidden="">
+<code class="language-cpp"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// BASE CONDITION</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Factorial of 5 : "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-8" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-8">C</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="c" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-8" aria-labelledby="gfg-tab-generated-8" hidden="">
+<code class="language-c"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>
+<span class="w">    </span><span class="c1">// BASE CONDITION</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Factorial of 5 : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-9" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-9">Java</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="java" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-9" aria-labelledby="gfg-tab-generated-9" hidden="">
+<code class="language-java"><div class="highlight"><pre style="position: relative;"><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GfG</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span>
+<span class="w">        </span><span class="c1">// BASE CONDITION</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Factorial of 5 : "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-10" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-10">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-10" aria-labelledby="gfg-tab-generated-10" hidden="">
+<code class="language-python3"><div class="highlight"><pre style="position: relative;"><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+<span class="c1"># BASE CONDITION</span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">return</span> <span class="mi">1</span>
+<span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Factorial of 5 : "</span><span class="p">,</span> <span class="n">fact</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-11" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-11">C#</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="csharp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-11" aria-labelledby="gfg-tab-generated-11" hidden="">
+<code class="language-csharp"><div class="highlight"><pre style="position: relative;"><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Fact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span>
+<span class="w">        </span><span class="c1">// BASE CONDITION</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Fact</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Factorial of 5 : "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Fact</span><span class="p">(</span><span class="m">5</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-12" aria-selected="true" tabindex="0" aria-controls="gfg-panel-generated-12" selected="">JavaScript</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="javascript" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-12" aria-labelledby="gfg-tab-generated-12">
+<code class="language-javascript"><div class="highlight"><pre hidden="" style="position: relative;"><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">fact</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// BASE CONDITION</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">fact</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Factorial of 5 : "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fact</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+<div class="CodeMirror cm-s-default"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 56px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="right: 0px; left: 41px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 41px; margin-bottom: -16px; border-right-width: 14px; min-height: 240px; min-width: 403.333px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>10</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 15px; top: 0px; height: 23.2292px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -41px; width: 41px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">fact</span>(<span class="cm-def">n</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-comment">// BASE CONDITION</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">if</span> (<span class="cm-variable-2">n</span> <span class="cm-operator">===</span> <span class="cm-number">0</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">return</span> <span class="cm-number">1</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">return</span> <span class="cm-variable-2">n</span> <span class="cm-operator">*</span> <span class="cm-variable">fact</span>(<span class="cm-variable-2">n</span> <span class="cm-operator">-</span> <span class="cm-number">1</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"Factorial of 5 : "</span> <span class="cm-operator">+</span> <span class="cm-variable">fact</span>(<span class="cm-number">5</span>));</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 14px; width: 1px; border-bottom: 0px solid transparent; top: 240px;"></div><div class="CodeMirror-gutters" style="height: 254px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter breakpoints"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div></gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-13" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-13">PHP</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="php" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-13" aria-labelledby="gfg-tab-generated-13" hidden="">
+<code class="language-php"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">fact</span><span class="p">(</span><span class="nv">$n</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// BASE CONDITION</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="nv">$n</span> <span class="o">*</span> <span class="nx">fact</span><span class="p">(</span><span class="nv">$n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s2">"Factorial of 5 : "</span> <span class="o">.</span> <span class="nx">fact</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel></gfg-tabs><div class="code-output"><br><strong>Output</strong><pre style="position: relative;">Factorial of 5 : 120<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div><p dir="ltr"><b><strong>Illustration of the above code:</strong></b></p>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20240924132748/factorial.webp" alt="factorial" width="801" height="245" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240924132748/factorial.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20240924132748/factorial-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240924132748/factorial-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240924132748/factorial-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240924132748/factorial-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240924132748/factorial-768.webp 768w"><p dir="ltr"><b><strong>When does Stack Overflow error occur in recursion?</strong></b><span>&nbsp;</span><br><span>If the base case is not reached or not defined, then the stack overflow problem may arise. Let us take an example to understand this.</span></p>
+<pre style="position: relative;"><span>int fact(int n)</span><br><span>{</span><br><span>    // wrong base case (it may cause</span><br><span>    // stack overflow).</span><br><span>    if (n == 100) </span><br><span>        return 1;</span><br><br><span>    else</span><br><span>        return n*fact(n-1);</span><br><span>}</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre><p dir="ltr"><span>If fact(10) is called, it will call fact(9), fact(8), fact(7), and so on but the number will never reach 100. So, the base case is not reached. If the memory is exhausted by these functions on the stack, it will cause a stack overflow error.&nbsp;</span></p>
+<p dir="ltr"><b><strong>What is the difference between direct and indirect recursion?</strong></b><span>&nbsp;</span><br><span>A function fun is called direct recursive if it calls the same function fun. A function fun is called indirect recursive if it calls another function say fun_new and fun_new calls fun directly or indirectly. The difference between direct and indirect recursion has been illustrated in Table 1.&nbsp;</span></p>
+<pre style="position: relative;"><b><strong>// An example of direct recursion</strong></b><br><span>void directRecFun()</span><br><span>{</span><br><span>    // Some code....</span><br><br><span>    directRecFun();</span><br><br><span>    // Some code...</span><br><span>}</span><br><br><b><strong>// An example of indirect recursion</strong></b><br><span>void indirectRecFun1()</span><br><span>{</span><br><span>    // Some code...</span><br><br><span>    indirectRecFun2();</span><br><br><span>    // Some code...</span><br><span>}</span><br><span>void indirectRecFun2()</span><br><span>{</span><br><span>    // Some code...</span><br><br><span>    indirectRecFun1();</span><br><br><span>    // Some code...</span><br><span>}</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre><p dir="ltr"><b><strong>What is the difference between tailed and non-tailed recursion?</strong></b><span>&nbsp;</span><br><span>A recursive function is tail recursive when a recursive call is the last thing executed by the function. Please refer </span><a href="https://www.geeksforgeeks.org/tail-recursion/" rel="noopener"><span>tail recursion article</span></a><span> for details.&nbsp;</span></p>
+<p dir="ltr"><b><strong>How memory is allocated to different function calls in recursion?</strong></b><span>&nbsp;</span><br><span>Recursion uses more memory to store data of every recursive call in an internal function call stack. </span></p>
+<ul><li value="1"><span>Whenever we call a function, its record is added to the stack and remains there until the call is finished. </span></li><li value="2"><span>The internal systems use a </span><a href="https://www.geeksforgeeks.org/stack-data-structure/" target="_blank" rel="noopener"><span>stack</span></a><span> because function calling follows LIFO structure, the last called function finishes first.</span></li></ul><p dir="ltr"><span>When any function is called from main(), the memory is allocated to it on the stack. A recursive function calls itself, the memory for a called function is allocated on top of memory allocated to the calling function and a different copy of local variables is created for each function call. When the base case is reached, the function returns its value to the function by whom it is called and memory is de-allocated and the process continues.</span><br><span>Let us take the example of how recursion works by taking a simple function.&nbsp;</span></p>
+<gfg-tabs data-run-ide="true" data-mode="light" role="tablist">
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-14" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-14">C++</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="cpp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-14" aria-labelledby="gfg-tab-generated-14" hidden="">
+<code class="language-cpp"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// A C++ program to demonstrate working of</span>
+<span class="c1">// recursion</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printFun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// statement 2</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="p">);</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-15" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-15">C</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="c" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-15" aria-labelledby="gfg-tab-generated-15" hidden="">
+<code class="language-c"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// A C program to demonstrate working of recursion</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printFun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// statement 2</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-16" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-16">Java</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="java" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-16" aria-labelledby="gfg-tab-generated-16" hidden="">
+<code class="language-java"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// A Java program to demonstrate working of</span>
+<span class="c1">// recursion</span>
+<span class="kd">class</span> <span class="nc">GFG</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printFun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">);</span>
+<span class="w">            </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// statement 2</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Driver Code</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This code is contributed by</span>
+<span class="c1">// Smitha Dinesh Semwal  </span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-17" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-17">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-17" aria-labelledby="gfg-tab-generated-17" hidden="">
+<code class="language-python3"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1"># A Python 3 program to</span>
+<span class="c1"># demonstrate working of</span>
+<span class="c1"># recursion</span>
+
+
+<span class="k">def</span> <span class="nf">printFun</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">test</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">):</span>
+<span class="k">return</span>
+<span class="k">else</span><span class="p">:</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
+<span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># statement 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
+<span class="k">return</span>
+
+<span class="c1"># Driver Code</span>
+<span class="n">test</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="c1"># This code is contributed by</span>
+<span class="c1"># Smitha Dinesh Semwal</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-18" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-18">C#</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="csharp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-18" aria-labelledby="gfg-tab-generated-18" hidden="">
+<code class="language-csharp"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// A C# program to demonstrate</span>
+<span class="c1">// working of recursion</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GFG</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// function to demonstrate</span>
+<span class="w">    </span><span class="c1">// working of recursion</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">printFun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// statement 2</span>
+<span class="w">            </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Driver Code</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printFun</span><span class="p">(</span><span class="n">test</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This code is contributed by Anshul Aggarwal.</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-19" aria-selected="true" tabindex="0" aria-controls="gfg-panel-generated-19" selected="">JavaScript</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="javascript" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-19" aria-labelledby="gfg-tab-generated-19">
+<code class="language-javascript"><div class="highlight"><pre hidden="" style="position: relative;"><span></span><span class="c1">// A JavaScript program to demonstrate working of recursion</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">printFun</span><span class="p">(</span><span class="nx">test</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">test</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">printFun</span><span class="p">(</span><span class="nx">test</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// statement 2</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="nx">printFun</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+<div class="CodeMirror cm-s-default"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 56px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="right: 0px; left: 41px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 41px; margin-bottom: -16px; border-right-width: 14px; min-height: 356px; min-width: 546.583px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>15</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 15px; top: 0px; height: 23.2292px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -41px; width: 41px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// A JavaScript program to demonstrate working of recursion</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">printFun</span>(<span class="cm-def">test</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">if</span> (<span class="cm-variable-2">test</span> <span class="cm-operator">&lt;</span> <span class="cm-number">1</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">return</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">else</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">test</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-variable">printFun</span>(<span class="cm-variable-2">test</span> <span class="cm-operator">-</span> <span class="cm-number">1</span>); <span class="cm-comment">// statement 2</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">test</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">return</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Driver Code</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">let</span> <span class="cm-def">test</span> <span class="cm-operator">=</span> <span class="cm-number">3</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">printFun</span>(<span class="cm-variable">test</span>);</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 14px; width: 1px; border-bottom: 0px solid transparent; top: 356px;"></div><div class="CodeMirror-gutters" style="height: 370px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter breakpoints"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div></gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-20" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-20">PHP</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="php" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-20" aria-labelledby="gfg-tab-generated-20" hidden="">
+<code class="language-php"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// PHP program to demonstrate </span>
+<span class="c1">// working of recursion</span>
+
+<span class="c1">// function to demonstrate </span>
+<span class="c1">// working of recursion</span>
+<span class="k">function</span> <span class="nf">printFun</span><span class="p">(</span><span class="nv">$test</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$test</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">return</span><span class="p">;</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="k">echo</span><span class="p">(</span><span class="s2">"</span><span class="si">$test</span><span class="s2"> "</span><span class="p">);</span>
+
+<span class="c1">// statement 2</span>
+<span class="nx">printFun</span><span class="p">(</span><span class="nv">$test</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> 
+
+<span class="k">echo</span><span class="p">(</span><span class="s2">"</span><span class="si">$test</span><span class="s2"> "</span><span class="p">);</span>
+<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="nv">$test</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">printFun</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
+
+<span class="c1">// This code is contributed by</span>
+<span class="c1">// Smitha Dinesh Semwal.</span>
+<span class="cp">?&gt;</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel></gfg-tabs><div class="code-output"><br><strong>Output</strong><pre style="position: relative;">3 2 1 1 2 3 <div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div><p dir="ltr"><span>When </span><b><strong>printFun(3)</strong></b><span> is called from main(), memory is allocated to </span><b><strong>printFun(3)</strong></b><span> and a local variable test is initialized to 3 and statement 1 to 4 are pushed on the stack as shown in below diagram. It first prints ‘3’. In statement 2, </span><b><strong>printFun(2)</strong></b><span> is called and memory is allocated to </span><b><strong>printFun(2)</strong></b><span> and a local variable test is initialized to 2 and statement 1 to 4 are pushed into the stack. Similarly, </span><b><strong>printFun(2)</strong></b><span> calls </span><b><strong>printFun(1)</strong></b><span> and </span><b><strong>printFun(1)</strong></b><span> calls </span><b><strong>printFun(0)</strong></b><span>. </span><b><strong>printFun(0)</strong></b><span> goes to if statement and it return to </span><b><strong>printFun(1)</strong></b><span>. The remaining statements of </span><b><strong>printFun(1) </strong></b><span>are executed and it returns to </span><b><strong>printFun(2)</strong></b><span> and so on. In the output, values from 3 to 1 are printed and then 1 to 3 are printed. The memory stack has been shown in below diagram.</span></p>
+<p dir="ltr"><img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/recursion.jpg" alt="recursion" width="inherit" height="inherit" loading="lazy"></p><div id="GFG_AD_gfg_outstream_incontent-1"></div>
+<p dir="ltr"><b><strong>Recursion VS Iteration</strong></b></p>
+<table><thead></thead><tbody><tr><td><b><strong>SR No.</strong></b></td><td><b><strong>Recursion</strong></b></td><td><b><strong>Iteration</strong></b></td></tr><tr><td><span>1)</span></td><td><span>Terminates when the base case becomes true.</span></td><td><span>Terminates when the loop condition becomes false.</span></td></tr><tr><td><span>2)</span></td><td><span>Logic is built in terms of smaller problems.</span></td><td><span>Logic is built using iterating over something.</span></td></tr><tr><td><span>3)</span></td><td><span>Every recursive call needs extra space in the stack memory.</span></td><td><span>Every iteration does not require any extra space.</span></td></tr><tr><td><span>4)</span></td><td><span>Smaller code size.</span></td><td><span>Larger code size.</span></td></tr></tbody></table><p dir="ltr"><b><strong>Example 4 : Fibonacci with Recursion</strong></b><br><span>Write a program and recurrence relation to find the </span><a href="https://www.geeksforgeeks.org/fibonacci-sequence/" target="_blank" rel="noopener"><span>Fibonacci</span></a><span> series of n where n &gt;= 0.&nbsp;</span><br><i><em class="GFGEditorTheme__textItalic">Mathematical Equation:</em></i><span>&nbsp;&nbsp;</span></p>
+<pre style="position: relative;"><span>n if n == 0, n == 1;      </span><br><span>fib(n) = fib(n-1) + fib(n-2) otherwise;</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre><p dir="ltr"><i><em class="GFGEditorTheme__textItalic">Recurrence Relation:</em></i><span>&nbsp;</span></p>
+<pre style="position: relative;"><span>T(n) = T(n-1) + T(n-2) + O(1)</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre><gfg-tabs data-run-ide="true" data-mode="light" role="tablist">
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-21" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-21">C++</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="cpp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-21" aria-labelledby="gfg-tab-generated-21" hidden="">
+<code class="language-cpp"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// C++ code to implement Fibonacci series</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="c1">// Function for fibonacci</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Recursion function</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Initialize variable n.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Fibonacci series of 5 numbers is: "</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// for loop to print the fibonacci series.</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-22" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-22">C</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="c" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-22" aria-labelledby="gfg-tab-generated-22" hidden="">
+<code class="language-c"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// C code to implement Fibonacci series</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="c1">// Function for fibonacci</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Recursion function</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Initialize variable n.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fibonacci series "</span>
+<span class="w">           </span><span class="s">"of %d numbers is: "</span><span class="p">,</span>
+<span class="w">           </span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// for loop to print the fibonacci series.</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-23" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-23">Java</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="java" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-23" aria-labelledby="gfg-tab-generated-23" hidden="">
+<code class="language-java"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// Java code to implement Fibonacci series</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">GFG</span>
+<span class="p">{</span>
+
+<span class="c1">// Function for fibonacci</span>
+<span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Recursion function</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span>
+<span class="w">    </span><span class="c1">// Initialize variable n.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Fibonacci series of 5 numbers is: "</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// for loop to print the fibonacci series.</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s">" "</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This code is contributed by rutvik_56.</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-24" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-24">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-24" aria-labelledby="gfg-tab-generated-24" hidden="">
+<code class="language-python3"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1"># Python code to implement Fibonacci series</span>
+
+<span class="c1"># Function for fibonacci</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+<span class="c1"># Stop condition</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+<span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1"># Stop condition</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+<span class="k">return</span> <span class="mi">1</span>
+
+<span class="c1"># Recursion function</span>
+<span class="k">else</span><span class="p">:</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<span class="c1"># Driver Code</span>
+
+<span class="c1"># Initialize variable n.</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Fibonacci series of 5 numbers is :"</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
+
+<span class="c1"># for loop to print the fibonacci series.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-25" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-25">C#</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="csharp" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-25" aria-labelledby="gfg-tab-generated-25" hidden="">
+<code class="language-csharp"><div class="highlight"><pre style="position: relative;"><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GFG</span>
+<span class="p">{</span>
+
+<span class="w">  </span><span class="c1">// Function for fibonacci</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Recursion function</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="nf">return</span><span class="w"> </span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Driver Code</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="w"> </span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Initialize variable n.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"Fibonacci series of 5 numbers is: "</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// for loop to print the fibonacci series.</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This code is contributed by avanitrachhadiya2155</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+</gfg-panel>
+<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-26" aria-selected="true" tabindex="0" aria-controls="gfg-panel-generated-26" selected="">JavaScript</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="javascript" data-main-code-start="None" data-main-code-end="None" role="tabpanel" id="gfg-panel-generated-26" aria-labelledby="gfg-tab-generated-26">
+<code class="language-javascript"><div class="highlight"><pre hidden="" style="position: relative;"><span></span><span class="c1">// Function for fibonacci</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Stop condition</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Recursion function</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver Code</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Fibonacci series of 5 numbers is:"</span><span class="p">);</span>
+
+<span class="c1">// for loop to print the fibonacci series.</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fib</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" "</span><span class="p">);</span>
+<span class="p">}</span>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
+<div class="CodeMirror cm-s-default"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 56px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="right: 0px; left: 41px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 41px; margin-bottom: -16px; border-right-width: 14px; min-height: 473px; min-width: 457.031px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>20</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 15px; top: 0px; height: 23.2292px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -41px; width: 41px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Function for fibonacci</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">fib</span>(<span class="cm-def">n</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-comment">// Stop condition</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">if</span> (<span class="cm-variable-2">n</span> <span class="cm-operator">===</span> <span class="cm-number">0</span>) <span class="cm-keyword">return</span> <span class="cm-number">0</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-comment">// Stop condition</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">if</span> (<span class="cm-variable-2">n</span> <span class="cm-operator">===</span> <span class="cm-number">1</span> <span class="cm-operator">||</span> <span class="cm-variable-2">n</span> <span class="cm-operator">===</span> <span class="cm-number">2</span>) <span class="cm-keyword">return</span> <span class="cm-number">1</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-comment">// Recursion function</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">return</span> <span class="cm-variable">fib</span>(<span class="cm-variable-2">n</span> <span class="cm-operator">-</span> <span class="cm-number">1</span>) <span class="cm-operator">+</span> <span class="cm-variable">fib</span>(<span class="cm-variable-2">n</span> <span class="cm-operator">-</span> <span class="cm-number">2</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Driver Code</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">let</span> <span class="cm-def">n</span> <span class="cm-operator">=</span> <span class="cm-number">5</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"Fibonacci series of 5 numbers is:"</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// for loop to print the fibonacci series.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">n</span>; <span class="cm-variable">i</span><span class="cm-operator">++</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">fib</span>(<span class="cm-variable">i</span>) <span class="cm-operator">+</span> <span class="cm-string">" "</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 14px; width: 1px; border-bottom: 0px solid transparent; top: 473px;"></div><div class="CodeMirror-gutters" style="height: 487px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter breakpoints"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div></gfg-panel></gfg-tabs><div class="code-output"><br><strong>Output</strong><pre style="position: relative;">Fibonacci series of 5 numbers is: 0 1 1 2 3 <div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div><p dir="ltr"><b><strong>Recursion Tree for the above Code:</strong></b></p>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20220815013010/fibonaci.jpg" alt="fibonaci" width="326" height="184" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20220815013010/fibonaci-100x56.jpg 100w,https://media.geeksforgeeks.org/wp-content/uploads/20220815013010/fibonaci-200x113.jpg 200w,https://media.geeksforgeeks.org/wp-content/uploads/20220815013010/fibonaci-300x169.jpg 300w" loading="lazy"><p dir="ltr"><br></p>
+<h3><span>Example: &nbsp;Real Applications of Recursion in real problems</span></h3><p dir="ltr"><span>Recursion is a powerful technique that has many applications in computer science and programming. Here are some of the common applications of recursion:</span></p>
+<ul><li value="1"><b><strong>Tree and graph traversal</strong></b><span>: Recursion is frequently used for traversing and searching data structures such as trees and graphs. Recursive algorithms can be used to explore all the nodes or vertices of a tree or graph in a systematic way.</span></li><li value="2"><b><strong>Sorting algorithms</strong></b><span>: Recursive algorithms are also used in sorting algorithms such as quicksort and merge sort. These algorithms use recursion to divide the data into smaller subarrays or sublists, sort them, and then merge them back together.</span></li><li value="3"><b><strong>Divide-and-conquer algorithms</strong></b><span>: Many algorithms that use a divide-and-conquer approach, such as the binary search algorithm, use recursion to break down the problem into smaller subproblems.</span></li><li value="4"><b><strong>Fractal generation</strong></b><span>: Fractal shapes and patterns can be generated using recursive algorithms. For example, the Mandelbrot set is generated by repeatedly applying a recursive formula to complex numbers.</span></li><li value="5"><b><strong>Backtracking algorithms</strong></b><span>: Backtracking algorithms are used to solve problems that involve making a sequence of decisions, where each decision depends on the previous ones. These algorithms can be implemented using recursion to explore all possible paths and backtrack when a solution is not found.</span></li><li value="6"><b><strong>Memoization</strong></b><span>: Memoization is a technique that involves storing the results of expensive function calls and returning the cached result when the same inputs occur again. Memoization can be implemented using recursive functions to compute and cache the results of subproblems.</span></li></ul><p dir="ltr"><span>These are just a few examples of the many applications of recursion in computer science and programming. Recursion is a versatile and powerful tool that can be used to solve many different types of problems.</span></p>
+<p dir="ltr"><b><strong>What are the disadvantages of recursive programming over iterative programming?</strong></b><span>&nbsp;</span><br><span>Note every recursive program can be written iteratively and vice versa is also true. </span></p>
+<ul><li value="1"><span>Recursive programs typically have more space requirements and also more time to maintain the recursion call stack.</span></li><li value="2"><span>Recursion can make the code more difficult to understand and debug, since it requires thinking about multiple levels of function calls..</span></li></ul><p dir="ltr"><b><strong>What are the advantages of recursive programming over iterative programming?</strong></b><span>&nbsp;</span></p>
+<ul><li value="1"><span>Recursion provides a clean and simple way to write code. </span></li><li value="2"><span>Some problems are inherently recursive like </span><a href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/" target="_blank" rel="noopener"><span>tree traversals</span></a><span>, </span><a href="https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/" rel="noopener"><span>Tower of Hanoi</span></a><span>, etc. For such problems, it is preferred to write recursive code. We can write such codes also iteratively with the help of a stack data structure. For example refer </span><a href="https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/" rel="noopener"><span>Inorder Tree Traversal without Recursion</span></a><span>, </span><a href="https://www.geeksforgeeks.org/iterative-tower-of-hanoi/" rel="noopener"><span>Iterative Tower of Hanoi</span></a><span>.</span></li></ul><p dir="ltr"><b><strong>Summary of Recursion:</strong></b></p>
+<ul><li value="1"><span>There are two types of cases in recursion i.e. recursive case and a base case.</span></li><li value="2"><span>The base case is used to terminate the recursive function when the case turns out to be true.</span></li><li value="3"><span>Each recursive call makes a new copy of that method in the stack memory.</span></li><li value="4"><span>Infinite recursion may lead to running out of stack memory.</span></li><li value="5"><span>Examples of Recursive algorithms: Merge Sort, Quick Sort, Tower of Hanoi, Fibonacci Series, Factorial Problem, etc.</span></li></ul><p dir="ltr"><b><strong>Output based practice problems for beginners:</strong></b><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/practice-questions-for-recursion/" rel="noopener"><span>Practice Questions for Recursion | Set 1</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/practice-questions-for-recursion-set-2/" rel="noopener"><span>Practice Questions for Recursion | Set 2</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/practice-questions-for-recursion-set-3/" rel="noopener"><span>Practice Questions for Recursion | Set 3</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/practice-questions-for-recursion-set-4/" rel="noopener"><span>Practice Questions for Recursion | Set 4</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/practice-questions-for-recursion-set-5/" rel="noopener"><span>Practice Questions for Recursion | Set 5</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/practice-questions-for-recursion-set-6/" rel="noopener"><span>Practice Questions for Recursion | Set 6</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/practice-questions-for-recursion-set-7/" rel="noopener"><span>Practice Questions for Recursion | Set 7</span></a><br><a href="https://www.geeksforgeeks.org/algorithms-gq/recursion-gq/" rel="noopener"><span>Quiz on Recursion</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/explore?page=1&amp;category=Recursion&amp;sortBy=submissions" rel="noopener"><span>Coding Practice on Recursion:</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/tag/recursion/" rel="noopener"><span>All Articles on Recursion</span></a><span>&nbsp;</span><br><a href="https://www.geeksforgeeks.org/recursion-practice-problems-solutions/" rel="noopener"><span>Recursive Practice Problems with Solutions</span></a></p>
+<br><div id="AP_G4GR_6"></div>
+<!-- Quiz Carousel -->
+
+<div class="article_bottom_text"></div><br>
+                          <div id="video-tab-content" class="video-tab-content">
+<div id="GFG_AD_InContent_Desktop_728x280"></div>
+                            </div>
+            <div class="d-row content-bw " style="margin-top: 20px;">
+<div class="article-pgnavi_prev"><div class="comment_div" data-title="Comments"><button class="author_footer_btn" data-gfg-action="loadComments">
+<div class="discussion_panel">
+<i class="discussion_button">
+</i>
+Comment
+</div></button></div><div class="trigger-div"><button class="author_footer_btn"><div class="more_info">More info<span class="more_info_uparrow gfg-icon gfg-icon_arrow-down-thin"></span></div></button></div>
+<a href="https://www.geeksforgeeks.org/about/contact-us/?listicles" target="_blank" class="advertise-with-us-div"><button class="advertise-with-us-btn"><span class="advertise-with-us-text">Advertise with us</span></button></a>   
+</div>
+          <div class="article-pgnavi_next">
+<a href="https://www.geeksforgeeks.org/what-is-recursion/?ref=next_article" class="pg-head">
+<span>Next Article</span>
+<span class="gfg-icon gfg-icon_next"></span>
+</a>
+<!-- <div class="pg-meta">8 Min Read&ensp;|&ensp;<a href="#">Java</a></div> -->
+<div class="pg-main">
+<a href="https://www.geeksforgeeks.org/what-is-recursion/?ref=next_article">What is Recursion?</a>
+</div>
+</div>
+    </div>
+<div class="more-info hidden-div">
+<div class="article-meta-author-details ">
+<div class="article-meta-author-details-block">
+<div class="article-meta-author-details-profile-display">
+<div class="author_info">
+<div class="article-meta-author-details-profile-display-icon">
+<div class="image-wrap auth-external-author" style="position: relative; pointer-events: none; user-select: none;"><p class="profileCard-profile-picture" style="background-color:#B0DAFF;margin: 0px;">S</p></div>                                                </div>
+<div class="article-meta-author-details-profile-display-name">
+<div class="info" style="position: unset;">
+<div class="name" style="cursor: default;">
+<span class="footer_author_name" style="font-weight: 600">Sonal Tuteja</span>
+</div>
+</div>                                                </div>
+</div>
+                                        </div>
+
+</div>
+<div class="article_bottom_suggestion_wrapper">
+<div class="article_bottom_suggestion" data-title="Follow">
+<a href="https://news.google.com/publications/CAAqBwgKMLTrzwsw44bnAw?hl=en-IN&amp;gl=IN&amp;ceid=IN%3Aen" target="_blank">
+<img class="gfg-icon_Gnews no-zoom-in-cursor" src="https://media.geeksforgeeks.org/auth-dashboard-uploads/Google-news.svg" loading="lazy" alt="News">
+</a>
+</div> 
+<div pid="140498" class="article--viewer_like tooltip tooltipBottom" data-title="Like Article">
+<!-- <span class="tooltiptext likeTooltipBottom">Like Article</span> -->
+<button id="likeButton" aria-label="like article" data-gfg-action="like-article" data-bookmark-value="0" data-liked="false" style="color: #5B5A5A !important; display: flex; align-items: center; background-color: unset; margin: 0px !important; padding: 5px 0px;">
+<i class="author-badge-like-button"></i>
+<figure id="likeCount" style="margin-left: 3px; margin-top: 4px; color: var(--like-count-color); font-size: 14px; font-weight: 600;" class="favoriteText">524</figure>
+</button>
+</div>
+<div class="article_bottom_suggestion" onclick="improveArticleCall()" data-title="Improve">
+<span class="improveTooltipBottom">Improve</span>
+<i class="author-badge-improvement-button"></i>
+</div>
+</div>
+</div>
+<div class="bottom-wrap" style="margin-top: 12px; margin-bottom: 25px;">
+        <div class="improved">
+<div class="t-head">Article Tags : </div>
+<ul>
+
+<li style="border-radius: 25px;" class="">
+<a href="https://www.geeksforgeeks.org/category/dsa/algorithm/?ref=article_category">Algorithms</a>
+</li>
+<li style="border-radius: 25px;" class="">
+<a href="https://www.geeksforgeeks.org/category/dsa/?ref=article_category">DSA</a>
+</li>
+<li style="border-radius: 25px;" class="">
+<a href="https://www.geeksforgeeks.org/category/dsa/algorithm/recursion/?ref=article_category">Recursion</a>
+</li>
+<li style="border-radius: 25px;" class="">
+<a href="https://www.geeksforgeeks.org/tag/dsa-tutorials/?ref=article_tag">DSA Tutorials</a>
+</li>
+<li style="border-radius: 25px;display:none;" class="articles-hidden-tags">
+<a href="https://www.geeksforgeeks.org/tag/tail-recursion/?ref=article_tag">tail-recursion</a>
+</li>                                    </ul>
+                        <button id="showMoreTagsBtn" class="show-more-recommendation-button">+1 More</button>
+                </div>
+                                    <div class="improved">
+<div class="t-head">Practice Tags : </div>
+<ul class="practice-tags">
+<li><a href="https://www.geeksforgeeks.org/explore?category=Algorithms&amp;ref=article_practice_tag">Algorithms</a></li><li><a href="https://www.geeksforgeeks.org/explore?category=Recursion&amp;ref=article_practice_tag">Recursion</a></li>                                    </ul>
+                </div>
+</div>
+</div>
+
+
+           
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    class="topic-video" 
+                    src="https://www.youtube.com/embed/V1F1u-uSHHM" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/DSA 1-dars.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/1-topshiriq.docx" download>Download Task PDF</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
