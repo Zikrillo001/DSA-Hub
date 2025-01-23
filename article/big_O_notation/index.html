@@ -161,7 +161,83 @@
             <p dir="ltr"><span>Lineer vaqt murakkabligi degani, algoritmning ishlash vaqti kirish hajmi bilan lineer ravishda o'sadi.</span></p>
             <div id="GFG_AD_gfg_outstream_incontent-2"></div>
             <p dir="ltr"><span>Misol uchun, bir algoritmni ko'rib chiqing, u </span><a href="https://www.geeksforgeeks.org/linear-search/" rel="noopener"><span>massiv bo'ylab o'ziga xos elementni topish uchun o'tadi</span></a><span>:</span></p>
-            <p dir="ltr"><span>Polinomial vaqt murakkabligiga ega algoritmlar odatda samarali deb hisoblanadi, chunki ishlash vaqti kirish hajmi o'sgan sari ma'qul tezlikda o'sadi. Polinomial vaqt murakkabligiga ega algoritmlar uchun keng tarqalgan misollar shulardir:</span><b><strong> lineer vaqt murakkabligi O(n)</strong></b><span>, </span><b><strong>kvadratik vaqt murakkabligi O(n</strong></b><b><sup><strong>2</strong></sup></b><b><strong>)</strong></b><span>, va </span><b><strong>kubik vaqt murakkabligi O(n</strong></b><b><sup><strong>3</strong></sup></b><b><strong>)</strong></b><span>.</span></p>
+            </section>
+        <section class="code">
+            <pre><code>function findElement(arr, key) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === key) {
+            return true;
+        }
+    }
+    return false;
+}</code></pre>
+        </section>
+
+        <h3><span>2. Logarifmik Vaqt Murakkabligi: Big O(log n) Murakkablik</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Logarifmik vaqt murakkabligi algoritmning ish vaqti kiritilgan ma'lumot hajmining logarifmiga mutanosib ekanligini anglatadi.</span></p>
+            <p dir="ltr"><span>Masalan,</span><a href="https://www.geeksforgeeks.org/binary-search/" rel="noopener"><span> ikkilik qidiruv algoritmi </span></a><span>logarifmik vaqt murakkabligiga ega:</span></p>
+        </section>
+        <section class="code">
+            <pre><code>function binarySearch(arr, l, r, x) {
+    if (r >= l) {
+        let mid = Math.floor(l + (r - l) / 2);
+        if (arr[mid] === x)
+            return mid;
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    return -1;
+}</code></pre>
+        </section>
+
+        <h3><span>3. Kvadratik Vaqt Murakkabligi: Big O(n</span><sup><span>2</span></sup><span>) Murakkablik</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Kvadratik vaqt murakkabligi algoritmning ish vaqti kiritilgan ma'lumot hajmining kvadratiga mutanosib ekanligini anglatadi.</span></p>
+            <p dir="ltr"><span>Masalan, oddiy </span><a href="https://www.geeksforgeeks.org/bubble-sort/" rel="noopener"><span>bubble sort algoritmi</span></a><span> kvadratik vaqt murakkabligiga ega:</span></p>
+        </section>
+        <section class="code">
+            <pre><code>function bubbleSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap function
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+}</code></pre>
+        </section>
+
+        <h3><span>4. Kubik Vaqt Murakkabligi: Big O(n</span><sup><span>3</span></sup><span>) Murakkablik</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Kubik vaqt murakkabligi algoritmning ish vaqti kiritilgan ma'lumot hajmining kubiga mutanosib ekanligini anglatadi.</span></p>
+            <p dir="ltr"><span>Masalan, oddiy</span><a href="https://www.geeksforgeeks.org/matrix-multiplication/" rel="noopener"><span> matritsa ko'paytirish algoritmi</span></a><span> kubik vaqt murakkabligiga ega:</span></p>
+        </section>
+        <section class="code">
+            <pre><code>function multiply(mat1, mat2) {
+    const N = mat1.length;
+    let res = new Array(N).fill(0).map(() => new Array(N).fill(0));
+
+    for (let i = 0; i < N; i++) {
+        for (let j = 0; j < N; j++) {
+            res[i][j] = 0;
+            for (let k = 0; k < N; k++) {
+                res[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+
+    return res;
+}</code></pre>
+        </section>
+
+        <h3><span>5. Ko'phadli Vaqt Murakkabligi: Big O(n</span><sup><span>k</span></sup><span>) Murakkablik</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Ko'phadli vaqt murakkabligi algoritmning ish vaqtini kiritilgan ma'lumot hajmining ko'phadli funktsiyasi sifatida ifodalash mumkinligini anglatadi</span><b><strong> n</strong></b><span>. Big </span><b><strong>O</strong></b><span> notatsiyasida, algoritm ko'phadli vaqt murakkabligiga ega deb aytiladi, agar uning vaqt murakkabligi</span><b><strong> O(n</strong></b><b><sup><strong>k</strong></sup></b><b><strong>)</strong></b><span> bo'lsa, bu yerda </span><b><strong>k</strong></b><span> doimiy bo'lib, ko'phadning darajasini ifodalaydi.</span></p>
+            <p dir="ltr"><span>Ko'phadli vaqt murakkabligiga ega algoritmlar odatda samarali deb hisoblanadi, chunki kiritilgan ma'lumot hajmi oshgani sari ish vaqti mo'tadil ravishda oshadi. Ko'phadli vaqt murakkabligiga ega algoritmlarning keng tarqalgan misollariga </span><b><strong>chiziqli vaqt murakkabligi O(n)</strong></b><span>, </span><b><strong>kvadratik vaqt murakkabligi O(n</strong></b><b><sup><strong>2</strong></sup></b><b><strong>)</strong></b><span> va </span><b><strong>kubik vaqt murakkabligi O(n</strong></b><b><sup><strong>3</strong></sup></b><b><strong>)</strong></b><span> kiradi.</span></p>
         </section>
         
         <h3><span>6. Eksponential Vaqt Murakkabligi: Big O(2</span><sup><span>n</span></sup><span>) Murakkabligi</span></h3>
@@ -170,9 +246,42 @@
             <div id="GFG_AD_gfg_outstream_incontent-3"></div>
             <p dir="ltr"><span>Misol uchun, </span><a href="https://www.geeksforgeeks.org/backtracking-to-find-all-subsets/" rel="noopener"><span>to'plamning barcha qismlarini yaratish</span></a><span> masalasi eksponential vaqt murakkabligiga ega:</span></p>
         </section>
+        <section class="code">
+            <pre><code>function generateSubsets(arr) {
+    const n = arr.length;
+    for (let i = 0; i < (1 << n); i++) {
+        let subset = [];
+        for (let j = 0; j < n; j++) {
+            if (i & (1 << j)) {
+                subset.push(arr[j]);
+            }
+        }
+        console.log(subset.join(" "));
+    }
+}</code></pre>
+        </section>
 
-
-<!-- code -->
+        <h3><span>Faktorial Vaqt Murakkabligi: Big O(n!) Murakkablik</span></h3>
+        <section class="description">
+            <p dir="ltr"><span>Faktorial vaqt murakkabligi algoritmning ish vaqti kiritilgan ma'lumot hajmi o'sishi bilan faktorial tarzda ortishini anglatadi. Bu odatda ma'lumotlar to'plamining barcha permutatsiyalarini yaratadigan algoritmlarda kuzatiladi.</span></p>
+            <p dir="ltr"><span>Quyida massivning barcha permutatsiyalarini yaratadigan faktorial vaqt murakkabligiga ega algoritmga misol keltirilgan:</span></p>
+        </section>
+        <section class="code">
+            <pre><code>function permute(a, l, r) {
+    if (l === r) {
+        console.log(a.join(" "));
+    } else {
+        for (let i = l; i <= r; i++) {
+            [a[l], a[i]] = [a[i], a[l]];
+            permute(a, l + 1, r);
+            [a[l], a[i]] = [a[i], a[l]]; // backtrack
+        }
+    }
+}</code></pre>
+        </section>
+        <section class="description">
+            <p dir="ltr"><span>Agar eng ko'p ishlatiladigan Big O notatsiyalarni plot qilsak, bizning grafik quyidagicha bo'ladi:</span></p>
+        </section>
 
 
 
@@ -388,7 +497,7 @@
             <div class="video-wrapper">
                 <iframe 
                     class="topic-video" 
-                    src="https://www.youtube.com/embed/rZd2geTWEQM?list=PLViqJEFxopsmCzGy9js8BVyfxOF1OnhBD" 
+                    src="https://www.youtube.com/embed/cJGuskKdXT0" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
