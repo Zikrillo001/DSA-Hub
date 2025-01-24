@@ -12,517 +12,124 @@
 
     <div class="container">
         <!-- Topic Title -->
-        <h1>Algoritm nima | Algoritmlarga kirish</h1>
-        <h2><b><strong class="GFGEditorTheme__textUnderline">Algoritmning ta'rifi</strong></b></h2>
-        <!-- Description Section -->
-        <section class="description">
-            <p><strong>Algoritm so'zining ma'nosi:</strong> Algoritm so'zining ma'nosi: "Hisob-kitoblar yoki boshqa muammoni hal qilish operatsiyalarida amal qilinadigan cheklangan qoidalar yoki ko'rsatmalar to'plami" yoki "Matematik muammoni chekli qadamlar ichida hal qilish jarayoni bo'lib, ko'pincha rekursiv operatsiyalarni o'z ichiga oladi."</p>
-        </section>
+        <h1>Selection Sort</h1>
+    <h2><b><strong class="GFGEditorTheme__textUnderline">Algoritmning ta'rifi</strong></b></h2>
+    <!-- Description Section -->
+    <section class="description">
+        <p><strong>Selection Sort algoritmining ta'rifi:</strong> Selection Sort — bu taqqoslashga asoslangan saralash algoritmi. U massivni tartiblash uchun har safar saralanmagan qismdan <b>eng kichik (yoki eng katta)</b> elementni tanlab olib, uni saralanmagan qismining birinchi elementi bilan almashtirish orqali ishlaydi. Bu jarayon butun massiv tartiblangan holga kelgunga qadar davom etadi.</p>
+    </section>
 
         <!-- Image Section -->
         <section class="media">
             <h2>Illustration</h2>
-            <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20191016135223/What-is-Algorithm_-1024x631.jpg" alt="Topic N Illustration" class="topic-image">
+            <img src="images/selection_sort_1_0.gif" alt="Topic N Illustration" class="topic-image">
         </section>
         
         
-        <p dir="ltr"><b><strong>Selection Sort</strong></b><span> is a comparison-based sorting algorithm. It sorts an array by repeatedly selecting the </span><b><strong>smallest (or largest)</strong></b><span> element from the unsorted portion and swapping it with the first unsorted element. This process continues until the entire array is sorted.</span></p>
-        <ol><li value="1"><span>First we find the smallest element and swap it with the first element. This way we get the smallest element at its correct position. </span></li><li value="2"><span>Then we find the smallest among remaining elements (or second smallest) and swap it with the second element.</span></li><li value="3"><span>We keep doing this until we get all elements moved to correct position.</span></li></ol><gfg-carousel style="white-space: unset; display: flex;"><div class="gfg-preview-carousel-wrapper" slot="carousel"><div class="gfg-preview-carousel"><div class="gfg-preview-carousel-content" data-show="true" slot="content" data-index="0" style="position: absolute; top: 0px; width: 100%; transform: translateX(-90%);"><div class="gfg-preview-carousel-content-wrapper"><img class="gfg-preview-carousel-img bg" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-1.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-1.webp" alt="Selection-Sort-Algorithm-1.webp"><img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-1.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-1.webp" alt="Selection-Sort-Algorithm-1.webp"></div></div><div class="gfg-preview-carousel-content" data-show="true" slot="content" data-index="1" style="position: absolute; top: 0px; width: 100%; transform: translateX(10%);"><div class="gfg-preview-carousel-content-wrapper"><img class="gfg-preview-carousel-img bg" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-2.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-2.webp" alt="Selection-Sort-Algorithm-2.webp"><img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-2.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134343/Selection-Sort-Algorithm-2.webp" alt="Selection-Sort-Algorithm-2.webp"></div></div><div class="gfg-preview-carousel-content" data-show="false" slot="content" data-index="2" style="position: absolute; top: 0px; width: 100%; transform: translateX(-100%);"><div class="gfg-preview-carousel-content-wrapper"><img class="gfg-preview-carousel-img bg" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134344/Selection-Sort-Algorithm-3.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134344/Selection-Sort-Algorithm-3.webp" alt="Selection-Sort-Algorithm-3.webp"><img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134344/Selection-Sort-Algorithm-3.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134344/Selection-Sort-Algorithm-3.webp" alt="Selection-Sort-Algorithm-3.webp"></div></div><div class="gfg-preview-carousel-content" data-show="false" slot="content" data-index="3" style="position: absolute; top: 0px; width: 100%; transform: translateX(-100%);"><div class="gfg-preview-carousel-content-wrapper"><img class="gfg-preview-carousel-img bg" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-4.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-4.webp" alt="Selection-Sort-Algorithm-4.webp"><img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-4.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-4.webp" alt="Selection-Sort-Algorithm-4.webp"></div></div><div class="gfg-preview-carousel-content" data-show="false" slot="content" data-index="4" style="position: absolute; top: 0px; width: 100%; transform: translateX(-100%);"><div class="gfg-preview-carousel-content-wrapper"><img class="gfg-preview-carousel-img bg" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-5.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-5.webp" alt="Selection-Sort-Algorithm-5.webp"><img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-5.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134345/Selection-Sort-Algorithm-5.webp" alt="Selection-Sort-Algorithm-5.webp"></div></div><div class="gfg-preview-carousel-content" data-show="false" slot="content" data-index="5" style="position: absolute; top: 0px; width: 100%; transform: translateX(-100%);"><div class="gfg-preview-carousel-content-wrapper"><img class="gfg-preview-carousel-img bg" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134346/Selection-Sort-Algorithm-6.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134346/Selection-Sort-Algorithm-6.webp" alt="Selection-Sort-Algorithm-6.webp"><img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134346/Selection-Sort-Algorithm-6.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240926134346/Selection-Sort-Algorithm-6.webp" alt="Selection-Sort-Algorithm-6.webp"></div></div></div><div class="gfg-preview-carousel-toolbar">
-<span class="gfg-preview-carousel-left"><svg width="20" height="20" viewBox="-5.5 0 26 26" version="1.1" fill="currentColor">
-<title>Previous</title>
-<g stroke="none" stroke-width="1">
-<g sketch:type="MSLayerGroup" transform="translate(-423.000000, -1196.000000)" fill="currentColor">
-<path d="M428.115,1209 L437.371,1200.6 C438.202,1199.77 438.202,1198.43 437.371,1197.6 C436.541,1196.76 435.194,1196.76 434.363,1197.6 L423.596,1207.36 C423.146,1207.81 422.948,1208.41 422.985,1209 C422.948,1209.59 423.146,1210.19 423.596,1210.64 L434.363,1220.4 C435.194,1221.24 436.541,1221.24 437.371,1220.4 C438.202,1219.57 438.202,1218.23 437.371,1217.4 L428.115,1209" id="chevron-left" sketch:type="MSShapeGroup"></path>
-</g>
-</g>
-</svg>
-</span>
-<span class="gfg-preview-carousel-playpause"><svg aria-label="Pause" fill="currentColor" height="20" width="20" role="img" viewBox="0 0 48 48"><title>Pause</title><path d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"></path></svg></span>
-<span class="gfg-preview-carousel-right"><svg width="20" height="20" viewBox="-5.5 0 26 26" version="1.1" fill="currentColor">
-<title>Next</title>
-<g stroke="none" stroke-width="1">
-<g sketch:type="MSLayerGroup" transform="translate(-423.000000, -1196.000000)" fill="currentColor">
-<path d="M434.885,1209 L425.629,1200.6 C424.798,1199.77 424.798,1198.43 425.629,1197.6 C426.459,1196.76 427.806,1196.76 428.637,1197.6 L439.404,1207.36 C439.854,1207.81 440.052,1208.41 440.015,1209 C440.052,1209.59 439.854,1210.19 439.404,1210.64 L428.637,1220.4 C427.806,1221.24 426.459,1221.24 425.629,1220.4 C424.798,1219.57 424.798,1218.23 425.629,1217.4 L434.885,1209" id="chevron-right" sketch:type="MSShapeGroup"></path>
-</g>
-</g>
-</svg>
-</span>
-<span class="gfg-preview-carousel-index-count">2 / 6</span>
-</div></div></gfg-carousel><a id="practiceBanner" class="practiceDivBanner rc0" href="https://www.geeksforgeeks.org/problems/selection-sort/1?itm_source=geeksforgeeks&amp;itm_medium=article&amp;itm_campaign=practice_card" target="_blank" style="display: block;">
-<div class="recommended-div">Try it on GfG Practice <div class="icon"><img src="https://media.geeksforgeeks.org/auth-dashboard-uploads/Group-arrow.svg" alt="redirect icon" class="redirectIcon no-zoom-in-cursor"> </div></div>
-</a><gfg-tabs data-run-ide="true" data-mode="light" role="tablist">
-<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-0" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-0">C++</gfg-tab>
-<gfg-panel slot="panel" data-code-lang="cpp" role="tabpanel" id="gfg-panel-generated-0" aria-labelledby="gfg-tab-generated-0" hidden="">
-<code class="language-cpp"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// C++ program to implement Selection Sort</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">selectionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="c1">// Assume the current position holds</span>
-<span class="w">        </span><span class="c1">// the minimum element</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// Iterate through the unsorted portion</span>
-<span class="w">        </span><span class="c1">// to find the actual minimum</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">                </span><span class="c1">// Update min_idx if a smaller</span>
-<span class="w">                </span><span class="c1">// element is found</span>
-<span class="w">                </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="c1">// Move minimum element to its</span>
-<span class="w">        </span><span class="c1">// correct position</span>
-<span class="w">        </span><span class="n">swap</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">printArray</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">};</span>
-
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Original array: "</span><span class="p">;</span>
-<span class="w">    </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span><span class="w"> </span>
-
-<span class="w">    </span><span class="n">selectionSort</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Sorted array: "</span><span class="p">;</span>
-<span class="w">    </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
-</gfg-panel>
-<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-1" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-1">C</gfg-tab>
-<gfg-panel slot="panel" data-code-lang="c" role="tabpanel" id="gfg-panel-generated-1" aria-labelledby="gfg-tab-generated-1" hidden="">
-<code class="language-c"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// C program for implementation of selection sort</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span>
-<span class="w">        </span><span class="c1">// Assume the current position holds</span>
-<span class="w">        </span><span class="c1">// the minimum element</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="c1">// Iterate through the unsorted portion</span>
-<span class="w">        </span><span class="c1">// to find the actual minimum</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span>
-<span class="w">                </span><span class="c1">// Update min_idx if a smaller element is found</span>
-<span class="w">                </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="c1">// Move minimum element to its</span>
-<span class="w">        </span><span class="c1">// correct position</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="w">        </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">];</span>
-<span class="w">        </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">printArray</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">};</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Original array: "</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="n">selectionSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sorted array: "</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
-</gfg-panel>
-<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-2" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-2">Java</gfg-tab>
-<gfg-panel slot="panel" data-code-lang="java" role="tabpanel" id="gfg-panel-generated-2" aria-labelledby="gfg-tab-generated-2" hidden="">
-<code class="language-java"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// Java program for implementation of Selection Sort</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nc">GfG</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">){</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span>
-<span class="w">            </span><span class="c1">// Assume the current position holds</span>
-<span class="w">            </span><span class="c1">// the minimum element</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-
-<span class="w">            </span><span class="c1">// Iterate through the unsorted portion</span>
-<span class="w">            </span><span class="c1">// to find the actual minimum</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">min_idx</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                  </span>
-<span class="w">                    </span><span class="c1">// Update min_idx if a smaller element</span>
-<span class="w">                    </span><span class="c1">// is found</span>
-<span class="w">                    </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-
-<span class="w">            </span><span class="c1">// Move minimum element to its</span>
-<span class="w">            </span><span class="c1">// correct position</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
-<span class="w">            </span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">min_idx</span><span class="o">]</span><span class="p">;</span>
-<span class="w">            </span><span class="n">arr</span><span class="o">[</span><span class="n">min_idx</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w">           </span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">){</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">){</span>
-<span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="p">};</span>
-
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Original array: "</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">selectionSort</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Sorted array: "</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
-</gfg-panel>
-<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-3" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-3">Python</gfg-tab>
-<gfg-panel slot="panel" data-code-lang="python3" role="tabpanel" id="gfg-panel-generated-3" aria-labelledby="gfg-tab-generated-3" hidden="">
-<code class="language-python3"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1"># Python program for implementation of Selection</span>
-<span class="c1"># Sort</span>
-
-<span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-
-<span class="c1"># Assume the current position holds</span>
-<span class="c1"># the minimum element</span>
-<span class="n">min_idx</span> <span class="o">=</span> <span class="n">i</span>
-
-<span class="c1"># Iterate through the unsorted portion</span>
-<span class="c1"># to find the actual minimum</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-<span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]:</span>
-
-<span class="c1"># Update min_idx if a smaller element is found</span>
-<span class="n">min_idx</span> <span class="o">=</span> <span class="n">j</span>
-
-<span class="c1"># Move minimum element to its</span>
-<span class="c1"># correct position</span>
-<span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">print_array</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
-<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Original array: "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
-<span class="n">print_array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-
-<span class="n">selection_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Sorted array: "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
-<span class="n">print_array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
-</gfg-panel>
-<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-4" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-4">C#</gfg-tab>
-<gfg-panel slot="panel" data-code-lang="csharp" role="tabpanel" id="gfg-panel-generated-4" aria-labelledby="gfg-tab-generated-4" hidden="">
-<code class="language-csharp"><div class="highlight"><pre style="position: relative;"><span></span><span class="c1">// C# program for implementation</span>
-<span class="c1">// of Selection Sort</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">GfG</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">){</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">            </span><span class="c1">// Assume the current position holds</span>
-<span class="w">            </span><span class="c1">// the minimum element</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-
-<span class="w">            </span><span class="c1">// Iterate through the unsorted portion</span>
-<span class="w">            </span><span class="c1">// to find the actual minimum</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">                    </span><span class="c1">// Update min_idx if a smaller element</span>
-<span class="w">                    </span><span class="c1">// is found</span>
-<span class="w">                    </span><span class="n">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-
-<span class="w">           </span><span class="c1">// Move minimum element to its</span>
-<span class="w">           </span><span class="c1">// correct position</span>
-<span class="w">           </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="w">           </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">];</span>
-<span class="w">           </span><span class="n">arr</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w">         </span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">printArray</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">){</span>
-<span class="w">        </span><span class="k">foreach</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">arr</span><span class="p">){</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(){</span>
-<span class="w">        </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">64</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="p">};</span>
-
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"Original array: "</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">selectionSort</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"Sorted array: "</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printArray</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
-</gfg-panel>
-<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-5" aria-selected="true" tabindex="0" aria-controls="gfg-panel-generated-5" selected="">JavaScript</gfg-tab>
-<gfg-panel slot="panel" data-code-lang="javascript" role="tabpanel" id="gfg-panel-generated-5" aria-labelledby="gfg-tab-generated-5">
-<code class="language-javascript"><div class="highlight"><pre hidden="" style="position: relative;"><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">selectionSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span>
-<span class="w">        </span><span class="c1">// Assume the current position holds</span>
-<span class="w">        </span><span class="c1">// the minimum element</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="c1">// Iterate through the unsorted portion</span>
-<span class="w">        </span><span class="c1">// to find the actual minimum</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">arr</span><span class="p">[</span><span class="nx">min_idx</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span>
-<span class="w">                </span><span class="c1">// Update min_idx if a smaller element is found</span>
-<span class="w">                </span><span class="nx">min_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">j</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="c1">// Move minimum element to its</span>
-<span class="w">        </span><span class="c1">// correct position</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-<span class="w">        </span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">[</span><span class="nx">min_idx</span><span class="p">];</span>
-<span class="w">        </span><span class="nx">arr</span><span class="p">[</span><span class="nx">min_idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">temp</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">printArray</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" "</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="c1">// Driver function </span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">64</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">22</span><span class="p">,</span><span class="w"> </span><span class="mf">11</span><span class="p">];</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Original array: "</span><span class="p">);</span>
-<span class="nx">printArray</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
-
-<span class="nx">selectionSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sorted array: "</span><span class="p">);</span>
-<span class="nx">printArray</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
-<div class="CodeMirror cm-s-default"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 56px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 41px; margin-bottom: -16px; border-right-width: 14px; min-height: 1007px; min-width: 582.417px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>43</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 15px; top: 0px; height: 23.2292px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -41px; width: 41px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">selectionSort</span>(<span class="cm-def">arr</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">let</span> <span class="cm-def">n</span> <span class="cm-operator">=</span> <span class="cm-variable-2">arr</span>.<span class="cm-property">length</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">n</span> <span class="cm-operator">-</span> <span class="cm-number">1</span>; <span class="cm-variable-2">i</span><span class="cm-operator">++</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-comment">// Assume the current position holds</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-comment">// the minimum element</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">let</span> <span class="cm-def">min_idx</span> <span class="cm-operator">=</span> <span class="cm-variable-2">i</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-comment">// Iterate through the unsorted portion</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-comment">// to find the actual minimum</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">j</span> <span class="cm-operator">=</span> <span class="cm-variable-2">i</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>; <span class="cm-variable-2">j</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">n</span>; <span class="cm-variable-2">j</span><span class="cm-operator">++</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">            <span class="cm-keyword">if</span> (<span class="cm-variable-2">arr</span>[<span class="cm-variable-2">j</span>] <span class="cm-operator">&lt;</span> <span class="cm-variable-2">arr</span>[<span class="cm-variable-2">min_idx</span>]) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">            </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">                <span class="cm-comment">// Update min_idx if a smaller element is found</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">                <span class="cm-variable-2">min_idx</span> <span class="cm-operator">=</span> <span class="cm-variable-2">j</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">            }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-comment">// Move minimum element to its</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-comment">// correct position</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">let</span> <span class="cm-def">temp</span> <span class="cm-operator">=</span> <span class="cm-variable-2">arr</span>[<span class="cm-variable-2">i</span>];</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">22</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-variable-2">arr</span>[<span class="cm-variable-2">i</span>] <span class="cm-operator">=</span> <span class="cm-variable-2">arr</span>[<span class="cm-variable-2">min_idx</span>];</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">23</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-variable-2">arr</span>[<span class="cm-variable-2">min_idx</span>] <span class="cm-operator">=</span> <span class="cm-variable-2">temp</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">24</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">25</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">26</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">27</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">printArray</span>(<span class="cm-def">arr</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">28</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">val</span> <span class="cm-keyword">of</span> <span class="cm-variable-2">arr</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">29</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-variable">process</span>.<span class="cm-property">stdout</span>.<span class="cm-property">write</span>(<span class="cm-variable-2">val</span> <span class="cm-operator">+</span> <span class="cm-string">" "</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">30</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">31</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable">console</span>.<span class="cm-property">log</span>();</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">32</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">33</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">34</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Driver function </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">35</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">const</span> <span class="cm-def">arr</span> <span class="cm-operator">=</span> [<span class="cm-number">64</span>, <span class="cm-number">25</span>, <span class="cm-number">12</span>, <span class="cm-number">22</span>, <span class="cm-number">11</span>];</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">36</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">37</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"Original array: "</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">38</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">printArray</span>(<span class="cm-variable">arr</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">39</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">40</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">selectionSort</span>(<span class="cm-variable">arr</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">41</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">42</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">"Sorted array: "</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -41px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">43</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">printArray</span>(<span class="cm-variable">arr</span>);</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 14px; width: 1px; border-bottom: 0px solid transparent; top: 1007px;"></div><div class="CodeMirror-gutters" style="height: 1021px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter breakpoints"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div></gfg-panel>
-<gfg-tab slot="tab" role="tab" id="gfg-tab-generated-6" aria-selected="false" tabindex="-1" aria-controls="gfg-panel-generated-6">PHP</gfg-tab>
-<gfg-panel slot="panel" data-code-lang="php" role="tabpanel" id="gfg-panel-generated-6" aria-labelledby="gfg-tab-generated-6" hidden="">
-<code class="language-php"><div class="highlight"><pre style="position: relative;"><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">function</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$arr</span><span class="p">)</span> <span class="p">{</span>
-<span class="nv">$n</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$arr</span><span class="p">);</span>
-<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-
-<span class="c1">// Assume the current position holds</span>
-<span class="c1">// the minimum element</span>
-<span class="nv">$min_idx</span> <span class="o">=</span> <span class="nv">$i</span><span class="p">;</span>
-
-<span class="c1">// Iterate through the unsorted portion</span>
-<span class="c1">// to find the actual minimum</span>
-<span class="k">for</span> <span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nv">$n</span><span class="p">;</span> <span class="nv">$j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$arr</span><span class="p">[</span><span class="nv">$j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$arr</span><span class="p">[</span><span class="nv">$min_idx</span><span class="p">])</span> <span class="p">{</span>
-
-<span class="c1">// Update min_idx if a smaller element is found</span>
-<span class="nv">$min_idx</span> <span class="o">=</span> <span class="nv">$j</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Move minimum element to its</span>
-<span class="c1">// correct position</span>
-<span class="nv">$temp</span> <span class="o">=</span> <span class="nv">$arr</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-<span class="nv">$arr</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$arr</span><span class="p">[</span><span class="nv">$min_idx</span><span class="p">];</span>
-<span class="nv">$arr</span><span class="p">[</span><span class="nv">$min_idx</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$temp</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">printArray</span><span class="p">(</span><span class="nv">$arr</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$arr</span> <span class="k">as</span> <span class="nv">$val</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">echo</span> <span class="nv">$val</span> <span class="o">.</span> <span class="s2">" "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nv">$arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">11</span><span class="p">];</span>
-
-<span class="k">echo</span> <span class="s2">"Original array: "</span><span class="p">;</span>
-<span class="nx">printArray</span><span class="p">(</span><span class="nv">$arr</span><span class="p">);</span>
-
-<span class="nx">selectionSort</span><span class="p">(</span><span class="nv">$arr</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="s2">"Sorted array: "</span><span class="p">;</span>
-<span class="nx">printArray</span><span class="p">(</span><span class="nv">$arr</span><span class="p">);</span>
-
-<span class="cp">?&gt;</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></code>
-</gfg-panel></gfg-tabs><div class="code-output"><br><strong>Output</strong><pre style="position: relative;">Original vector: 64 25 12 22 11 
-Sorted vector:   11 12 22 25 64 
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div><h2><span>Complexity Analysis of Selection Sort</span></h2><p dir="ltr"><b><strong>Time Complexity: O(n</strong></b><b><sup><strong>2</strong></sup></b><b><strong>)</strong></b><span> ,as there are two nested loops:</span></p><div id="GFG_AD_gfg_mobile_336x280"></div>
-<ul><li value="1"><span>One loop to select an element of Array one by one = O(n)</span></li><li value="2"><span>Another loop to compare that element with every other Array element = O(n)</span></li><li value="3"><span>Therefore overall complexity = O(n) * O(n) = O(n*n) = O(n</span><sup><span>2</span></sup><span>)</span></li></ul><p dir="ltr"><b><strong>Auxiliary Space:</strong></b><span> O(1) as the only extra memory used is for temporary variables.</span></p>
-<h2><span>Advantages of Selection Sort</span></h2><ul><li value="1"><span>Easy to understand and implement, making it ideal for teaching basic sorting concepts.</span></li><li value="2"><span>Requires only a constant O(1) extra memory space.</span></li><li value="3"><span>It requires less number of swaps (or memory writes) compared to many other standard algorithms. Only </span><a href="https://www.geeksforgeeks.org/cycle-sort/" target="_blank" rel="noopener"><span>cycle sort</span></a><span> beats it in terms of memory writes. Therefore it can be simple algorithm choice when memory writes are costly.</span></li></ul><h2><b><strong>Disadvantages of the Selection Sort </strong></b></h2><ul><li value="1"><span>Selection sort has a time complexity of O(n^2) makes it slower compared to algorithms like </span><a href="https://www.geeksforgeeks.org/quick-sort-algorithm/" target="_blank" rel="noopener"><span>Quick Sort</span></a><span> or </span><a href="https://www.geeksforgeeks.org/merge-sort/" target="_blank" rel="noopener"><span>Merge Sort</span></a><span>.</span></li><li value="2"><span>Does not maintain the relative order of equal elements which means it is not stable.</span></li></ul><h2><span>Applications of Selection Sort</span></h2><ul><li value="1"><span>Perfect for teaching fundamental sorting mechanisms and algorithm design.</span></li><li value="2"><span>Suitable for small lists where the overhead of more complex algorithms isn’t justified and memory writing is costly as it requires less memory writes compared to other standard sorting algorithms.</span></li><li value="3"><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener"><span>Heap Sort </span></a><span>algorithm is based on Selection Sort.</span></li></ul><h2><span>Frequently Asked Questions (FAQs) on Selection Sort</span></h2><p dir="ltr"><b><strong>Question 1: </strong></b><span>Is Selection Sort a stable sorting algorithm?</span></p>
-<blockquote><p dir="ltr"><b><strong>Answer:</strong></b><span> No, Selection Sort is </span><b><strong>not stable</strong></b><span> as it may change the relative order of equal elements.</span></p>
-</blockquote><p dir="ltr"><b><strong>Question 2: </strong></b><span>What is the time complexity of Selection Sort?</span></p>
-<blockquote><p dir="ltr"><b><strong>Answer:</strong></b><span> Selection Sort has a time complexity of O(n^2) in the best, average, and worst cases.</span></p>
-</blockquote><p dir="ltr"><b><strong>Question 3: </strong></b><span>Does Selection Sort require extra memory?</span></p><div id="_GFG_ABP_Incontent_728x90" style="text-align:center;"><iframe src="https://aa.geeksforgeeks.org/iframe.html?code=GFG_ABP_Incontent_728x90" style="width: 748px; height: 110px;"></iframe></div><div id="GFG_AD_Desktop_InContent_ATF_336x280"></div><div id="GFG_AD_gfg_mobile_336x280_1"></div>
-<blockquote><p dir="ltr"><b><strong>Answer:</strong></b><span> No, Selection Sort is an in-place sorting algorithm and requires only O(1) additional space.</span></p>
-</blockquote><p dir="ltr"><b><strong>Question 4:</strong></b><span> When is it best to use Selection Sort?</span></p>
-<blockquote><p dir="ltr"><b><strong>Answer: </strong></b><span>Selection Sort is best used for small datasets, educational purposes, or when memory usage needs to be minimal.</span></p>
-</blockquote><p dir="ltr"><b><strong>Question 5:</strong></b><span> How does Selection Sort differ from Bubble Sort?</span></p>
-<blockquote><p dir="ltr"><b><strong>Answer: </strong></b><span>Selection Sort selects the minimum element and places it in the correct position with fewer swaps, while Bubble Sort repeatedly swaps adjacent elements to sort the array.</span></p>
-</blockquote><br><div id="AP_G4GR_6"></div>
-<!-- Quiz Carousel -->
-
-<div class="article_bottom_text"></div><br>
-                          <div id="video-tab-content" class="video-tab-content">
-<div id="GFG_AD_InContent_Desktop_728x280"></div>
-                            </div>
-            <div class="d-row content-bw " style="margin-top: 20px;">
-<div class="article-pgnavi_prev"><div class="comment_div" data-title="Comments"><button class="author_footer_btn" data-gfg-action="loadComments">
-<div class="discussion_panel">
-<i class="discussion_button">
-</i>
-Comment
-</div></button></div><div class="trigger-div"><button class="author_footer_btn"><div class="more_info">More info<span class="more_info_uparrow gfg-icon gfg-icon_arrow-down-thin"></span></div></button></div>
-<a href="https://www.geeksforgeeks.org/about/contact-us/?listicles" target="_blank" class="advertise-with-us-div"><button class="advertise-with-us-btn"><span class="advertise-with-us-text">Advertise with us</span></button></a>   
-</div>
-          <div class="article-pgnavi_next">
-<a href="https://www.geeksforgeeks.org/recursive-selection-sort/?ref=next_article" class="pg-head">
-<span>Next Article</span>
-<span class="gfg-icon gfg-icon_next"></span>
-</a>
-<!-- <div class="pg-meta">8 Min Read&ensp;|&ensp;<a href="#">Java</a></div> -->
-<div class="pg-main">
-<a href="https://www.geeksforgeeks.org/recursive-selection-sort/?ref=next_article">Recursive Selection Sort</a>
-</div>
-</div>
-    </div>
-<div class="more-info hidden-div">
-<div class="article-meta-author-details ">
-<div class="article-meta-author-details-block">
-<div class="article-meta-author-details-profile-display">
-<div class="author_info">
-<div class="article-meta-author-details-profile-display-icon">
-<a href="https://www.geeksforgeeks.org/user/kartik/contributions/?itm_source=geeksforgeeks&amp;itm_medium=article_author&amp;itm_campaign=auth_user" style="text-decoration: none;"><div class="image-wrap" style="position: relative"><img src="https://media.geeksforgeeks.org/auth/profile/sb7ciorr5k5t22woqkes" class="avatarprofile_image restrict-popup-gfg no-zoom-in-cursor" alt="author">
-<div style="position: absolute;top: -35px; left: -13px;">
-<i class="gfg-badge-icon md master"></i>
-</div>
-</div>
-</a>                                                </div>
-<div class="article-meta-author-details-profile-display-name">
-<a aria-label="author profile" href="https://www.geeksforgeeks.org/user/kartik/contributions/?itm_source=geeksforgeeks&amp;itm_medium=article_author&amp;itm_campaign=auth_user" style="display: block;overflow: hidden;width: 65px;text-decoration: none;text-overflow: ellipsis;color: var(--gfg-title-color);font-weight: bold;white-space: nowrap;">kartik</a>                                                </div>
-</div>
-<div class="author_follow_btn"><div class="article-meta-author-details-follow-button">
-<div class="follow-container">
-<div class="follow-btn">
-<button id="followAuthor" type="button" onclick="followOrUnfollowAuthor()" value="kartik">
-<span role="img" aria-label="plus" class="plus-icon"><svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg></span> <span>Follow</span></button></div></div></div></div>                                            </div>
-
-</div>
-<div class="article_bottom_suggestion_wrapper">
-<div class="article_bottom_suggestion" data-title="Follow">
-<a href="https://news.google.com/publications/CAAqBwgKMLTrzwsw44bnAw?hl=en-IN&amp;gl=IN&amp;ceid=IN%3Aen" target="_blank">
-<img class="gfg-icon_Gnews no-zoom-in-cursor" src="https://media.geeksforgeeks.org/auth-dashboard-uploads/Google-news.svg" loading="lazy" alt="News">
-</a>
-</div> 
-<div pid="142312" class="article--viewer_like tooltip tooltipBottom" data-title="Like Article">
-<!-- <span class="tooltiptext likeTooltipBottom">Like Article</span> -->
-<button id="likeButton" aria-label="like article" data-gfg-action="like-article" data-bookmark-value="0" data-liked="false" style="color: #5B5A5A !important; display: flex; align-items: center; background-color: unset; margin: 0px !important; padding: 5px 0px;">
-<i class="author-badge-like-button"></i>
-<figure id="likeCount" style="margin-left: 3px; margin-top: 4px; color: var(--like-count-color); font-size: 14px; font-weight: 600;" class="favoriteText">1.04k</figure>
-</button>
-</div>
-<div class="article_bottom_suggestion" onclick="improveArticleCall()" data-title="Improve">
-<span class="improveTooltipBottom">Improve</span>
-<i class="author-badge-improvement-button"></i>
-</div>
-</div>
-</div>
-<div class="bottom-wrap" style="margin-top: 12px; margin-bottom: 25px;">
-        <div class="improved">
-<div class="t-head">Article Tags : </div>
-<ul>
-
-<li style="border-radius: 25px;" class="">
-<a href="https://www.geeksforgeeks.org/category/dsa/?ref=article_category">DSA</a>
-</li>
-<li style="border-radius: 25px;" class="">
-<a href="https://www.geeksforgeeks.org/category/dsa/algorithm/sorting/?ref=article_category">Sorting</a>
-</li>
-<li style="border-radius: 25px;" class="">
-<a href="https://www.geeksforgeeks.org/tag/medlife/?ref=article_tag">Medlife</a>
-</li>                                    </ul>
-                </div>
-                                    <div class="improved">
-<div class="t-head">Practice Tags : </div>
-<ul class="practice-tags">
-<li><a href="https://www.geeksforgeeks.org/explore?company=Medlife&amp;ref=article_practice_tag">Medlife</a></li><li><a href="https://www.geeksforgeeks.org/explore?category=Sorting&amp;ref=article_practice_tag">Sorting</a></li>                                    </ul>
-                </div>
-</div>
-</div>
-
-
-
-
-           
+        <section class="description">
+            <ol>
+                <li><span>Dastlab, eng kichik elementni topamiz va uni birinchi element bilan almashtiramiz. Shu bilan eng kichik element o'zining to'g'ri o'rniga joylashtiriladi.</span></li>
+                <li><span>Keyin qolgan elementlar ichida eng kichik (yoki ikkinchi eng kichik) elementni topamiz va uni ikkinchi element bilan almashtiramiz.</span></li>
+                <li><span>Buni davom ettirib, barcha elementlarni o'zining to'g'ri joyiga o'tkazamiz.</span></li>
+            </ol>
+        </section>        
+        
+        <section class="code">
+            <pre><code>function selectionSort(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+    
+        // Assume the current position holds
+        // the minimum element
+        let min_idx = i;
+        
+        // Iterate through the unsorted portion
+        // to find the actual minimum
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) {
+            
+                // Update min_idx if a smaller element is found
+                min_idx = j;
+            }
+        }
+        
+        // Move minimum element to its
+        // correct position
+        let temp = arr[i];
+        arr[i] = arr[min_idx];
+        arr[min_idx] = temp;
+    }
+}
+
+function printArray(arr) {
+    for (let val of arr) {
+        process.stdout.write(val + " ");
+    }
+    console.log();
+}
+
+// Driver function 
+const arr = [64, 25, 12, 22, 11];
+
+console.log("Original array: ");
+printArray(arr);
+
+selectionSort(arr);
+
+console.log("Sorted array: ");
+printArray(arr);</code></pre>
+        </section>
+
+        <div class="code-output"><br><strong>Natija</strong><pre style="position: relative;">Asl massiv: 64 25 12 22 11 
+            Saralangan massiv: 11 12 22 25 64 </pre>
+        </div>
+            
+        <h2><span>Selection Sort algoritmining murakkablik tahlili</span></h2>
+        <section class="description">
+            <p dir="ltr"><b><strong>Vaqt murakkabligi: O(n</strong></b><b><sup><strong>2</strong></sup></b><b><strong>)</strong></b><span>, chunki bu yerda ikkita ichki sikl mavjud:</span></p>
+            <div id="GFG_AD_gfg_mobile_336x280"></div>
+            <ul>
+                <li value="1"><span>Massiv elementlarini birma-bir tanlash uchun birinchi sikl = O(n)</span></li>
+                <li value="2"><span>Ushbu elementni boshqa har bir massiv elementi bilan solishtirish uchun ikkinchi sikl = O(n)</span></li>
+                <li value="3"><span>Shunday qilib, umumiy murakkablik = O(n) * O(n) = O(n*n) = O(n</span><sup><span>2</span></sup><span>)</span></li>
+            </ul>
+            <p dir="ltr"><b><strong>Qo‘shimcha xotira:</strong></b><span> O(1), chunki faqat vaqtinchalik o‘zgaruvchilar uchun qo‘shimcha xotira ishlatiladi.</span></p>
+        </section>            
+
+        <h2><span>Selection Sort algoritmining afzalliklari</span></h2>
+        <section class="description">
+            <ul>
+                <li value="1"><span>Oddiy tushunish va amalga oshirish oson bo‘lib, asosiy saralash tushunchalarini o‘rgatish uchun ideal.</span></li>
+                <li value="2"><span>Faqat O(1) qo‘shimcha xotira talab qiladi.</span></li>
+                <li value="3"><span>Boshqa ko‘plab standart algoritmlarga qaraganda kamroq almashishlar (yoki xotira yozuvlari) talab qiladi. Faqat </span><span>Cycle Sort</span><span> xotira yozuvlari bo‘yicha undan ustun keladi. Shu sababli, xotira yozish operatsiyalari qimmat bo‘lgan hollarda oddiy algoritm sifatida tanlanishi mumkin.</span></li>
+            </ul>
+        </section>
+        
+        <h2><b><strong>Selection Sort algoritmining kamchiliklari</strong></b></h2>
+        <section class="description">
+            <ul>
+                <li value="1"><span>Selection Sort algoritmining vaqt murakkabligi O(n^2) bo‘lib, bu uni </span><a href="https://www.geeksforgeeks.org/quick-sort-algorithm/" target="_blank" rel="noopener"><span>Quick Sort</span></a><span> yoki </span><a href="https://www.geeksforgeeks.org/merge-sort/" target="_blank" rel="noopener"><span>Merge Sort</span></a><span> kabi algoritmlarga nisbatan sekin qiladi.</span></li>
+                <li value="2"><span>Teng elementlarning nisbiy tartibini saqlamaydi, ya'ni bu algoritm barqaror emas.</span></li>
+            </ul>
+        </section>
+        
+        <h2><span>Selection Sort algoritmining qo‘llanilish sohalari</span></h2>
+        <section class="description">
+            <ul>
+                <li value="1"><span>Asosiy tartiblash mexanizmlari va algoritm tuzishni o‘rgatish uchun juda mos.</span></li>
+                <li value="2"><span>Kichik ro‘yxatlar uchun mos, chunki murakkabroq algoritmlar uchun ortiqcha resurslar talab qilinmaydi va xotiraga yozish amallari qimmat bo‘lgan holatlarda foydalidir, chunki bu algoritm boshqa standart tartiblash algoritmlariga qaraganda kamroq xotira yozuvlarini talab qiladi.</span></li>
+                <li value="3"><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener"><span>Heap Sort</span></a><span> algoritmi Selection Sort asosida yaratilgan.</span></li>
+            </ul>
+        </section>
+
+      
         <!-- Video Section -->
         <section class="media">
             <h2>Video Explanation</h2>
             <div class="video-wrapper">
                 <iframe 
                     class="topic-video" 
-                    src="https://www.youtube.com/embed/V1F1u-uSHHM" 
+                    src="https://www.youtube.com/embed/gRPjhcg1mlE" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -530,12 +137,39 @@ Comment
             </div>
         </section>
 
+        <section class="code">
+            <h2>Selection Sort Code Example</h2>
+            <pre><code>function selectionSort(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        let min_index = i;
+        for (let j = i + 1; j < n; j++) {
+            if (arr[min_index] > arr[j]) {
+            min_index = j;
+        }
+        }
+        if (min_index !== i) {
+            let a = arr[i];
+            arr[i] = arr[min_index];
+            arr[min_index] = a;
+        }
+    }
+    return arr;
+}
+//
+//O(1) - xotira
+//(n-1)*(n-1) = n^2
+// Foydalanish
+let array = [64, 25, 12, 22, 11];//4
+console.log("Saralangan massiv: ", selectionSort(array));</code></pre>
+        </section>
+
         <!-- Additional Resources Section -->
         <section class="resources">
             <h2>Additional Resources</h2>
             <ul>
-                <li><a href="docs/DSA 1-dars.pptx" download>Download Presentation</a></li>
-                <li><a href="docs/1-topshiriq.docx" download>Download Task PDF</a></li>
+                <li><a href="docs/4-dars. Selection Sort and Recursion.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/4-topshiriq.docx" download>Download Task PDF</a></li>
             </ul>
         </section>
 
