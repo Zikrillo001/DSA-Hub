@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic N - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Quick Sort</h1>
+    <h2><b><strong class="GFGEditorTheme__textUnderline">Quick sort  ta'rifi</strong></b></h2>
+    <!-- Description Section -->
+    <section class="description">
+        <p dir="ltr">
+            <strong>QuickSort algoritmining ta'rifi:</strong> QuickSort — bu <a href="https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/" rel="noopener" class="resources">Bo‘lish va Yengish (Divide and Conquer)</a> tamoyiliga asoslangan saralash algoritmi. Bu algoritm biror elementni <b>tayanch (pivot)</b> sifatida tanlaydi va uni to‘g‘ri joyiga qo‘yish orqali berilgan massivni ajratib tartiblash ishlarini bajaradi.
+        </p>
+    </section>    
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="images/Quick_Sort_001.png" alt="Topic N Illustration" class="topic-image">
+        </section>
+        
+        
+        
+        
+        <section class="description">
+            <div id="table_of_content">
+                <p style="margin:4px; font-size:20px; font-weight:bold;">Mundarija</p>
+                <div id="GFG_AD_gfg_mobile_336x280"></div>
+                <ul>
+                    <li><a href="#how-does-quicksort-work" class="resources">QuickSort algoritmi qanday ishlaydi?</a></li>
+                    <li><a href="#details-of-partition-algorithm-and-illustration-" class="resources">Ajratish algoritmi ishlashi va tushuntirish</a></li>
+                    <li><a href="#illustration-of-quicksort-algorithm" class="resources">QuickSort algoritmining tushuntiruvchi misoli</a></li>
+                    <li><a href="#complexity-analysis-of-quick-sort-" class="resources">QuickSort algoritmining murakkablik tahlili</a></li>
+                    <li><a href="#advantages-of-quick-sort" class="resources">QuickSort algoritmining afzalliklari</a></li>
+                    <li><a href="#disadvantages-of-quick-sort" class="resources">QuickSort algoritmining kamchiliklari</a></li>
+                    <li><a href="#applications-of-quick-sort" class="resources">QuickSort algoritmining qo'llanish sohalari</a></li>
+                </ul>
+            </div>
+        </section>        
+        
+        <h2 id="how-does-quicksort-work"><span>QuickSort algoritmi qanday ishlaydi? </span></h2>
+        <section class="description">
+            <p dir="ltr"><span>QuickSort algoritmi </span><b><strong>bo‘lish va yengish</strong></b><span> tamoyiliga asoslanib, muammoni kichikroq muammolarga ajratish orqali ishlaydi.</span></p>
+            <p dir="ltr"><span>Algoritm asosan uch bosqichdan iborat:</span></p>
+            <ol>
+                <li value="1"><b><strong>Tayanchni tanlash:</strong></b><span> Massivdan biror element tanlanadi va u tayanch sifatida belgilanadi. Tayanch har xil bo‘lishi mumkin (masalan, birinchi element, oxirgi element, tasodifiy element yoki median).</span></li>
+                <li value="2"><b><strong>Massivni ajratish:</strong></b><span> Massiv tayanch atrofida qayta tartiblanadi. Ajratishdan so‘ng tayanchdan kichik barcha elementlar uning chap tomonida, kattalari esa o‘ng tomonida joylashadi. Tayanch o‘zining to‘g‘ri pozitsiyasiga joylashtiriladi va uning indeksi olinadi.</span></li>
+                <li value="3"><b><strong>Rekursiv chaqiruv:</strong></b><span> Xuddi shu jarayon tayanchning chap va o‘ng tomonidagi ikkita kichik massivga rekursiv ravishda qo‘llanadi.</span></li>
+                <li value="4"><b><strong>Asosiy holat:</strong></b><span> Rekursiya massivda faqat bitta element qolganida tugaydi, chunki bitta element allaqachon saralangan hisoblanadi.</span></li>
+            </ol>
+            <p dir="ltr"><span>QuickSort algoritmining qanday ishlashiga umumiy nazar.</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration.webp" alt="Heap-Sort-Recursive-Illustration" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration-768.webp 768w">
+        
+        <h3 id="choice-of-pivot"><span>Tayanchni tanlash</span></h3>
+
+        <section class="description">
+            <p dir="ltr"><span>Tayanchni tanlash uchun turli xil usullar mavjud.</span></p>
+            <ul>
+                <li value="1"><a class="resources" href="https://www.geeksforgeeks.org/implement-quicksort-with-first-element-as-pivot/" rel="noopener"><span>Doim birinchi (yoki oxirgi) elementni tayanch sifatida tanlash</span></a><span>. Quyidagi amalga oshirishda oxirgi element tayanch sifatida tanlanadi. Ushbu yondashuvning muammosi shundaki, massiv allaqachon tartiblangan bo‘lsa, bu eng yomon holatga olib keladi.</span></li>
+                <li value="2"><a class="resources" href="https://www.geeksforgeeks.org/quicksort-using-random-pivoting/" rel="noopener"><span>Tasodifiy elementni tayanch sifatida tanlash</span></a><span>. Bu usul afzalroq, chunki eng yomon holat uchun aniq bir andoza mavjud emas.</span></li>
+                <li value="3"><span>Median elementni tayanch sifatida tanlash</span>. <span>Bu vaqt murakkabligi nuqtai nazaridan eng maqbul yondashuvdir, chunki </span><a class="resources" href="https://www.geeksforgeeks.org/kth-smallest-largest-element-in-unsorted-array-worst-case-linear-time/" target="_blank" rel="noopener"><span>median elementni chiziqli vaqt ichida topish mumkin</span></a><span> va ajratish funksiyasi doimo kiruvchi massivni ikkiga bo‘ladi. Lekin o‘rtacha holda ko‘proq vaqt talab etadi, chunki medianni topish yuqori konstantaga ega.</span></li>
+            </ul>
+        </section>
+ 
+        <h3 id="partition-algorithm"><span>Ajratish Algoritmi</span></h3>
+        <section class="description">
+            <p dir="ltr"><span> </span><b><strong>QuickSort</strong></b><span> algoritmining asosiy jarayoni bu </span><b><strong>partition()</strong></b><span> funksiyasidir. Ajratish uchun uchta umumiy algoritm mavjud. Ushbu algoritmlarning barchasi O(n) vaqt murakkabligiga ega.</span></p>
+            <ol>
+                <li value="1"><a class="resources" href="https://www.geeksforgeeks.org/naive-partition-algorithm/" target="_blank" rel="noopener"><b><strong>Oddiy Ajratish (Naive Partition)</strong></b></a><span>: Bu usulda massiv nusxasi yaratiladi. Dastlab kichik elementlar, keyin kattalari joylashtiriladi. Oxirida vaqtinchalik massiv asl massivga qayta nusxalanadi. Bu O(n) qo‘shimcha joy talab qiladi.</span></li>
+                <li value="2"><a class="resources" href="https://www.geeksforgeeks.org/lomuto-partition-algorithm/" target="_blank" rel="noopener"><b><strong>Lomuto Ajratish</strong></b></a><span>: Ushbu maqolada aynan shu algoritmdan foydalanilgan. Bu oddiy algoritm bo‘lib, kichik elementlar indeksini kuzatib boramiz va almashishlar amalga oshiramiz. Oddiyligi tufayli bu yerdan foydalanildi.</span></li>
+                <li value="3"><a class="resources" href="https://www.geeksforgeeks.org/hoare-s-partition-algorithm/" target="_blank" rel="noopener"><b><strong>Hoare Ajratish</strong></b></a><span>: Bu algoritm eng tezkor hisoblanadi. Massiv ikkala tomondan ko‘zdan kechiriladi va bo‘linish amalga oshmaguncha chapdagi katta elementlar o‘ngdagi kichiklari bilan almashiladi. Qo‘shimcha ma'lumot uchun </span><a class="resources" href="https://www.geeksforgeeks.org/hoares-vs-lomuto-partition-scheme-quicksort/" target="_blank" rel="noopener"><span>Hoare va Lomuto</span></a><span> taqqoslash maqolasiga murojaat qiling.</span></li>
+            </ol>
+        </section>
+
+        <h2 id="details-of-partition-algorithm-and-illustration-"><span>Ajratish Algoritmi Ishlash Mexanizmi va Namoyishi</span></h2>
+        <blockquote>
+            <section class="description">
+                <p dir="ltr"><span> Mantiq juda oddiy, biz chapdagi eng birinchi elementdan boshlaymiz va kichikroq (yoki teng) elementlarning indeksini </span><b><strong>i </strong></b><span> sifatida kuzatib boramiz. O‘tish davomida kichik element topilsa, joriy elementni </span><b><strong>arr[i]</strong></b><span> bilan almashtiramiz. Aks holda, joriy elementni e'tiborsiz qoldiramiz.</span></p>
+            </section>
+        </blockquote>
+        <a id="practiceBanner" class="resources" class="practiceDivBanner rc0" href="https://www.geeksforgeeks.org/problems/quick-sort/1?itm_source=geeksforgeeks&amp;itm_medium=article&amp;itm_campaign=practice_card" target="_blank" style="display: block;">
+            <div class="recommended-div">GfG Practice-da Sinab Ko‘ring <div class="icon"><img src="https://media.geeksforgeeks.org/auth-dashboard-uploads/Group-arrow.svg" alt="yo‘naltirish belgisi" class="redirectIcon no-zoom-in-cursor" class="topic-image"> </div></div>
+        </a>
+        <section class="description">
+            <p dir="ltr"><span> Keling, quyidagi misol yordamida ajratish algoritmi ishini tushunib olaylik:</span></p>
+        </section>
+<!-- rasm -->
+        <section class="media">
+            <img src="images/Quick_Sort_0.png" alt="Topic N Illustration" class="topic-image">
+        </section>
+
+        <h2 id="illustration-of-quicksort-algorithm"><b><strong>QuickSort Algoritmi Namoyishi</strong></b></h2>
+        <section class="description">
+            <p dir="ltr"><span>Oldingi bosqichda biz </span><b><strong>ajratish </strong></b><span>jarayoni qanday qilib tanlangan </span><b><strong>pivot </strong></b><span>asosida massivni qayta tartibga solishini ko‘rib chiqdik. Keyingi qadamda, biz ushbu usulni </span><b><strong>pivot </strong></b><span>ning </span><b><strong>chap </strong></b><span> va </span><b><strong>o‘ng </strong></b><span> tomonidagi kichik massivlarga rekursiv ravishda qo‘llaymiz. Har safar yangi pivot tanlanadi va massiv qayta ajratiladi. Bu jarayon faqat bitta element qolguncha davom etadi, va u har doim tartibli bo‘ladi. Har bir element o‘z joyiga tushgandan so‘ng, butun massiv tartiblanadi.</span></p>
+            <p dir="ltr"><span>Quyidagi rasm rekursiv usulning </span><b><strong>pivot </strong></b><span>ning </span><b><strong>chap </strong></b><span> va </span><b><strong>o‘ng </strong></b><span> tomonidagi kichik massivlarga chaqiruvlarini ko‘rsatadi:</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images.webp" alt="quick-sort--images" class="topic-image" srcset="https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images.webp 801w,https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images-100.webp 100w,https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images-200.webp 200w,https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images-300.webp 300w,https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images-660.webp 660w,https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images-768.webp 768w" loading="lazy">
+        <section class="description">
+            <p dir="ltr"><b><strong>Quick Sort </strong></b><span> sanoat uchun muhim algoritm hisoblanadi, ammo boshqa holatlarda ba'zi tartiblash algoritmlari undan ko'proq optimal bo'lishi mumkin.</span></p>
+        </section>
+        <!-- code -->
+        <section class="code">
+    <pre><code>// Partition funksiyasi
+function partition(arr, low, high)
+{
+    // Pivotni tanlash
+    let pivot = arr[high];
+
+    // Kichikroq elementlarning indeksi va
+    // pivotning hozirgi holatdagi joyi
+    let i = low - 1;
+
+    // arr[low..high] bo‘ylab harakatlaning va barcha kichikroq
+    // elementlarni chap tomonga ko‘chiring. Har bir iteratsiya
+    // so‘ngida low dan i gacha bo‘lgan elementlar kichikroq bo‘ladi
+    for (let j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(arr, i, j);
+        }
+    }
+
+    // Pivotni kichikroq elementlardan keyin joylashtiring va
+    // uning pozitsiyasini qaytaring
+    swap(arr, i + 1, high);
+    return i + 1;
+}
+
+// Swap funksiyasi
+function swap(arr, i, j)
+{
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+// QuickSort funksiyasining implementatsiyasi
+function quickSort(arr, low, high)
+{
+    if (low < high) {
+
+        // pi pivotning partition indeksini qaytaradi
+        let pi = partition(arr, low, high);
+
+        // Kichikroq elementlar uchun rekursiv chaqiruv
+        // va kattaroq yoki teng bo‘lgan elementlar uchun
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+// Asosiy driver kodi
+let arr = [ 10, 7, 8, 9, 1, 5 ];
+let n = arr.length;
+
+// Butun massiv bo‘ylab QuickSortni chaqiring
+quickSort(arr, 0, n - 1);
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i] + " ");
+}</code></pre>
+</section>
+
+
+        <div class="code-output"><br><strong>Output</strong><pre style="position: relative;">Sorted Array
+1 5 7 8 9 10 <div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div>
+        
+        <h2 id="complexity-analysis-of-quick-sort-"><span>Quick Sort Algoritmining Murakkablik Tahlili</span></h2>
+        <section class="description">
+            <p dir="ltr"><b><strong>Vaqt Murakkabligi:</strong></b></p>
+            <ul>
+                <li value="1"><b><strong>Eng yaxshi holat: </strong></b><span>(Ω(n log n)), Pivot element massivni teng ikkiga bo‘lganda sodir bo‘ladi.</span></li>
+                <li value="2"><b><strong>O‘rtacha holat: </strong></b><span>(θ(n log n)), O‘rtacha holatda pivot massivni ikkiga bo‘ladi, lekin har doim teng bo‘lmasligi mumkin.</span></li>
+                <li value="3"><b><strong>Eng yomon holat: </strong></b><span>(O(n²)), Pivot sifatida doim eng kichik yoki eng katta element tanlanganda (masalan, saralangan massivlarda) yuzaga keladi.</span></li>
+            </ul>
+            <p dir="ltr"><b><strong>Qo‘shimcha Xotira: </strong></b><span>O(n),</span><b><strong> </strong></b><span>rekursiv chaqiruv stacki tufayli</span></p>
+            <p dir="ltr"><span>Batafsil ma'lumot uchun quyidagi sahifaga murojaat qiling: </span><a class="resources" href="https://www.geeksforgeeks.org/time-and-space-complexity-analysis-of-quick-sort/" target="_blank" rel="noopener"><span>Quick Sortning Vaqt va Xotira Murakkabligini Tahlil qilish</span></a></p>
+        </section>
+
+        <h2 id="advantages-of-quick-sort"><b><strong>Quick Sortning Afzalliklari</strong></b></h2>
+        <section class="description">
+            <ul>
+                <li value="1"><span>Bu bo‘linish va zabt etish algoritmi bo‘lib, muammolarni hal qilishni osonlashtiradi.</span></li>
+                <li value="2"><span>Bu katta ma'lumotlar to‘plamlarida samarali ishlaydi.</span></li>
+                <li value="3"><span>Kam xotira talab qiladi, chunki u faqat kichik miqdordagi xotirani ishlatadi.</span></li>
+                <li value="4"><span>Bu keshga do‘stona, chunki biz ma'lumotlarni qo‘shimcha massivga nusxalab ishlamaymiz, balki bir xil massivda ishlaymiz.</span></li>
+                <li value="5"><span>Bu tezkor umumiy maqsadli algoritm bo‘lib, agar barqarorlik talab qilinmasa, katta ma'lumotlar uchun eng tezkor hisoblanadi.</span></li>
+                <li value="6"><span>Bu </span><a class="resources" href="https://www.geeksforgeeks.org/tail-recursion/" target="_blank" rel="noopener"><b><strong>tail rekursiv</strong></b></a><span> bo‘lib, shuning uchun barcha </span><a class="resources" href="https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing-worst-case-space-log-n/" target="_blank" rel="noopener"><span>tail chaqiruv optimizatsiyalari</span></a><span> amalga oshirilishi mumkin.</span></li>
+            </ul>
+        </section>
+        
+        <h2 id="disadvantages-of-quick-sort"><span>Quick Sortning Kamchiliklari</span></h2>
+        <section class="description">
+            <ul>
+                <li value="1"><span>Uning eng yomon holatdagi vaqt murakkabligi O(n</span><sup><span>2</span></sup><span>) bo‘lib, bu pivot noto‘g‘ri tanlanganida yuz beradi.</span></li>
+                <li value="2"><span>U kichik ma'lumotlar to‘plamlari uchun yaxshi tanlov emas.</span></li>
+                <li value="3"><span>U barqaror sortlash emas, ya'ni agar ikkita element bir xil kalitga ega bo‘lsa, ularning nisbiy tartibi quick sortda saqlanmaydi, chunki bu yerda biz elementlarni pivotning joylashuviga qarab almashtiramiz (ularning asl joylashuvlarini hisobga olmaysiz). </span></li>
+            </ul>
+        </section>
+  
+        <h2 id="applications-of-quick-sort"><b><strong>Quick Sortning Qo‘llanilishi</strong></b></h2>
+        <section class="description">
+            <ul>
+                <li value="1"><span>O(n log n) o‘rtacha holatdagi vaqt murakkabligi bilan katta ma'lumotlar to‘plamlarini tartiblashda samarali.</span></li>
+                <li value="2"><span>Pivot orqali massivlarni bo‘lish yoki kth kichik elementni topish kabi bo‘linish muammolarida ishlatiladi.</span></li>
+                <li value="3"><span>Tasodifiy algoritmlar uchun muhim bo‘lib, deteministik yondashuvlarga nisbatan yaxshi ishlashni ta'minlaydi.</span></li>
+                <li value="4"><span>Kriptografiyada tasodifiy perumatsiyalar yaratish va noaniq shifrlash kalitlarini ishlab chiqishda qo‘llaniladi.</span></li>
+                <li value="5"><span>Bo‘linish bosqichi ko‘p yadroli yoki tarqatilgan tizimlarda ishlashni yaxshilash uchun parallelizatsiya qilinishi mumkin.</span></li>
+                <li value="6"><span>Teoretik kompyuter fanlarida o‘rtacha holatdagi murakkablikni tahlil qilish va yangi usullarni ishlab chiqish uchun muhimdir.</span></li>
+            </ul>
+        </section>
+
+      
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    class="topic-video" 
+                    src="https://www.youtube.com/embed/uGOr4_haaUc" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <section class="code">
+            <h2>Quick Sort Code Example</h2>
+            <pre><code>function quickSort(arr) {
+    // Agar massivda 1 yoki 0 element bo'lsa, u allaqachon saralangan.
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    // Pivotni tanlaymiz (oxirgi elementni pivot sifatida olamiz)
+    let pivot = arr[arr.length - 1];
+    let left = [];   // Pivotdan kichik elementlar uchun chap qism
+    let right = [];  // Pivotdan katta elementlar uchun o'ng qism
+
+    // Massivdagi barcha elementlarni pivot bilan solishtiramiz
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+
+    // Rekursiv tarzda chap va o'ng qismlarni saralaymiz va pivotni o'rtaga qo'shamiz
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+// Misol uchun foydalanish
+let arr = [33, 10, 59, 22, 17, 4];
+console.log("Saralangan massiv:", quickSort(arr));
+// Natija: [4, 10, 17, 22, 33, 59]
+</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a class="resources" href="docs/6-dars. Divide and Conquer Quick Sort.pptx" download>Download Presentation</a></li>
+                <li><a class="resources" href="docs/6-topshiriq.docx" download>Download Task PDF</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
