@@ -48,6 +48,7 @@ h1 {
     height: auto;
     display: block;
     border: 2px solid #ddd;
+    border-color: #4caf50;
 }
 
 .video-wrapper {
@@ -69,7 +70,7 @@ h1 {
 
 pre {
     background-color: #f4f4f9;
-    border-left: 4px solid #888;
+    border-left: 4px solid #66bb6a;
     padding: 15px;
     overflow-x: auto;
     color: #333;
@@ -114,21 +115,4 @@ code {
     color: #888;
     text-align: right;
     margin-top: 40px;
-}
-
-/* Specific Theme Colors */
-body.topicN-theme {
-    background-color: #e8f5e9; /* Modify this for each topic to have a unique theme color */
-}
-
-h1.topicN-title {
-    color: #2e7d32; /* Modify this color per topic */
-}
-
-.topic-image {
-    border-color: #4caf50; /* Modify for unique color borders */
-}
-
-pre {
-    border-left-color: #66bb6a; /* Code block border color per topic */
 }
