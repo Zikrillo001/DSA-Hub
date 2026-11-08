@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tries and Sets - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Tries and Sets</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Trie</strong> (prefix tree) — satrlarni ularning umumiy prefikslari (boshlang'ich qismlari) bo'yicha samarali saqlash va qidirish uchun mo'ljallangan daraxt shaklidagi ma'lumotlar tuzilmasi. <strong>Set</strong> esa faqat <strong>noyob (unique)</strong> qiymatlarni saqlaydigan, tartibsiz to'plam ma'lumotlar tuzilmasi. Ikkisi ham — matn qidirish va ma'lumotlarni takrorlanmas holda saqlashning asosiy vositalaridan.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250417113106950395/Triedatastructure1.webp" alt="Trie Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>Trie qanday ishlaydi?</span>
+        </h2>
+        <section class="description">
+            <p><span>Trie'da har bir tugun bitta harfni ifodalaydi, ildizdan boshlab bitta yo'l — bitta so'z prefiksini bildiradi. Bir nechta so'z bir xil boshlang'ich harflarga ega bo'lsa, ular daraxtda bir xil yo'lni baham ko'radi. Masalan, <code>"apple"</code> va <code>"app"</code> so'zlari "a-p-p" yo'lini baham ko'radi, "apple" esa davom etib "l-e" bilan tugaydi. Har bir so'z tugagan tugun <code>isEndOfWord</code> belgisi bilan ajratiladi.</span></p>
+        </section>
+        <pre><code>So'zlar: "apple", "app", "bat", "ball"
+
+root
+ ├─ a ─ p ─ p (so'z: "app") ─ l ─ e (so'z: "apple")
+ └─ b ─ a ┬ t (so'z: "bat")
+           └ l ─ l (so'z: "ball")</code></pre>
+
+        <h2><span>Trie'ni JavaScriptda amalga oshirish</span></h2>
+        <pre><code>class TrieNode {
+    constructor() {
+        this.children = {};
+        this.isEndOfWord = false;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+
+    insert(word) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) {
+                node.children[char] = new TrieNode();
+            }
+            node = node.children[char];
+        }
+        node.isEndOfWord = true;
+    }
+
+    search(word) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) return false;
+            node = node.children[char];
+        }
+        return node.isEndOfWord;
+    }
+
+    startsWith(prefix) {
+        let node = this.root;
+        for (const char of prefix) {
+            if (!node.children[char]) return false;
+            node = node.children[char];
+        }
+        return true;
+    }
+}
+
+const trie = new Trie();
+["cat", "car", "cart", "dog", "dot"].forEach(w => trie.insert(w));
+trie.search("cart");      // true
+trie.search("ca");        // false (so'z sifatida tugamagan)
+trie.startsWith("ca");    // true (prefiks mavjud)</code></pre>
+
+        <h2><span>Trie operatsiyalari uchun murakkablik tahlili</span></h2>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Operation</span></p></th>
+                        <th><p><span>Vaqt murakkabligi</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><b><strong>Insert</strong></b></p></td>
+                        <td><p><span>O(L)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Search</strong></b></p></td>
+                        <td><p><span>O(L)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>Bu yerda <code>L</code> — qidirilayotgan so'z uzunligi. Trie'ning eng katta afzalligi — qidiruv vaqti saqlangan so'zlar soni <code>n</code>ga bog'liq emas, faqat so'z uzunligiga bog'liq.</span></p>
+        </section>
+
+        <h2><span>Set ma'lumot tuzilmasi</span></h2>
+        <section class="description">
+            <p><span>Set — faqat noyob qiymatlarni saqlaydigan, tartibsiz to'plam. Array/List'dan farqli o'laroq, Set'da elementlar indeks orqali emas, bevosita qiymat orqali boshqariladi va avtomatik ravishda takroriy qiymatlarni rad etadi. JavaScript'da Set hash jadval asosida qurilgan, shuning uchun qo'shish, qidirish va o'chirish amallari o'rtacha holatda <strong>O(1)</strong> vaqtda bajariladi.</span></p>
+        </section>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Venn_diagram_for_A_union_B.svg" alt="Set Union Venn Diagram" class="topic-image">
+
+        <h3><span>Array/List bilan taqqoslash</span></h3>
+        <ul>
+            <li value="1"><b><strong>Noyoblik:</strong></b><span> Set takroriy qiymatlarni saqlamaydi, Array esa saqlaydi.</span></li>
+            <li value="2"><b><strong>Tartib:</strong></b><span> Array elementlari indeks bo'yicha tartiblangan, Set'da bu kafolatlanmaydi.</span></li>
+            <li value="3"><b><strong>Qidiruv tezligi:</strong></b><span> Set'da <code>has()</code> amali O(1), Array'da <code>includes()</code> esa O(n).</span></li>
+        </ul>
+
+        <h2><span>Set amallarini JavaScriptda amalga oshirish</span></h2>
+        <pre><code>const setA = new Set([1, 2, 3, 4, 5]);
+const setB = new Set([4, 5, 6, 7, 8]);
+
+// Birlashma (Union): A ∪ B
+function union(a, b) {
+    return new Set([...a, ...b]);
+}
+
+// Kesishma (Intersection): A ∩ B
+function intersection(a, b) {
+    return new Set([...a].filter(x => b.has(x)));
+}
+
+// Ayirma (Difference): A - B
+function difference(a, b) {
+    return new Set([...a].filter(x => !b.has(x)));
+}
+
+union(setA, setB);        // {1, 2, 3, 4, 5, 6, 7, 8}
+intersection(setA, setB); // {4, 5}
+difference(setA, setB);   // {1, 2, 3}</code></pre>
+
+        <h2><b><strong>Tries va Sets taqqoslash</strong></b></h2>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Jihat</span></p></th>
+                        <th><p><span>Trie</span></p></th>
+                        <th><p><span>Set</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><b><strong>Qidiruv tezligi</strong></b></p></td>
+                        <td><p><span>O(L) — so'z uzunligiga bog'liq</span></p></td>
+                        <td><p><span>O(1) — o'rtacha holatda</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Xotira ishlatilishi</strong></b></p></td>
+                        <td><p><span>Umumiy prefikslar tufayli tejamkor bo'lishi mumkin</span></p></td>
+                        <td><p><span>Har bir qiymat alohida saqlanadi</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Qo'llanilish sohasi</strong></b></p></td>
+                        <td><p><span>Prefiks bo'yicha qidiruv (autocomplete)</span></p></td>
+                        <td><p><span>Noyoblik va a'zolikni tekshirish</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <h2><b><strong>Qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><b><strong>Trie:</strong></b><span> Avtomatik to'ldirish (autocomplete), imlo tekshiruvchilar (spell checker), IP manzillarni marshrutlash.</span></li>
+            <li value="2"><b><strong>Set:</strong></b><span> Ma'lumotlardan takrorlanishlarni olib tashlash (deduplication), a'zolikni tezkor tekshirish, matematik to'plam amallari.</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Trie — satrlarni prefiks bo'yicha samarali saqlash va qidirish uchun, Set esa noyob qiymatlarni tezkor saqlash va tekshirish uchun yaratilgan ixtisoslashgan tuzilmalar. Har ikkisi ham to'g'ri vaziyatda qo'llanilganda, oddiy Array yoki List'ga nisbatan sezilarli samaradorlik beradi.</span></p>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>class TrieNode {
+    constructor() {
+        this.children = {};
+        this.isEndOfWord = false;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+    insert(word) {
+        let node = this.root;
+        for (const char of word) {
+            node = node.children[char] ??= new TrieNode();
+        }
+        node.isEndOfWord = true;
+    }
+    search(word) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) return false;
+            node = node.children[char];
+        }
+        return node.isEndOfWord;
+    }
+}
+
+const trie = new Trie();
+trie.insert("apple");
+console.log(trie.search("apple")); // true
+console.log(trie.search("app"));   // false</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/15-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

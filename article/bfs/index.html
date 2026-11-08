@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breadth-First Search (BFS) - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Breadth-First Search (BFS)</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Breadth-First Search (BFS)</strong> — kenglik bo'yicha qidiruv algoritmi bo'lib, grafni daraja-darajalab (level-order) aylanib chiqadi: avval boshlang'ich tugunga, so'ng unga bevosita qo'shni bo'lgan barcha tugunlarga, keyin ularning qo'shnilariga tashrif buyuradi. BFS <strong>navbat (queue)</strong> tuzilmasiga asoslangan va og'irliksiz (unweighted) graflarda ikki tugun orasidagi <strong>eng qisqa yo'lni</strong> topishga kafolat beradi.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251014173018632936/frame_3148.webp" alt="BFS Graph Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>BFS'ning asosiy g'oyasi</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Navbat (Queue):</strong></b><span> "Tashrif buyurilishi kerak" tugunlar ro'yxati navbat sifatida saqlanadi — FIFO (birinchi kirgan, birinchi chiqadi) tartibida ishlaydi.</span></li>
+            <li value="2"><b><strong>G'oya:</strong></b><span> Navbatdan tugun olinadi, "ko'rilgan" deb belgilanadi, so'ng uning barcha ko'rilmagan qo'shnilari navbatga qo'shiladi. Bu jarayon navbat bo'shaguncha davom etadi.</span></li>
+            <li value="3"><b><strong>Level-order:</strong></b><span> Natijada tugunlar aynan ildizdan masofasi (daraja) bo'yicha ketma-ket tashrif buyuriladi.</span></li>
+        </ul>
+
+        <h2><span>BFS qadam-baqadam qanday ishlaydi?</span></h2>
+        <section class="description">
+            <p><span>Quyidagi grafda (a — boshlang'ich tugun) BFS qanday yurishini ko'ramiz. Har bir qadamda navbatdan bir tugun chiqariladi va uning ko'rilmagan qo'shnilari navbatga qo'shiladi:</span></p>
+        </section>
+        <pre><code>Graf:     a - b - c
+          |       |
+          d       f - g
+          |           |
+          e           h - i
+
+1-qadam: navbat = [a]           -> a ni chiqar, qo'shnilari (b, d) qo'shiladi
+2-qadam: navbat = [b, d]        -> b ni chiqar, qo'shnisi (c) qo'shiladi
+3-qadam: navbat = [d, c]        -> d ni chiqar, qo'shnisi (e) qo'shiladi
+4-qadam: navbat = [c, e]        -> c ni chiqar, qo'shnisi (f) qo'shiladi
+...                              -> navbat bo'shaguncha davom etadi</code></pre>
+
+        <h2><span>BFS'ning psevdokodi</span></h2>
+        <pre><code>bfs(v1, v2):
+    navbat yarating, boshida faqat v1 ni saqlang
+    v1 ni "ko'rilgan" deb belgilang
+    navbat bo'sh emas va v2 topilmagan ekan:
+        navbatdan tugun v ni chiqarib oling
+        v ning barcha ko'rilmagan qo'shnilari n uchun:
+            n ni navbatga qo'shing
+            n ni "ko'rilgan" deb belgilang
+            n ning "avvalgi" tuguni sifatida v ni belgilang</code></pre>
+
+        <h2><span>BFS'ni JavaScriptda amalga oshirish</span></h2>
+        <pre><code>class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
+    addVertex(v) {
+        if (!this.adjacencyList[v]) this.adjacencyList[v] = [];
+    }
+    addEdge(v1, v2) {
+        this.adjacencyList[v1].push(v2);
+        this.adjacencyList[v2].push(v1);
+    }
+
+    bfs(start) {
+        const queue = [start];
+        const visited = { [start]: true };
+        const result = [];
+
+        while (queue.length) {
+            const vertex = queue.shift();
+            result.push(vertex);
+
+            for (const neighbor of this.adjacencyList[vertex]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            }
+        }
+        return result;
+    }
+}</code></pre>
+
+        <h2><span>Eng qisqa yo'lni topuvchi BFS</span></h2>
+        <section class="description">
+            <p><span>BFS, konseptual jihatdan, bir vaqtning o'zida ko'plab mumkin bo'lgan yo'llarni o'rganadi, shuning uchun topilgan yo'lni to'g'ridan-to'g'ri saqlash oson emas. Buning o'rniga, har bir tugun uchun "qaysi tugundan kelib ko'rilgan" (<code>previous</code>) ma'lumoti saqlanadi — qidiruv yakunlangach, maqsad tugundan boshlanib shu havolalar bo'yicha orqaga yurib, to'liq eng qisqa yo'l qayta tiklanadi.</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251014110602842995/420046859.webp" alt="Disconnected Graph Example" class="topic-image">
+
+        <h2><span>BFS operatsiyasi uchun murakkablik tahlili</span></h2>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Vaqt murakkabligi</span></p></th>
+                        <th><p><span>Xotira murakkabligi</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><span>O(V + E)</span></p></td>
+                        <td><p><span>O(V)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>N tugunli, M qirrali grafda (adjacency list bilan) BFS <strong>O(V + E)</strong> vaqt talab qiladi — har bir qirra bir marta, har bir tugun esa eng ko'pi bilan bir marta ko'riladi. Navbat va "ko'rilgan" belgilar uchun <strong>O(V)</strong> qo'shimcha xotira kerak bo'ladi.</span></p>
+        </section>
+
+        <h2><b><strong>BFS va DFS taqqoslash</strong></b></h2>
+        <ul>
+            <li value="1"><b><strong>Optimallik:</strong></b><span> BFS har doim eng qisqa yo'lni (eng kam qirra bilan) topadi — og'irliksiz graflarda. DFS esa yo'lni topishga kafolat beradi, lekin u eng qisqa bo'lishi shart emas.</span></li>
+            <li value="2"><b><strong>Xotira:</strong></b><span> DFS odatda kamroq xotira talab qiladi (stack chuqurligi), BFS esa navbatda bir vaqtning o'zida ko'proq tugun saqlashi mumkin.</span></li>
+            <li value="3"><b><strong>Qo'llanilish:</strong></b><span> BFS — eng qisqa yo'l, daraja bo'yicha qidiruv; DFS — barcha yo'llarni chuqur tekshirish, topologik tartiblash kabi masalalarda.</span></li>
+        </ul>
+
+        <h2><b><strong>BFS'ning qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Ijtimoiy tarmoqlarda eng qisqa bog'lanish zanjirini topish (masalan, "do'stlar darajasi").</span></li>
+            <li value="2"><span>GPS va xarita tizimlarida og'irliksiz grafda eng qisqa yo'lni topish.</span></li>
+            <li value="3"><span>Tarmoq paketlarini translyatsiya qilish (broadcast) algoritmlarida.</span></li>
+            <li value="4"><span>Web qidiruv tizimlarida sahifalarni indekslashda (web crawling).</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>BFS — navbat asosida ishlaydigan, og'irliksiz graflarda eng qisqa yo'lni topishga kafolat beruvchi kuchli qidiruv algoritmi. DFS bilan birgalikda u grafларни qidirishning ikki asosiy ustunini tashkil qiladi va ko'plab real hayotiy masalalar — xaritalardan tortib ijtimoiy tarmoqlargacha — aynan shu algoritm asosida yechiladi.</span></p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe
+                    class="topic-video"
+                    src="https://www.youtube.com/embed/Ofk5tlylZVs?list=PLZdsmTs1NLNDQI-aisBNg6v-rr0PswVuZ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>function bfs(graph, start) {
+    const queue = [start];
+    const visited = { [start]: true };
+    const result = [];
+
+    while (queue.length) {
+        const vertex = queue.shift();
+        result.push(vertex);
+
+        for (const neighbor of graph[vertex]) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                queue.push(neighbor);
+            }
+        }
+    }
+    return result;
+}
+
+const graph = { A: ["B", "C"], B: ["A", "D"], C: ["A"], D: ["B"] };
+console.log(bfs(graph, "A")); // ["A", "B", "C", "D"]</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/12-dars.BFS.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/12-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

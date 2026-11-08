@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth-First Search (DFS) - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Depth-First Search (DFS)</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Depth-First Search (DFS)</strong> — chuqurlik bo'yicha qidiruv algoritmi bo'lib, ikkita tugun orasidagi yo'lni topish uchun har bir mumkin bo'lgan yo'lni imkon qadar chuqurroq tekshirib, keyin orqaga qaytishni (backtracking) amalga oshiradi. DFS odatda <strong>rekursiya</strong> yoki <strong>stack</strong> yordamida amalga oshiriladi va bir tugundan erishish mumkin bo'lgan barcha tugunlarni topishda ishlatiladi.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251014173018632936/frame_3148.webp" alt="DFS Graph Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>DFS'ning asosiy g'oyasi</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Rekursiv orqaga qaytish:</strong></b><span> Hozirgi tugun "ko'rildi" deb belgilanadi, so'ng undan barcha ko'rilmagan qo'shnilar tekshiriladi — har safar imkon qadar chuqurroq davom etiladi.</span></li>
+            <li value="2"><b><strong>Backtracking:</strong></b><span> Agar hozirgi tugundan davom etish imkoni qolmasa (barcha qo'shnilar ko'rilgan bo'lsa), algoritm bir qadam orqaga qaytadi va boshqa yo'lni sinab ko'radi.</span></li>
+            <li value="3"><b><strong>Misollar:</strong></b><span> "San-Fransiskodan boshlab qayerlarga bora olaman?" yoki "mening do'stlarim (va ularning do'stlari) postimni oxir-oqibat nechta odam ko'radi?" kabi masalalar DFS bilan yechiladi.</span></li>
+        </ul>
+
+        <h2><span>DFS qadam-baqadam qanday ishlaydi?</span></h2>
+        <section class="description">
+            <p><span>Quyidagi grafda "a" tugunidan "h" tugunigacha DFS (alifbo tartibida) qanday yurishini ko'ramiz — natijada <code>a → b → e → f → c → i → d → g → h</code> tartibida tashrif buyuriladi va <code>{a, d, g, h}</code> yo'li topiladi:</span></p>
+        </section>
+        <pre><code>Graf:     a - b - c
+          |   |   |
+          d   e   i
+          |
+          g - h
+
+DFS(a): a ni "ko'rildi" deb belgila
+        -> b ni tekshir (ko'rilmagan): DFS(b)
+           -> e ni tekshir: DFS(e)
+              -> f ni tekshir: DFS(f) ... orqaga qaytish
+           -> c ni tekshir: DFS(c)
+              -> i ni tekshir: DFS(i) ... orqaga qaytish
+        -> d ni tekshir: DFS(d)
+           -> g ni tekshir: DFS(g)
+              -> h ni tekshir: DFS(h)  -> maqsadga yetdik!</code></pre>
+
+        <h2><span>DFS'ning psevdokodi</span></h2>
+        <pre><code>// Barcha erishish mumkin bo'lgan tugunlarni topish
+dfs(v1):
+    v1 ni "ko'rildi" deb belgila
+    v1 ning har bir ko'rilmagan qo'shnisi n uchun:
+        dfs(n)
+
+// Ikki tugun orasidagi yo'lni topish (choose-explore-unchoose)
+dfs(v1, v2):
+    v1 ni "ko'rildi" deb belgila, yo'lga qo'sh
+    v1 ning har bir ko'rilmagan qo'shnisi n uchun:
+        agar dfs(n, v2) muvaffaqiyatli bo'lsa:
+            yo'l topildi!
+    agar barcha qo'shnilar muvaffaqiyatsiz bo'lsa:
+        v1 ni yo'ldan olib tashla (orqaga qaytish)</code></pre>
+
+        <h2><span>DFS'ni JavaScriptda amalga oshirish</span></h2>
+        <pre><code>class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
+    addVertex(v) {
+        if (!this.adjacencyList[v]) this.adjacencyList[v] = [];
+    }
+    addEdge(v1, v2) {
+        this.adjacencyList[v1].push(v2);
+        this.adjacencyList[v2].push(v1);
+    }
+
+    dfs(start, visited = {}, result = []) {
+        visited[start] = true;
+        result.push(start);
+
+        for (const neighbor of this.adjacencyList[start]) {
+            if (!visited[neighbor]) {
+                this.dfs(neighbor, visited, result);
+            }
+        }
+        return result;
+    }
+}</code></pre>
+
+        <h2><span>DFS operatsiyasi uchun murakkablik tahlili</span></h2>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Vaqt murakkabligi</span></p></th>
+                        <th><p><span>Xotira murakkabligi</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><span>O(V + E)</span></p></td>
+                        <td><p><span>O(V)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>N tugunli, M qirrali grafda DFS <strong>O(V + E)</strong> vaqt talab qiladi — har bir qirra bir marta, har bir tugun esa eng ko'pi bilan bir marta ko'riladi. Rekursiya stack'i uchun <strong>O(V)</strong> qo'shimcha xotira kerak bo'ladi.</span></p>
+        </section>
+
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251014110602842995/420046859.webp" alt="Disconnected Graph Example" class="topic-image">
+
+        <h2><b><strong>DFS'ning xususiyatlari</strong></b></h2>
+        <ul>
+            <li value="1"><b><strong>Kashfiyot (Discovery):</strong></b><span> Agar ikki tugun orasida yo'l mavjud bo'lsa, DFS uni topishga kafolat beradi.</span></li>
+            <li value="2"><b><strong>Qayta tiklash (Reconstruction):</strong></b><span> Topilgan yo'lni "choose – explore – unchoose" usuli bilan aniq qaytarish oson.</span></li>
+            <li value="3"><b><strong>Optimallik:</strong></b><span> DFS optimal emas — yo'lni topishga kafolat beradi, lekin u har doim eng qisqa yoki eng yaxshi yo'l bo'lmasligi mumkin. Masalan, <code>dfs(a, i)</code> uzunroq <code>{a, b, e, f, c, i}</code> yo'lini qaytarishi mumkin, aslida qisqaroq <code>{a, d, h, i}</code> yo'li mavjud bo'lsa ham.</span></li>
+        </ul>
+
+        <h2><b><strong>DFS va BFS taqqoslash</strong></b></h2>
+        <ul>
+            <li value="1"><span>DFS <strong>stack</strong> (yoki rekursiya) orqali, BFS esa <strong>navbat (queue)</strong> orqali amalga oshiriladi.</span></li>
+            <li value="2"><span>DFS kamroq xotira ishlatadi, lekin eng qisqa yo'lni topishga kafolat bermaydi; BFS ko'proq xotira talab qiladi, ammo og'irliksiz grafda doim eng qisqa yo'lni topadi.</span></li>
+            <li value="3"><span>DFS — labirint yechish, topologik tartiblash kabi "chuqur" masalalarga; BFS — eng qisqa yo'l, daraja bo'yicha qidiruvga mos.</span></li>
+        </ul>
+
+        <h2><b><strong>DFS'ning qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Labirint va bulmak kabi masalalarda yechim yo'lini topish.</span></li>
+            <li value="2"><span>Topologik tartiblash — vazifalar bog'liqligini aniqlashda.</span></li>
+            <li value="3"><span>Bog'langan komponentlarni va sikllarni aniqlashda.</span></li>
+            <li value="4"><span>Fayl tizimlarida papkalarni rekursiv aylanib chiqishda.</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>DFS — chuqurlik bo'yicha, backtracking asosida ishlaydigan qidiruv algoritmi bo'lib, yo'l mavjudligini topishga kafolat beradi, biroq eng qisqa yo'lni emas. BFS bilan birgalikda u graf nazariyasi va amaliy dasturlashning asosiy qidiruv vositalaridan birini tashkil etadi.</span></p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe
+                    class="topic-video"
+                    src="https://www.youtube.com/embed/Rt2ia32Mrxw?list=PLZdsmTs1NLNDQI-aisBNg6v-rr0PswVuZ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>function dfs(graph, start, visited = {}, result = []) {
+    visited[start] = true;
+    result.push(start);
+
+    for (const neighbor of graph[start]) {
+        if (!visited[neighbor]) {
+            dfs(graph, neighbor, visited, result);
+        }
+    }
+    return result;
+}
+
+const graph = { A: ["B", "C"], B: ["A", "D"], C: ["A"], D: ["B"] };
+console.log(dfs(graph, "A")); // ["A", "B", "D", "C"]</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/13-dars. DFS.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/13-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

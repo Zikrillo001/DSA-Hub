@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Table - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Hash Table</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Hash Table</strong> (hash jadval) — kalit-qiymat (key-value) juftliklarini saqlash uchun ishlatiladigan ma'lumotlar tuzilmasi bo'lib, <strong>hash funksiya</strong> yordamida har bir kalitni massiv indeksiga aylantiradi. Shu sababli qo'shish, qidirish va o'chirish amallari o'rtacha holatda <strong>O(1)</strong> vaqt sarflaydi — bu uni katta hajmdagi ma'lumotlar bilan tezkor ishlash uchun eng mashhur tuzilmalardan biriga aylantiradi.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240807120551/Introduction-to-Hashing.webp" alt="Hash Table Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>Hash Table'ning asosiy tushunchalari</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Kalit (Key):</strong></b><span> Qiymatni topish uchun ishlatiladigan noyob identifikator (masalan, ism, ID raqami).</span></li>
+            <li value="2"><b><strong>Qiymat (Value):</strong></b><span> Kalitga bog'langan, haqiqatda saqlanayotgan ma'lumot.</span></li>
+            <li value="3"><b><strong>Hash funksiya:</strong></b><span> Kalitni qabul qilib, massivning bo'sh indeksiga mos keladigan sonni qaytaruvchi funksiya.</span></li>
+            <li value="4"><b><strong>Bucket (indeks katakchasi):</strong></b><span> Hash funksiya natijasida aniqlangan, qiymat joylashtiriladigan massiv katakchasi.</span></li>
+            <li value="5"><b><strong>Load Factor:</strong></b><span> Jadvaldagi elementlar sonining jadval hajmiga nisbati (n / jadval o'lchami). Bu ko'rsatkich qachon jadval kattalashtirilishi (resize) kerakligini belgilaydi.</span></li>
+        </ul>
+
+        <h2><span>Hash Table qanday ishlaydi?</span></h2>
+        <section class="description">
+            <p><span>Hash table ichida har bir kalit-qiymat juftligi uch bosqichda joylashtiriladi: avval kalit hash funksiyadan o'tkaziladi, so'ng olingan son jadval hajmiga mos indeksga aylantiriladi (odatda <code>modul (%)</code> amali orqali), va nihoyat qiymat shu indeksga yoziladi. Qidiruv vaqtida ham xuddi shu kalit qayta hash qilinadi va bevosita kerakli indeksga murojaat qilinadi — shuning uchun butun massivni aylanib chiqish shart emas.</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240508162701/Components-of-Hashing.webp"
+         alt="Components of Hashing" class="topic-image">
+
+        <h2><span>Hashing va hash funksiya</span></h2>
+        <section class="description">
+            <p><span>Hashing — bu ixtiyoriy uzunlikdagi ma'lumotni qisqa va o'zgarmas uzunlikdagi songa (hash kod) aylantirish jarayoni. Yaxshi hash funksiya quyidagi xususiyatlarga ega bo'lishi kerak:</span></p>
+        </section>
+        <ul>
+            <li value="1"><span>Bir xil kalit uchun doim bir xil hash qiymatini qaytarishi (deterministik bo'lishi).</span></li>
+            <li value="2"><span>Hisoblash tezkor bo'lishi — O(1) vaqtda bajarilishi.</span></li>
+            <li value="3"><span>Natijalarni jadval bo'ylab imkon qadar tekis (bir xil zichlikda) tarqatishi, shunda to'qnashuvlar kamayadi.</span></li>
+        </ul>
+        <section class="description">
+            <p><span>Hashing nafaqat hash table'larda, balki shifrlash (kriptografiya), ma'lumotlar yaxlitligini tekshirish (checksum) va parollarni xavfsiz saqlashda ham keng qo'llaniladi.</span></p>
+        </section>
+        <pre><code>// Oddiy hash funksiya - JS
+function simpleHash(key, tableSize) {
+    let total = 0;
+    for (let char of String(key)) {
+        total += char.charCodeAt(0);
+    }
+    return total % tableSize;
+}
+
+simpleHash("Ali", 10);   // masalan, 4
+simpleHash("Vali", 10);  // masalan, 4 - to'qnashuv!</code></pre>
+
+        <h2><span>To'qnashuv (Collision) nima?</span></h2>
+        <section class="description">
+            <p><span>Ikki xil kalit hash funksiyadan o'tgandan so'ng bitta indeksga tushib qolsa, bu holat <strong>to'qnashuv (collision)</strong> deyiladi. Masalan, <code>hash("Ali") = 4</code> va <code>hash("Vali") = 4</code> bo'lsa, ikkala qiymat ham 4-indeksga da'vogar bo'lib qoladi. To'qnashuvlar hash table'larda tabiiy holat bo'lib, ularni hal qilishning aniq usullari mavjud.</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240514124239/collision-in-hashing.webp" alt="Collision in Hashing" class="topic-image">
+
+        <h3><span>To'qnashuvni hal qilish usullari</span></h3>
+        <ul>
+            <li value="1"><b><strong>Zanjir usuli (Separate Chaining):</strong></b><span> Har bir indeks o'zining bog'langan ro'yxatini (linked list) saqlaydi. Bir xil indeksga tushgan barcha qiymatlar shu ro'yxatga ketma-ket qo'shiladi.</span></li>
+            <li value="2"><b><strong>Ochiq adreslash (Open Addressing):</strong></b><span> Agar indeks band bo'lsa, algoritm jadval bo'ylab (chiziqli, kvadratik yoki double hashing qoidasi bo'yicha) keyingi bo'sh joyni qidirib topadi va qiymatni o'sha yerga joylashtiradi.</span></li>
+        </ul>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/chain-hashing-1.png" alt="Separate Chaining" class="topic-image">
+
+        <h2><span>Hash Table'ni JavaScriptda amalga oshirish</span></h2>
+        <section class="description">
+            <p><span>Quyida zanjir usuli (separate chaining) bilan ishlaydigan oddiy hash table klassi keltirilgan. Har bir bucket massiv sifatida saqlanadi, shuning uchun bir nechta kalit bitta indeksga tushsa ham ma'lumot yo'qolmaydi:</span></p>
+        </section>
+        <pre><code>class HashTable {
+    constructor(size = 53) {
+        this.keyMap = new Array(size);
+    }
+
+    _hash(key) {
+        let total = 0;
+        for (let char of String(key)) {
+            total = (total + char.charCodeAt(0)) % this.keyMap.length;
+        }
+        return total;
+    }
+
+    set(key, value) {
+        let index = this._hash(key);
+        if (!this.keyMap[index]) {
+            this.keyMap[index] = [];
+        }
+        this.keyMap[index].push([key, value]);
+    }
+
+    get(key) {
+        let index = this._hash(key);
+        if (!this.keyMap[index]) return undefined;
+        for (let pair of this.keyMap[index]) {
+            if (pair[0] === key) return pair[1];
+        }
+        return undefined;
+    }
+
+    remove(key) {
+        let index = this._hash(key);
+        if (!this.keyMap[index]) return false;
+        const pairIndex = this.keyMap[index].findIndex(pair => pair[0] === key);
+        if (pairIndex === -1) return false;
+        this.keyMap[index].splice(pairIndex, 1);
+        return true;
+    }
+}
+
+const ht = new HashTable();
+ht.set("olma", 10);
+ht.set("banan", 25);
+ht.get("olma");      // 10
+ht.remove("banan");  // true</code></pre>
+
+        <h2><span>Hash Table'dagi operatsiyalar uchun murakkablik tahlili</span></h2>
+        <h3><span>Vaqt murakkabligi:</span></h3>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Operation</span></p></th>
+                        <th><p><span>Average Case</span></p></th>
+                        <th><p><span>Worst Case</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><b><strong>Insert</strong></b></p></td>
+                        <td><p><span>O(1)</span></p></td>
+                        <td><p><span>O(n)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Search</strong></b></p></td>
+                        <td><p><span>O(1)</span></p></td>
+                        <td><p><span>O(n)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Delete</strong></b></p></td>
+                        <td><p><span>O(1)</span></p></td>
+                        <td><p><span>O(n)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>Eng yomon holat (O(n)) deyarli har doim bir xil indeksga juda ko'p kalit to'planib qolganda yuzaga keladi. Yaxshi hash funksiya va to'g'ri load factor tanlansa, bu holat amalda kamdan-kam uchraydi.</span></p>
+        </section>
+
+        <h3><span>Xotira murakkabligi:</span></h3>
+        <section class="description">
+            <p><span>Hash table saqlagan har bir kalit-qiymat juftligi uchun qo'shimcha xotira ajratadi, shuning uchun xotira murakkabligi <strong>O(n)</strong> ga teng.</span></p>
+        </section>
+
+        <h2><b><strong>Hash Table'ning afzalliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Qo'shish, qidirish va o'chirish amallari o'rtacha holatda </span><b><strong>O(1)</strong></b><span> vaqtda bajariladi.</span></li>
+            <li value="2"><span>Kalit orqali to'g'ridan-to'g'ri murojaat qilish imkonini beradi — massivni boshidan oxirigacha aylanib chiqish shart emas.</span></li>
+            <li value="3"><span>Katta hajmdagi ma'lumotlar bilan samarali ishlaydi, shuning uchun indekslash va keshlashda keng qo'llaniladi.</span></li>
+        </ul>
+
+        <h2><b><strong>Hash Table'ning kamchiliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>To'qnashuvlar ko'payib ketsa, samaradorlik pasayib, eng yomon holatda O(n) ga tushib qolishi mumkin.</span></li>
+            <li value="2"><span>Massivdagi kabi tartiblangan holda saqlash yoki tartib bo'yicha yurish (iteration order) kafolatlanmaydi.</span></li>
+            <li value="3"><span>Yaxshi hash funksiya tanlash va load factor'ni boshqarish (resize) qo'shimcha murakkablik talab qiladi.</span></li>
+        </ul>
+
+        <h2><b><strong>Hash Table'ning qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Ma'lumotlar bazalarida va qidiruv tizimlarida tezkor indekslash uchun (masalan, Google qidiruvi).</span></li>
+            <li value="2"><span>Dasturlash tillaridagi obyekt, dictionary, map kabi tuzilmalarning asosida.</span></li>
+            <li value="3"><span>Keshlash (caching) tizimlarida tezkor ma'lumot olish uchun.</span></li>
+            <li value="4"><span>Parollarni xavfsiz saqlash va ma'lumotlar yaxlitligini tekshirishda (checksum, kriptografik hashlar).</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Hash table — kalit orqali ma'lumotga deyarli bir zumda murojaat qilish imkonini beruvchi, zamonaviy dasturlashning asosiy tuzilmalaridan biri. Uning samaradorligi to'g'ridan-to'g'ri hash funksiya sifatiga va to'qnashuvlarni qanday boshqarishga bog'liq. Shu sababli hash table interview'larda eng ko'p so'raladigan mavzulardan biri hisoblanadi va uni chuqur tushunish har bir dasturchi uchun muhim.</span></p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe
+                    class="topic-video"
+                    src="https://www.youtube.com/embed/mLiYPwqeotY?list=PLZdsmTs1NLNDQI-aisBNg6v-rr0PswVuZ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>// Hash Table yaratish
+const ht = new HashTable();
+
+// Kalit-qiymat qo'shish
+ht.set("olma", 10);
+ht.set("banan", 25);
+ht.set("gilos", 7);
+
+// Qiymatni olish
+ht.get("banan");   // 25
+
+// Elementni o'chirish
+ht.remove("gilos"); // true
+
+// Mavjud bo'lmagan kalit
+ht.get("sana");    // undefined</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/7-dars. Hash Table  and Hashing.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/7-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Bubble Sort</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Bubble Sort</strong> — eng oddiy tartiblash algoritmlaridan biri bo'lib, massivdagi qo'shni elementlarni ketma-ket solishtirib, agar ular noto'g'ri tartibda bo'lsa, joylarini almashtirish orqali ishlaydi. Nomi "bubble" (pufak) so'zidan olingan — chunki eng katta (yoki eng kichik) element har bir o'tishda suvdagi pufak kabi massivning bir chetiga "ko'tarilib" chiqadi.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif" alt="Bubble Sort Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>Bubble Sort'ning asosiy tushunchalari</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Taqqoslash (Comparison):</strong></b><span> Har bir qadamda ikki qo'shni element qiymati solishtiriladi.</span></li>
+            <li value="2"><b><strong>Almashtirish (Swap):</strong></b><span> Agar chapdagi element o'ngdagisidan katta bo'lsa, ularning joyi almashtiriladi.</span></li>
+            <li value="3"><b><strong>O'tish (Pass):</strong></b><span> Massiv bo'ylab bir marta to'liq yurib chiqish. Har bir o'tishdan so'ng eng katta element o'z joyiga — massivning oxiriga — joylashadi.</span></li>
+            <li value="4"><b><strong>swapped flag:</strong></b><span> Agar biror o'tishda hech qanday almashtirish bo'lmasa, massiv allaqachon tartiblangan va algoritm erta to'xtatiladi.</span></li>
+        </ul>
+
+        <h2><span>Bubble Sort qanday ishlaydi?</span></h2>
+        <section class="description">
+            <p><span>Algoritm massivni bir necha marta aylanib chiqadi. Har bir o'tishda qo'shni ikki element solishtiriladi: agar ular to'g'ri tartibda bo'lmasa, joylari almashtiriladi. Bu jarayon massiv to'liq tartiblangunga qadar — ya'ni hech qanday almashtirish kerak bo'lmay qolguncha — davom etadi.</span></p>
+        </section>
+        <pre><code>Massiv: [5, 1, 4, 2, 8]
+
+1-o'tish: [1, 4, 2, 5, 8]  -> (5,1) va (4,2) almashtirildi, 8 eng oxiriga chiqdi
+2-o'tish: [1, 2, 4, 5, 8]  -> (4,2) almashtirildi
+3-o'tish: [1, 2, 4, 5, 8]  -> almashtirish bo'lmadi, massiv tartiblangan!</code></pre>
+
+        <h2><span>Bubble Sort'ni JavaScriptda amalga oshirish</span></h2>
+        <section class="description">
+            <p><span>Tashqi sikl massiv bo'ylab o'tishlar sonini, ichki sikl esa har bir o'tishda qo'shni elementlarni solishtirishni boshqaradi. <code>swapped</code> flag esa massiv erta tartiblanib qolgan holatlarda algoritmni to'xtatib, vaqtni tejashga yordam beradi:</span></p>
+        </section>
+        <pre><code>function bubbleSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        let swapped = false;
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                swapped = true;
+            }
+        }
+        // Agar o'tishda almashtirish bo'lmasa, massiv tartiblangan
+        if (!swapped) break;
+    }
+    return arr;
+}
+
+bubbleSort([5, 1, 4, 2, 8]); // [1, 2, 4, 5, 8]</code></pre>
+
+        <h2><span>Bubble Sort operatsiyasi uchun murakkablik tahlili</span></h2>
+        <h3><span>Vaqt murakkabligi:</span></h3>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Best Case</span></p></th>
+                        <th><p><span>Average Case</span></p></th>
+                        <th><p><span>Worst Case</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><span>O(n)</span></p></td>
+                        <td><p><span>O(n²)</span></p></td>
+                        <td><p><span>O(n²)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>Eng yaxshi holat — massiv allaqachon tartiblangan bo'lsa, <code>swapped</code> flag tufayli algoritm bitta o'tishdan so'ng to'xtaydi (O(n)). Eng yomon va o'rtacha holatda esa har bir element uchun qolgan barcha elementlar bilan solishtirish kerak bo'ladi (O(n²)).</span></p>
+        </section>
+
+        <h3><span>Xotira murakkabligi:</span></h3>
+        <section class="description">
+            <p><span>Bubble Sort qo'shimcha massiv talab qilmaydi, faqat bir nechta vaqtinchalik o'zgaruvchi ishlatiladi — shuning uchun xotira murakkabligi <strong>O(1)</strong> ga teng.</span></p>
+        </section>
+
+        <h2><b><strong>Bubble Sort'ning afzalliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Tushunish va amalga oshirish juda oson — o'rganish uchun eng yaxshi birinchi tartiblash algoritmi.</span></li>
+            <li value="2"><span>Qo'shimcha xotira talab qilmaydi (O(1) xotira murakkabligi).</span></li>
+            <li value="3"><span><code>swapped</code> flag bilan allaqachon tartiblangan yoki qisman tartiblangan massivlarda tezkor ishlaydi.</span></li>
+        </ul>
+
+        <h2><b><strong>Bubble Sort'ning kamchiliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Katta massivlar uchun juda sekin — O(n²) murakkablik amaliy loyihalarda mos kelmaydi.</span></li>
+            <li value="2"><span>Quick Sort, Merge Sort kabi algoritmlarga nisbatan ancha kam samarali.</span></li>
+        </ul>
+
+        <h2><b><strong>Bubble Sort'ning qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Kichik hajmdagi yoki deyarli tartiblangan ma'lumotlarni tezda tartiblashda.</span></li>
+            <li value="2"><span>Tartiblash algoritmlarining asosiy g'oyasini o'rgatishda — dasturlashni o'rganishdagi birinchi algoritmlardan biri sifatida.</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Bubble Sort — soddaligi tufayli algoritmlarni o'rganishni boshlash uchun ajoyib nuqta, biroq samaradorligi past bo'lgani sababli amaliy loyihalarda kamdan-kam qo'llaniladi. Uni chuqur tushunish, keyinchalik Selection Sort, Insertion Sort va Quick Sort kabi murakkabroq algoritmlarni osonroq o'zlashtirishga yordam beradi.</span></p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe
+                    class="topic-video"
+                    src="https://www.youtube.com/embed/JGFxbH8W1po?list=PLZdsmTs1NLNDQI-aisBNg6v-rr0PswVuZ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>function bubbleSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        let swapped = false;
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+    }
+    return arr;
+}
+
+console.log(bubbleSort([64, 34, 25, 12, 22, 11, 90]));
+// [11, 12, 22, 25, 34, 64, 90]</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/8-dars. Bubble Sort.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/8-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

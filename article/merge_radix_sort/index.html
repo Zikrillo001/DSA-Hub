@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort and Radix Sort - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Merge Sort and Radix Sort</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Merge Sort</strong> va <strong>Radix Sort</strong> — ikki xil yondashuvga asoslangan samarali tartiblash algoritmlari. Merge Sort — "bo'lish va hukmronlik qilish" (divide and conquer) strategiyasiga asoslangan <strong>taqqoslash algoritmi</strong>, Radix Sort esa elementlarni umuman solishtirmay, raqamlarning har bir xonasi bo'yicha tartiblaydigan <strong>taqqoslashsiz algoritm</strong>.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="Merge Sort Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>Merge Sort qanday ishlaydi?</span>
+        </h2>
+        <section class="description">
+            <p><span>Merge Sort massivni uzluksiz ikkiga bo'lib boradi, toki har bir bo'lak bitta elementdan iborat bo'lib qolmaguncha (bitta element — allaqachon "tartiblangan" hisoblanadi). Keyin bu bo'laklar juftlab, tartiblangan holda qaytadan birlashtiriladi (<strong>merge</strong>):</span></p>
+        </section>
+        <pre><code>Massiv: [38, 27, 43, 3, 9]
+
+Bo'lish:
+[38, 27, 43, 3, 9] -> [38, 27] va [43, 3, 9]
+[38, 27] -> [38] va [27]
+[43, 3, 9] -> [43] va [3, 9] -> [3] va [9]
+
+Birlashtirish (merge):
+[38] + [27]        -> [27, 38]
+[3] + [9]          -> [3, 9]
+[3, 9] + [43]      -> [3, 9, 43]
+[27, 38] + [3,9,43]-> [3, 9, 27, 38, 43]  (tartiblangan!)</code></pre>
+
+        <h2><span>Merge Sort'ni JavaScriptda amalga oshirish</span></h2>
+        <pre><code>function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+
+    return merge(left, right);
+}
+
+function merge(left, right) {
+    const result = [];
+    let i = 0, j = 0;
+
+    while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) result.push(left[i++]);
+        else result.push(right[j++]);
+    }
+    return result.concat(left.slice(i)).concat(right.slice(j));
+}
+
+mergeSort([38, 27, 43, 3, 9]); // [3, 9, 27, 38, 43]</code></pre>
+
+        <h2><span>Radix Sort qanday ishlaydi?</span></h2>
+        <section class="description">
+            <p><span>Radix Sort elementlarni bir-biri bilan solishtirmaydi — buning o'rniga sonlarning raqamlarini (xonalarini) eng kichik xonadan (birlik) boshlab, eng katta xonagacha, har bir xona bo'yicha alohida tartiblaydi. Har bir xonani tartiblash uchun odatda barqaror (stable) <strong>Counting Sort</strong> ishlatiladi:</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230609164536/Radix-Sort--1.png" alt="Radix Sort - birlik xona bo'yicha tartiblash" class="topic-image">
+        <pre><code>Massiv: [170, 45, 75, 90, 802, 24, 2, 66]
+
+1-xona (birlik) bo'yicha: [170, 90, 802, 2, 24, 45, 75, 66]
+2-xona (o'nlik) bo'yicha: [802, 2, 24, 45, 66, 170, 75, 90]
+3-xona (yuzlik) bo'yicha: [2, 24, 45, 66, 75, 90, 170, 802]  (tartiblangan!)</code></pre>
+
+        <h2><span>Radix Sort'ni JavaScriptda amalga oshirish</span></h2>
+        <pre><code>function radixSort(arr) {
+    const max = Math.max(...arr);
+    const maxDigits = String(max).length;
+
+    for (let k = 0; k < maxDigits; k++) {
+        const buckets = Array.from({ length: 10 }, () => []);
+
+        for (const num of arr) {
+            const digit = Math.floor(num / 10 ** k) % 10;
+            buckets[digit].push(num);
+        }
+        arr = [].concat(...buckets);
+    }
+    return arr;
+}
+
+radixSort([170, 45, 75, 90, 802, 24, 2, 66]);
+// [2, 24, 45, 66, 75, 90, 170, 802]</code></pre>
+
+        <h2><span>Murakkablik tahlili va taqqoslash</span></h2>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Algoritm</span></p></th>
+                        <th><p><span>Best Case</span></p></th>
+                        <th><p><span>Average Case</span></p></th>
+                        <th><p><span>Worst Case</span></p></th>
+                        <th><p><span>Xotira</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><b><strong>Merge Sort</strong></b></p></td>
+                        <td><p><span>O(n log n)</span></p></td>
+                        <td><p><span>O(n log n)</span></p></td>
+                        <td><p><span>O(n log n)</span></p></td>
+                        <td><p><span>O(n)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Radix Sort</strong></b></p></td>
+                        <td><p><span>O(d·n)</span></p></td>
+                        <td><p><span>O(d·n)</span></p></td>
+                        <td><p><span>O(d·n)</span></p></td>
+                        <td><p><span>O(n + b)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>Bu yerda <code>d</code> — sondagi xonalar (raqamlar) soni, <code>b</code> — sanoq asosi (odatda 10). Merge Sort har doim barqaror <strong>O(n log n)</strong> natija beradi — massiv holatidan qat'i nazar. Radix Sort esa xonalar soni kichik bo'lgan butun sonlar uchun bundan ham tezroq (deyarli chiziqli) ishlaydi, lekin faqat ma'lum formatdagi ma'lumotlar (butun sonlar, fiksirlangan uzunlikdagi satrlar) uchun mos keladi.</span></p>
+        </section>
+
+        <h2><b><strong>Ma'lumot turlariga mosligi</strong></b></h2>
+        <ul>
+            <li value="1"><b><strong>Merge Sort:</strong></b><span> Umumiy algoritm — har qanday solishtiriladigan ma'lumot turi (son, satr, obyekt) uchun ishlaydi. Shuningdek <strong>barqaror (stable)</strong> algoritm — teng elementlarning nisbiy tartibini saqlaydi.</span></li>
+            <li value="2"><b><strong>Radix Sort:</strong></b><span> Faqat butun sonlar yoki fiksirlangan uzunlikdagi satrlar kabi "raqamli xonalarga" ega ma'lumotlar uchun mos. Manfiy sonlar va o'nlik kasrlar uchun qo'shimcha moslashtirish talab qiladi.</span></li>
+        </ul>
+
+        <h2><b><strong>Afzalliklari va kamchiliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Merge Sort — barqaror va kafolatlangan O(n log n), lekin qo'shimcha O(n) xotira talab qiladi (in-place emas).</span></li>
+            <li value="2"><span>Radix Sort — to'g'ri ma'lumot turi uchun O(n log n)dan tezroq bo'lishi mumkin, lekin faqat cheklangan ma'lumot turlariga mos va qo'shimcha "bucket" xotirasi talab qiladi.</span></li>
+        </ul>
+
+        <h2><b><strong>Qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Merge Sort — katta hajmdagi ma'lumotlarni tashqi xotirada (external sorting) tartiblashda, barqarorlik muhim bo'lgan holatlarda (masalan, ko'p mezon bo'yicha saralash).</span></li>
+            <li value="2"><span>Radix Sort — katta hajmdagi butun sonlarni (masalan, pochta indekslari, telefon raqamlari) tezkor tartiblashda.</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Merge Sort — ishonchli, barqaror va universal "bo'lish va hukmronlik qilish" algoritmi, Radix Sort esa ma'lum shartlar bajarilganda undan ham tezroq natija beruvchi taqqoslashsiz algoritm. Qaysi birini tanlash ma'lumot turiga va vazifa talablariga bog'liq: umumiy holatlarda Merge Sort, raqamli ma'lumotlarni tezkor tartiblashda esa Radix Sort afzalroq.</span></p>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+    const result = [];
+    let i = 0, j = 0;
+    while (i < left.length && j < right.length) {
+        result.push(left[i] <= right[j] ? left[i++] : right[j++]);
+    }
+    return result.concat(left.slice(i), right.slice(j));
+}
+
+console.log(mergeSort([38, 27, 43, 3, 9]));
+// [3, 9, 27, 38, 43]</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/14-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

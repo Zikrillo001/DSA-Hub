@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Data Structures - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Graph Data Structures</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Graf (Graph)</strong> — ma'lumot elementlari o'rtasidagi munosabatlarni ifodalaydigan ma'lumotlar tuzilmasi. Graf tartibli juftlik sifatida aniqlanadi: <strong>G = (V, E)</strong>, bu yerda <strong>V</strong> — tugunlar (cho'qqilar) to'plami, <strong>E</strong> — qirralar to'plami bo'lib, har bir qirra ikki tugun o'rtasidagi munosabatni ko'rsatadi. Boshqa misollar: ijtimoiy tarmoqlar, yo'l xaritalari, elektr va aloqa tarmoqlari, aviayo'nalishlar.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251028181828547875/1-.webp" alt="Graph Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>Grafning asosiy tushunchalari</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Tugun / Cho'qqi (Vertex):</strong></b><span> Grafdagi har bir alohida element. Barcha tugunlar to'plami <code>V</code> bilan belgilanadi.</span></li>
+            <li value="2"><b><strong>Qirra (Edge):</strong></b><span> Ikki tugun orasidagi bog'lanish. Agar <code>u</code> va <code>v</code> tugunlari bog'langan bo'lsa, qirra <code>(u, v)</code> sifatida belgilanadi. Barcha qirralar to'plami <code>E</code> bilan belgilanadi.</span></li>
+            <li value="3"><b><strong>Qo'shni (Adjacent):</strong></b><span> Agar <code>(u, v) ∈ E</code> bo'lsa, <code>u</code> va <code>v</code> tugunlari qo'shni deb ataladi.</span></li>
+            <li value="4"><b><strong>Yo'l (Path):</strong></b><span> Qirralar orqali bog'langan tugunlar ketma-ketligi. Agar har bir tugun faqat bir marta uchrasa, bu <strong>oddiy yo'l (simple path)</strong> deyiladi.</span></li>
+            <li value="5"><b><strong>Sikl (Cycle):</strong></b><span> Bir xil tugunda boshlanib, shu tugunda yakunlanadigan yo'l.</span></li>
+        </ul>
+
+        <h2><span>Yo'naltirilgan va yo'naltirilmagan graflar</span></h2>
+        <section class="description">
+            <p><span>Agar grafning har bir qirrasi ma'lum yo'nalishga ega bo'lsa, u <strong>yo'naltirilgan graf (directed graph)</strong> deb ataladi; aks holda — <strong>yo'naltirilmagan graf (undirected graph)</strong>. Bir tugun juftligi orasida bir nechta qirralarga yoki o'ziga qaytuvchi qirralarga (loop) ruxsat beruvchi graf <strong>multigraf (multigraph)</strong> deyiladi.</span></p>
+        </section>
+
+        <h2><span>Bog'langan graf va subgraf</span></h2>
+        <ul>
+            <li value="1"><b><strong>Bog'langan graf (Connected graph):</strong></b><span> Har bir juft farqli tugunlar orasida yo'l mavjud bo'lsa, graf bog'langan deyiladi; aks holda — bog'lanmagan.</span></li>
+            <li value="2"><b><strong>Bog'langan komponent (Connected component):</strong></b><span> Bog'lanmagan grafning o'z ichida bog'langan qismlari.</span></li>
+            <li value="3"><b><strong>Subgraf (Subgraph):</strong></b><span> Asl grafning tugunlari va qirralaridan tanlab olingan qismidan iborat kichik graf.</span></li>
+        </ul>
+
+        <h2><span>Grafni ifodalash usullari (Representation)</span></h2>
+        <section class="description">
+            <p><span>Grafni dasturda saqlashning ikki asosiy usuli mavjud: <strong>Adjacency Matrix</strong> (qo'shnilik matritsasi) va <strong>Adjacency List</strong> (qo'shnilik ro'yxati).</span></p>
+        </section>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251028181956953251/file.webp" alt="Graph Adjacency List" class="topic-image">
+        <ul>
+            <li value="1"><b><strong>Adjacency Matrix:</strong></b><span> V×V o'lchamli matritsa, unda <code>matrix[i][j] = 1</code> bo'lsa, <code>i</code> va <code>j</code> tugunlari orasida qirra bor. Qirra mavjudligini tekshirish O(1), lekin xotira O(V²) talab qiladi.</span></li>
+            <li value="2"><b><strong>Adjacency List:</strong></b><span> Har bir tugun uchun uning barcha qo'shnilari ro'yxat (list) sifatida saqlanadi. Xotirani samaraliroq ishlatadi — O(V + E).</span></li>
+        </ul>
+
+        <h2><span>Grafni JavaScriptda amalga oshirish (Adjacency List)</span></h2>
+        <pre><code>class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
+
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) {
+            this.adjacencyList[vertex] = [];
+        }
+    }
+
+    addEdge(v1, v2) {
+        this.adjacencyList[v1].push(v2);
+        this.adjacencyList[v2].push(v1); // yo'naltirilmagan graf uchun
+    }
+}
+
+const graph = new Graph();
+["A", "B", "C"].forEach(v => graph.addVertex(v));
+graph.addEdge("A", "B");
+graph.addEdge("A", "C");
+// graph.adjacencyList => { A: ["B", "C"], B: ["A"], C: ["A"] }</code></pre>
+
+        <h2><span>Grafning muhim algoritmlari</span></h2>
+        <ul>
+            <li value="1"><b><strong>Grafni qidirish (Graph Traversal):</strong></b><span> DFS va BFS — barcha tugunlarni tartib bilan ko'rib chiqish.</span></li>
+            <li value="2"><b><strong>Topologik tartiblash (Topological Sort):</strong></b><span> Yo'naltirilgan atsiklik grafdagi tugunlarni bog'liqliklariga mos tartibda joylashtirish.</span></li>
+            <li value="3"><b><strong>Yoyilgan daraxt (Spanning Tree):</strong></b><span> Bog'langan grafning barcha tugunlarini siklsiz bog'laydigan daraxt.</span></li>
+            <li value="4"><b><strong>Minimal yoyilgan daraxt (Minimum Spanning Tree):</strong></b><span> Umumiy qirra og'irligi eng kichik bo'lgan spanning tree (Prim, Kruskal algoritmlari).</span></li>
+            <li value="5"><b><strong>Eng qisqa yo'l (Shortest Path):</strong></b><span> Ikki tugun orasidagi eng kam og'irlikdagi yo'lni topish (Dijkstra algoritmi).</span></li>
+        </ul>
+
+        <h2><span>Graf operatsiyalari uchun murakkablik tahlili</span></h2>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Amal</span></p></th>
+                        <th><p><span>Adjacency Matrix</span></p></th>
+                        <th><p><span>Adjacency List</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><b><strong>Xotira</strong></b></p></td>
+                        <td><p><span>O(V²)</span></p></td>
+                        <td><p><span>O(V + E)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Qirra mavjudligini tekshirish</strong></b></p></td>
+                        <td><p><span>O(1)</span></p></td>
+                        <td><p><span>O(V)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Barcha qo'shnilarni topish</strong></b></p></td>
+                        <td><p><span>O(V)</span></p></td>
+                        <td><p><span>O(qo'shnilar soni)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>DFS / BFS (to'liq)</strong></b></p></td>
+                        <td><p><span>O(V²)</span></p></td>
+                        <td><p><span>O(V + E)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <h2><b><strong>Grafning qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Ijtimoiy tarmoqlar — foydalanuvchilar va ularning bog'lanishlari.</span></li>
+            <li value="2"><span>Xaritalar va GPS navigatsiya tizimlari — eng qisqa yo'lni topish.</span></li>
+            <li value="3"><span>Kompyuter tarmoqlari va marshrutlash (routing) protokollari.</span></li>
+            <li value="4"><span>Loyihalarni rejalashtirish — vazifalar orasidagi bog'liqlik (topologik tartiblash).</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Graf — tugunlar va ular orasidagi munosabatlarni ifodalashning eng moslashuvchan usuli bo'lib, ijtimoiy tarmoqlardan tortib marshrutlashgacha bo'lgan ko'plab real dunyo masalalarini yechishda qo'llaniladi. Grafni to'g'ri ifodalash (matritsa yoki ro'yxat) va unga mos algoritm tanlash — samarali yechimning kalitidir.</span></p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe
+                    class="topic-video"
+                    src="https://www.youtube.com/embed/Od55cZ5b0yM?list=PLZdsmTs1NLNDQI-aisBNg6v-rr0PswVuZ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
+    addVertex(v) {
+        if (!this.adjacencyList[v]) this.adjacencyList[v] = [];
+    }
+    addEdge(v1, v2) {
+        this.adjacencyList[v1].push(v2);
+        this.adjacencyList[v2].push(v1);
+    }
+    removeEdge(v1, v2) {
+        this.adjacencyList[v1] = this.adjacencyList[v1].filter(v => v !== v2);
+        this.adjacencyList[v2] = this.adjacencyList[v2].filter(v => v !== v1);
+    }
+}
+
+const graph = new Graph();
+["A", "B", "C", "D"].forEach(v => graph.addVertex(v));
+graph.addEdge("A", "B");
+graph.addEdge("A", "C");
+graph.addEdge("B", "D");</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/11-dars.graph.ppt" download>Download Presentation</a></li>
+                <li><a href="docs/11-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

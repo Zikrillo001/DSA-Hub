@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Insertion Sort</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Insertion Sort</strong> — oddiy va intuitiv tartiblash algoritmi bo'lib, massiv elementlari birma-bir olinib, oldingi (allaqachon tartiblangan) qism ichida o'ziga mos joyga joylashtiriladi. Bu algoritm kichik massivlar yoki allaqachon qisman tartiblangan ma'lumotlar uchun ayniqsa samarali hisoblanadi — xuddi o'yin kartalarini qo'lda tartiblashga o'xshaydi.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" alt="Insertion Sort Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>Insertion Sort'ning asosiy tushunchalari</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Key (Tanlangan element):</strong></b><span> Har bir qadamda navbat bilan olinadigan va to'g'ri joyga joylashtiriladigan element.</span></li>
+            <li value="2"><b><strong>Tartiblangan qism:</strong></b><span> Massivning chap tomonidagi, allaqachon tartiblangan bo'lak.</span></li>
+            <li value="3"><b><strong>Siljitish (Shift):</strong></b><span> Key'dan katta bo'lgan elementlar key uchun joy bo'shatib, bir pozitsiyaga o'ngga suriladi.</span></li>
+        </ul>
+
+        <h2><span>Insertion Sort qanday ishlaydi?</span></h2>
+        <section class="description">
+            <p><span>Algoritm qadamlari quyidagicha:</span></p>
+        </section>
+        <ul>
+            <li value="1"><span>Massivning ikkinchi elementidan boshlab, har bir elementni oldingi elementlar bilan solishtirish boshlanadi.</span></li>
+            <li value="2"><span>Agar tanlangan element (<code>key</code>) undan oldingi elementdan kichik bo'lsa, oldingi element o'ngga suriladi.</span></li>
+            <li value="3"><span><code>key</code> elementi o'ziga mos pozitsiyaga joylashtirilguncha bu jarayon chapga davom etadi.</span></li>
+            <li value="4"><span>Massivning barcha elementlari tartiblanmaguncha jarayon takrorlanadi.</span></li>
+        </ul>
+        <pre><code>Massiv: [5, 2, 4, 6, 1, 3]
+
+1-qadam: key=2 -> [2, 5, 4, 6, 1, 3]
+2-qadam: key=4 -> [2, 4, 5, 6, 1, 3]
+3-qadam: key=6 -> [2, 4, 5, 6, 1, 3]  (o'z joyida qoladi)
+4-qadam: key=1 -> [1, 2, 4, 5, 6, 3]
+5-qadam: key=3 -> [1, 2, 3, 4, 5, 6]  (tartiblangan!)</code></pre>
+
+        <h2><span>Insertion Sort'ni JavaScriptda amalga oshirish</span></h2>
+        <section class="description">
+            <p><span>Asosiy sikl <code>i = 1</code>dan boshlanadi, chunki birinchi element (<code>i = 0</code>) allaqachon o'z joyida deb hisoblanadi. Ichki <code>while</code> sikli esa <code>key</code>dan katta elementlarni o'ngga suradi, so'ng <code>key</code> bo'shagan joyga qo'yiladi:</span></p>
+        </section>
+        <pre><code>function insertionSort(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        let key = arr[i];
+        let j = i - 1;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+    return arr;
+}
+
+insertionSort([5, 2, 4, 6, 1, 3]); // [1, 2, 3, 4, 5, 6]</code></pre>
+
+        <h2><span>Insertion Sort operatsiyasi uchun murakkablik tahlili</span></h2>
+        <h3><span>Vaqt murakkabligi:</span></h3>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Best Case</span></p></th>
+                        <th><p><span>Average Case</span></p></th>
+                        <th><p><span>Worst Case</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><span>O(n)</span></p></td>
+                        <td><p><span>O(n²)</span></p></td>
+                        <td><p><span>O(n²)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>Eng yaxshi holat — massiv allaqachon tartiblangan bo'lsa, har bir element uchun ichki <code>while</code> sikli darhol to'xtaydi (O(n)). Eng yomon holat — massiv butunlay teskari tartiblangan bo'lsa, har bir element oldingi barcha elementlar bilan solishtiriladi (O(n²)).</span></p>
+        </section>
+
+        <h3><span>Xotira murakkabligi:</span></h3>
+        <section class="description">
+            <p><span>Insertion Sort qo'shimcha massiv talab qilmaydi — faqat <code>key</code> va <code>j</code> kabi bir nechta o'zgaruvchi ishlatiladi, shuning uchun xotira murakkabligi <strong>O(1)</strong> ga teng.</span></p>
+        </section>
+
+        <h2><b><strong>Insertion Sort'ning afzalliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Kichik massivlarda samarali ishlaydi.</span></li>
+            <li value="2"><span>Allaqachon qisman tartiblangan massivlarda juda tez ishlaydi va vaqtni tejaydi.</span></li>
+            <li value="3"><span>Xotira jihatidan samarali — qo'shimcha xotira talab qilmaydi (O(1)).</span></li>
+            <li value="4"><span>Online algoritm — ma'lumotlar oqim (stream) sifatida kelganda ham ishlatish mumkin, chunki har bir yangi elementni darhol to'g'ri joyga qo'yish mumkin.</span></li>
+        </ul>
+
+        <h2><b><strong>Insertion Sort'ning kamchiliklari</strong></b></h2>
+        <ul>
+            <li value="1"><span>Katta massivlar uchun vaqti sekin (O(n²) murakkabligi tufayli).</span></li>
+            <li value="2"><span>Massiv teskari tartiblangan bo'lsa, juda sekin ishlaydi.</span></li>
+        </ul>
+
+        <h2><b><strong>Insertion Sort'ning qo'llanilishi</strong></b></h2>
+        <ul>
+            <li value="1"><span>Kichik hajmdagi yoki deyarli tartiblangan ma'lumotlarni tezda tartiblashda.</span></li>
+            <li value="2"><span>Boshqa murakkab algoritmlar (masalan, Quick Sort, Tim Sort) ichida kichik bo'lim (sub-array)larni tartiblashda yordamchi algoritm sifatida.</span></li>
+            <li value="3"><span>Real vaqtda kelayotgan ma'lumotlarni tartiblashda (online sorting).</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Insertion Sort — oddiy bosqichlar orqali ishlaydigan, kichik va qisman tartiblangan massivlarda samarali tartiblash algoritmi. Uning soddaligi va xotira jihatidan tejamkorligi, katta massivlarda sekinligiga qaramay, uni ba'zi amaliy holatlarda — jumladan boshqa algoritmlar ichida yordamchi sifatida — foydali qiladi.</span></p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe
+                    class="topic-video"
+                    src="https://www.youtube.com/embed/ZFAIybDww5Y?list=PLZdsmTs1NLNDQI-aisBNg6v-rr0PswVuZ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>function insertionSort(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        let key = arr[i];
+        let j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+    return arr;
+}
+
+console.log(insertionSort([64, 34, 25, 12, 22, 11, 90]));
+// [11, 12, 22, 25, 34, 64, 90]</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/10-dars. Insertion Sort.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/10-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>

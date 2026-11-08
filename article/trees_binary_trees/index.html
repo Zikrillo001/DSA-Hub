@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trees and Binary Trees - Data Structures and Algorithms</title>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="icon" href="../../dsa-hub.ico" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Topic Title -->
+        <h1>Trees and Binary Trees</h1>
+
+        <!-- Description Section -->
+        <section class="description">
+            <p><strong>Tree (daraxt)</strong> — ma'lumotlar tuzilmasi bo'lib, unda elementlar <strong>tugun (node)</strong> sifatida tashkil topgan va ular orasida ota-ona (parent) va farzand (child) bog'lanishlari mavjud. <strong>Binary Tree</strong> esa daraxtning maxsus turi — unda har bir tugunning maksimal ikkita farzandi bo'ladi. Bu tuzilmalar fayl tizimlari, ma'lumotlar bazalari va tezkor qidiruv algoritmlarining asosini tashkil qiladi.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="media">
+            <h2>Illustration</h2>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240811023816/Introduction-to-Binary-Tree.webp" alt="Binary Tree Illustration" class="topic-image">
+        </section>
+
+        <h2>
+            <span>Daraxtning asosiy tushunchalari</span>
+        </h2>
+        <ul>
+            <li value="1"><b><strong>Root (Ildiz):</strong></b><span> Daraxtning boshlang'ich, eng yuqoridagi tuguni.</span></li>
+            <li value="2"><b><strong>Node (Tugun):</strong></b><span> Daraxtdagi har bir alohida element.</span></li>
+            <li value="3"><b><strong>Leaf (Barg):</strong></b><span> Farzandi (child) yo'q tugun.</span></li>
+            <li value="4"><b><strong>Edge (Qirra):</strong></b><span> Ikki tugun orasidagi bog'lanish.</span></li>
+            <li value="5"><b><strong>Depth (Chuqurlik):</strong></b><span> Tugunning ildizdan bo'lgan masofasi.</span></li>
+            <li value="6"><b><strong>Height (Balandlik):</strong></b><span> Daraxtning eng chuqur tuguni bilan ildiz o'rtasidagi masofa.</span></li>
+            <li value="7"><b><strong>Subtree (Pastki daraxt):</strong></b><span> Har qanday tugun va unga bog'langan barcha farzandlardan iborat qism.</span></li>
+        </ul>
+
+        <h2><span>Daraxtlarning ishlatilish o'rni</span></h2>
+        <ul>
+            <li value="1"><span>Fayllar va papkalar tuzilmasi (katalog strukturasi).</span></li>
+            <li value="2"><span>Tashkilot tuzilmasi, ierarxik diagrammalar (organogramma).</span></li>
+            <li value="3"><span>Ma'lumot qidirish tizimlari — masalan, Binary Search Tree.</span></li>
+        </ul>
+
+        <h2><span>Daraxt tuzilmasini JavaScriptda yaratish</span></h2>
+        <section class="description">
+            <p><span><code>Node</code> klassi har bir tugunning ma'lumotini va farzandlarini saqlaydi, <code>Tree</code> klassi esa ildizni belgilash va yangi tugun qo'shish imkonini beradi:</span></p>
+        </section>
+        <pre><code>class Node {
+    constructor(value) {
+        this.value = value;
+        this.children = [];
+    }
+}
+
+class Tree {
+    constructor(rootValue) {
+        this.root = new Node(rootValue);
+    }
+
+    addChild(parent, value) {
+        const child = new Node(value);
+        parent.children.push(child);
+        return child;
+    }
+}</code></pre>
+
+        <h2><span>Binary Tree (ikkilik daraxt) nima?</span></h2>
+        <section class="description">
+            <p><span>Binary Tree — har bir tugunning maksimal ikkita farzandi (chap va o'ng) bo'lgan daraxt turi. Binary Tree bir necha asosiy turga bo'linadi:</span></p>
+        </section>
+        <ul>
+            <li value="1"><b><strong>Complete Binary Tree:</strong></b><span> Hamma darajadagi tugunlar — eng pastki darajadan tashqari — to'liq to'lgan.</span></li>
+            <li value="2"><b><strong>Full Binary Tree:</strong></b><span> Har bir tugunning yoki ikkita farzandi bor, yoki umuman farzandi yo'q.</span></li>
+            <li value="3"><b><strong>Perfect Binary Tree:</strong></b><span> Hamma darajalar to'liq to'lgan va barcha barglar bir xil chuqurlikda.</span></li>
+            <li value="4"><b><strong>Balanced Tree:</strong></b><span> Har bir tugunning chap va o'ng pastki daraxtlari balandligi ko'pi bilan bittaga farq qiladi.</span></li>
+        </ul>
+        <pre><code>class Node {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class BinaryTree {
+    constructor(rootValue) {
+        this.root = new Node(rootValue);
+    }
+}</code></pre>
+
+        <h2><span>Binary Search Tree (BST)</span></h2>
+        <section class="description">
+            <p><span>Binary Search Tree — binary tree turi bo'lib, unda quyidagi qoida amal qiladi: har bir tugunning <strong>chap</strong> farzandlari undan <strong>kichik</strong>, <strong>o'ng</strong> farzandlari esa undan <strong>katta</strong> qiymatga ega. BST'da qiymatlar noyob bo'ladi. Daraxt muvozanatlangan bo'lsa, qo'shish, qidirish va o'chirish amallari <strong>O(log n)</strong> vaqtda bajariladi.</span></p>
+        </section>
+        <pre><code>class BSTNode {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class BinarySearchTree {
+    constructor() {
+        this.root = null;
+    }
+
+    insertNode(node, value) {
+        if (!node) return new BSTNode(value);
+        if (value < node.value) {
+            node.left = this.insertNode(node.left, value);
+        } else if (value > node.value) {
+            node.right = this.insertNode(node.right, value);
+        }
+        return node;
+    }
+
+    insert(value) {
+        this.root = this.insertNode(this.root, value);
+    }
+
+    search(node, value) {
+        if (!node) return null;
+        if (value === node.value) return node;
+        return value < node.value
+            ? this.search(node.left, value)
+            : this.search(node.right, value);
+    }
+}
+
+const bst = new BinarySearchTree();
+[8, 3, 10, 1, 6].forEach(v => bst.insert(v));
+bst.search(bst.root, 6); // BSTNode { value: 6, ... }</code></pre>
+
+        <h2><span>Daraxtlarda yurish (Tree Traversal) usullari</span></h2>
+        <section class="description">
+            <p><span>Daraxtdagi barcha tugunlarni ma'lum tartibda ko'rib chiqish uchun ikki asosiy usul qo'llaniladi: <strong>DFS (Depth-First Search)</strong> va <strong>BFS (Breadth-First Search)</strong>.</span></p>
+        </section>
+        <ul>
+            <li value="1"><b><strong>DFS:</strong></b><span> Har bir yo'lni imkon qadar chuqur tekshirib, keyin orqaga qaytadi. Odatda rekursiya yoki stack orqali amalga oshiriladi. Labirint kabi masalalarda qulay.</span></li>
+            <li value="2"><b><strong>BFS:</strong></b><span> Daraxtning har bir darajasi bo'yicha, yuqoridan pastga qarab yuradi. Navbat (queue) yordamida amalga oshiriladi. Eng qisqa yo'lni topish kabi masalalarda qulay.</span></li>
+        </ul>
+
+        <h2><span>Daraxtlarda ko'p uchraydigan amallar</span></h2>
+        <ul>
+            <li value="1"><b><strong>Qo'shish (Insertion):</strong></b><span> Daraxtga yangi tugun qo'shish.</span></li>
+            <li value="2"><b><strong>O'chirish (Deletion):</strong></b><span> Daraxtdan tugunni o'chirish.</span></li>
+            <li value="3"><b><strong>Qidirish (Search):</strong></b><span> Ma'lum bir qiymatni daraxtda qidirish.</span></li>
+            <li value="4"><b><strong>AVL va Red-Black daraxtlari:</strong></b><span> Balandligi avtomatik boshqariladigan, muvozanatlashgan maxsus BST turlari.</span></li>
+        </ul>
+
+        <h2><span>Daraxt operatsiyalari uchun murakkablik tahlili (BST, muvozanatlangan holat)</span></h2>
+        <section class="description">
+            <table>
+                <thead>
+                    <tr>
+                        <th><p><span>Operation</span></p></th>
+                        <th><p><span>Average Case</span></p></th>
+                        <th><p><span>Worst Case</span></p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p><b><strong>Search</strong></b></p></td>
+                        <td><p><span>O(log n)</span></p></td>
+                        <td><p><span>O(n)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Insertion</strong></b></p></td>
+                        <td><p><span>O(log n)</span></p></td>
+                        <td><p><span>O(n)</span></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><b><strong>Deletion</strong></b></p></td>
+                        <td><p><span>O(log n)</span></p></td>
+                        <td><p><span>O(n)</span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="description">
+            <p><span>Eng yomon holat daraxt muvozanatsiz bo'lib, deyarli bog'langan ro'yxatga aylanib qolganda yuzaga keladi (masalan, qiymatlar tartiblangan holda ketma-ket qo'shilsa). AVL yoki Red-Black daraxtlari aynan shu holatni oldini olish uchun yaratilgan.</span></p>
+        </section>
+
+        <h2><b><strong>Daraxtlarning amaliy ishlatilish o'rni</strong></b></h2>
+        <ul>
+            <li value="1"><span>Qidiruv algoritmlari — ma'lumotlarni tezkor topish uchun (BST).</span></li>
+            <li value="2"><span>Kompilyatorlar — sintaksis daraxtlarini yaratishda.</span></li>
+            <li value="3"><span>Tarmoq va yo'l topish — eng qisqa yo'llarni aniqlashda.</span></li>
+            <li value="4"><span>Sun'iy intellekt — o'yinlarda qaror daraxtlari (masalan, shaxmatda harakatlarni simulyatsiya qilish).</span></li>
+        </ul>
+
+        <h2><span>Natija</span></h2>
+        <section class="description">
+            <p><span>Tree va Binary Tree — ierarxik ma'lumotlarni tabiiy tarzda ifodalash va tezkor qidiruv imkonini beruvchi asosiy ma'lumotlar tuzilmalari. Binary Search Tree kabi maxsus turlari orqali qidirish, qo'shish va o'chirish amallarini o'rtacha holatda logarifmik vaqtda bajarish mumkin, bu esa ularni ko'plab amaliy tizimlarning poydevoriga aylantiradi.</span></p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="media">
+            <h2>Video Explanation</h2>
+            <div class="video-wrapper">
+                <iframe
+                    class="topic-video"
+                    src="https://www.youtube.com/embed/pJxhI_D439o?list=PLZdsmTs1NLNDQI-aisBNg6v-rr0PswVuZ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section class="code">
+            <h2>Code Example</h2>
+            <pre>
+<code>class BSTNode {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class BinarySearchTree {
+    constructor() {
+        this.root = null;
+    }
+    insert(value) {
+        this.root = this._insert(this.root, value);
+    }
+    _insert(node, value) {
+        if (!node) return new BSTNode(value);
+        if (value < node.value) node.left = this._insert(node.left, value);
+        else if (value > node.value) node.right = this._insert(node.right, value);
+        return node;
+    }
+}
+
+const tree = new BinarySearchTree();
+[8, 3, 10, 1, 6, 14].forEach(v => tree.insert(v));</code></pre>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="docs/9-dars. Trees and Binary Trees.pptx" download>Download Presentation</a></li>
+                <li><a href="docs/9-topshiriq.docx" download>Download Task</a></li>
+            </ul>
+        </section>
+
+        <!-- Powered By Text -->
+        <footer>
+            <p class="powered-by">Powered by AdamsJames</p>
+        </footer>
+    </div>
+
+</body>
+</html>
